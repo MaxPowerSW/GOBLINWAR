@@ -139,7 +139,7 @@ slides:
     high_scores:
       widgets:
       - type: Text
-        text: Legendary Sailors
+        text: Ball Goblins
         font_size: 120
 #        font_name: Sinbad
         bold: true
@@ -206,7 +206,7 @@ slides:
         style: attract_mode_high_score_display_style
         y: top-600
       - type: Text
-        text: Incredible Feats
+        text: Gobbo Awards
 #        font_name: Sinbad
         font_size: 100
         color: red

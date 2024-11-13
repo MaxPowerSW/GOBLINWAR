@@ -1,0 +1,25 @@
+#show_version=6
+- duration: 1
+  lights:
+    l_bottom_left_yellow_rollover: 0
+    l_bottom_white_target: ff
+- duration: 1
+  lights:
+    l_bottom_white_target: 0
+    l_top_white_rollover: ff
+- duration: 1
+  lights:
+    l_top_white_rollover: 0
+    l_right_yellow_rollover: ff
+- duration: 1
+  lights:
+    l_right_yellow_rollover: 0
+    l_bottom_yellow_rollover: ff
+- duration: 1
+  lights:
+    l_bottom_yellow_rollover: 00
+    l_shoot_again: ff
+- duration: 1
+  lights:
+    l_shoot_again: 0
+    l_bottom_left_yellow_rollover: ff

@@ -10,7 +10,7 @@ slides:
   tilt_warning_1:
     widgets:
     - type: text
-      text: BEWARE
+      text: DANGER
       font_size: 200
       font_name: FtySkorzhenNcv-Yo02
       y: center
@@ -18,13 +18,13 @@ slides:
   tilt_warning_2:
     widgets:
     - type: text
-      text: BEWARE
+      text: DANGER
       font_size: 200
       font_name: FtySkorzhenNcv-Yo02
       y: center - 200
       anchor_y: center
     - type: text
-      text: BEWARE
+      text: DANGER
       font_size: 200
       font_name: FtySkorzhenNcv-Yo02
       y: center + 200

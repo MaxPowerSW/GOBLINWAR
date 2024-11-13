@@ -42,7 +42,7 @@ event_player:
 slide_player:
    mode_bonus_started: bonus_start_slide
    bonus_value: bonus_value_slide
-   bonus_switches: bonus_switches_slide
+#   bonus_switches: bonus_switches_slide
    bonus_multiplier: bonus_multiplier_slide
    bonus_total: bonus_total_slide
 
@@ -134,38 +134,25 @@ slides:
 #        z: 98
 #        color: black
      
-      - type: video
-        video: sinbad_dead
-        end_behavior: stop
-        auto_play: true
-        volume: 0.33
-        height: 1080
-        width: 1920
-        z: 0
-        control_events:
-          - event: init_bonus_video
-            action: position
-            value: 189
+#      - type: video
+#        video: sinbad_dead
+#        end_behavior: stop
+#        auto_play: true
+#        volume: 0.33
+#        height: 1080
+#        width: 1920
+#        z: 0
+#        control_events:
+#          - event: init_bonus_video
+#            action: position
+#            value: 189
  #         - event: start_bonus_video
  #           action: play
-          - event: stop_bonus_video
-            action: stop
+#          - event: stop_bonus_video
+#            action: stop
   bonus_value_slide:
     - type: text
       text: "BONUS:"
-      font_size: 150
-      font_name: FtySkorzhenNcv-Yo02
-      y: center + 125
-    - type: text
-      text: (score)
-      number_grouping: true
-      font_size: 300
-      font_name: FtySkorzhenNcv-Yo02
-#      color: red
-      y: center - 125
-  bonus_switches_slide:
-    - type: text
-      text: "SWITCH HITS: (player|sw_count)"
       font_size: 150
       font_name: FtySkorzhenNcv-Yo02
       y: center + 125

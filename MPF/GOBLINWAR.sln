@@ -11,17 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{EE4047
 	ProjectSection(SolutionItems) = preProject
 		config\cab.yaml = config\cab.yaml
 		config\config.yaml = config\config.yaml
-		debug.yaml = debug.yaml
-		config\music.yaml = config\music.yaml
 		config\switchtest.yaml = config\switchtest.yaml
 		config\vpx.yaml = config\vpx.yaml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extra_ball", "extra_ball", "{9F4E3B10-1178-4DA1-A9CC-A0F0CD8B0D4F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{2140D87D-E252-4290-B442-3EF860E8A42D}"
-	ProjectSection(SolutionItems) = preProject
-		modes\extra_ball\config\extra_ball.yaml = modes\extra_ball\config\extra_ball.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "base", "base", "{5ACFF13B-5E95-4998-878F-9A0752E08A13}"
@@ -45,23 +36,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{2B77CF
 		modes\tilt\config\tilt.yaml = modes\tilt\config\tilt.yaml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "newrules", "newrules", "{D5820354-A18E-43F4-AC84-15DB390281AD}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{9EA0B126-3AD4-4423-A1EA-058C126B9E33}"
-	ProjectSection(SolutionItems) = preProject
-		modes\newrules\config\newrules.yaml = modes\newrules\config\newrules.yaml
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shows", "shows", "{DF6CF0F0-2BC4-4EE6-8DA2-6C9ABD0BFC07}"
 	ProjectSection(SolutionItems) = preProject
 		modes\base\shows\flash2hz.yaml = modes\base\shows\flash2hz.yaml
 		modes\base\shows\flash4hz.yaml = modes\base\shows\flash4hz.yaml
 		modes\base\shows\flash8hz.yaml = modes\base\shows\flash8hz.yaml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shows", "shows", "{3873D30D-3C14-4718-9741-2AA87A7970E5}"
-	ProjectSection(SolutionItems) = preProject
-		modes\extra_ball\shows\eb_letter_show.yaml = modes\extra_ball\shows\eb_letter_show.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "skill_shot", "skill_shot", "{3237A07B-CD09-4978-8986-4DDA1CA007A2}"
@@ -83,28 +62,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shows", "shows", "{C4A757BF
 		modes\attract\shows\attract_display_loop.yaml = modes\attract\shows\attract_display_loop.yaml
 		modes\attract\shows\bonus_light_show.yaml = modes\attract\shows\bonus_light_show.yaml
 		modes\attract\shows\bonus_mult_show.yaml = modes\attract\shows\bonus_mult_show.yaml
-		modes\attract\shows\bonus_spinner_show.yaml = modes\attract\shows\bonus_spinner_show.yaml
-		modes\attract\shows\letters_light_show.yaml = modes\attract\shows\letters_light_show.yaml
-		modes\attract\shows\level_light_show.yaml = modes\attract\shows\level_light_show.yaml
-		modes\attract\shows\lower_drop_light_show.yaml = modes\attract\shows\lower_drop_light_show.yaml
-		modes\attract\shows\rock_lives_light_show.yaml = modes\attract\shows\rock_lives_light_show.yaml
-		modes\attract\shows\spinner_light_show.yaml = modes\attract\shows\spinner_light_show.yaml
-		modes\attract\shows\target_show.yaml = modes\attract\shows\target_show.yaml
-		modes\attract\shows\top_lanes_light_show.yaml = modes\attract\shows\top_lanes_light_show.yaml
+		modes\attract\shows\bottom_lane_show.yaml = modes\attract\shows\bottom_lane_show.yaml
+		modes\attract\shows\front_target_show.yaml = modes\attract\shows\front_target_show.yaml
+		modes\attract\shows\side_target_show.yaml = modes\attract\shows\side_target_show.yaml
 		modes\attract\shows\top_lane_show.yaml = modes\attract\shows\top_lane_show.yaml
-		modes\attract\shows\upper_drop_light_show.yaml = modes\attract\shows\upper_drop_light_show.yaml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "double_scoring", "double_scoring", "{5F6B6157-D7AB-43BA-B393-8B4C919FE5C1}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{DD30B600-7B24-422C-A289-73B92991693B}"
-	ProjectSection(SolutionItems) = preProject
-		modes\double_scoring\double_scoring.yaml = modes\double_scoring\double_scoring.yaml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shows", "shows", "{C9B7D93C-39A6-44CA-B61C-10C48731AD91}"
-	ProjectSection(SolutionItems) = preProject
-		modes\double_scoring\shows\double_scoring_show.yaml = modes\double_scoring\shows\double_scoring_show.yaml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "music_select", "music_select", "{3605245E-DB11-4729-BFA0-5071FA00B96B}"
@@ -113,8 +74,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{E08F8D
 	ProjectSection(SolutionItems) = preProject
 		modes\music_select\config\music_select.yaml = modes\music_select\config\music_select.yaml
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicUtility", "MusicUtility\MusicUtility\MusicUtility.csproj", "{500058D1-FC68-4C24-95ED-A1E4667F1527}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C79A461-B01D-4247-A96C-EC8167437F70}"
 	ProjectSection(SolutionItems) = preProject
@@ -159,43 +118,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{60669A
 		modes\service\config\service.yaml = modes\service\config\service.yaml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "multiball", "multiball", "{9B3BD584-6F58-4515-8942-94C4D5C2F5DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "multiball_select", "multiball_select", "{30593FCD-87C2-47AD-88E0-EBCADD9778F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{4A6CBF0F-90F7-4A76-8C5C-A22D7485A9A1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{95BE3680-0619-425E-BF3A-9997DEBF0BEB}"
+EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{500058D1-FC68-4C24-95ED-A1E4667F1527}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{500058D1-FC68-4C24-95ED-A1E4667F1527}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{500058D1-FC68-4C24-95ED-A1E4667F1527}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{500058D1-FC68-4C24-95ED-A1E4667F1527}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{455F7104-BEAA-4AA5-BBCB-D5ED74E4F294} = {534FDAA6-4EF0-4C28-AC10-AA216BE6DA53}
 		{EE404750-3C65-4CFB-9048-0BC8BA6D051E} = {534FDAA6-4EF0-4C28-AC10-AA216BE6DA53}
-		{9F4E3B10-1178-4DA1-A9CC-A0F0CD8B0D4F} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
-		{2140D87D-E252-4290-B442-3EF860E8A42D} = {9F4E3B10-1178-4DA1-A9CC-A0F0CD8B0D4F}
 		{5ACFF13B-5E95-4998-878F-9A0752E08A13} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
 		{7A5A5D06-E6ED-4B50-ACFF-7CC34202EB48} = {5ACFF13B-5E95-4998-878F-9A0752E08A13}
 		{F7D4D0B3-31F6-4969-A69B-88A42DEED135} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
 		{C481F40F-1EC8-4F15-9783-593066E47E18} = {F7D4D0B3-31F6-4969-A69B-88A42DEED135}
 		{6B0FFA96-FC04-4E13-B857-85ED6FC98C92} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
 		{2B77CFD9-3917-4719-88D8-4687850031AA} = {6B0FFA96-FC04-4E13-B857-85ED6FC98C92}
-		{D5820354-A18E-43F4-AC84-15DB390281AD} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
-		{9EA0B126-3AD4-4423-A1EA-058C126B9E33} = {D5820354-A18E-43F4-AC84-15DB390281AD}
 		{DF6CF0F0-2BC4-4EE6-8DA2-6C9ABD0BFC07} = {5ACFF13B-5E95-4998-878F-9A0752E08A13}
-		{3873D30D-3C14-4718-9741-2AA87A7970E5} = {9F4E3B10-1178-4DA1-A9CC-A0F0CD8B0D4F}
 		{3237A07B-CD09-4978-8986-4DDA1CA007A2} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
 		{F94B63E0-17DE-438C-BEAF-62C47A106576} = {3237A07B-CD09-4978-8986-4DDA1CA007A2}
 		{1777F4B2-F333-4AAA-AB53-2CCB43BF72C0} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
 		{F848F6D9-CD29-4722-BC55-CC06CAB58CB5} = {1777F4B2-F333-4AAA-AB53-2CCB43BF72C0}
 		{C4A757BF-C907-48A2-A135-DDF185EB3E86} = {1777F4B2-F333-4AAA-AB53-2CCB43BF72C0}
-		{5F6B6157-D7AB-43BA-B393-8B4C919FE5C1} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
-		{DD30B600-7B24-422C-A289-73B92991693B} = {5F6B6157-D7AB-43BA-B393-8B4C919FE5C1}
-		{C9B7D93C-39A6-44CA-B61C-10C48731AD91} = {5F6B6157-D7AB-43BA-B393-8B4C919FE5C1}
 		{3605245E-DB11-4729-BFA0-5071FA00B96B} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
 		{E08F8D25-3188-462A-A849-4F1C570096EE} = {3605245E-DB11-4729-BFA0-5071FA00B96B}
 		{9AB55C6B-CF37-4AFA-A520-DBD3B7C4E5E8} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
@@ -208,6 +157,10 @@ Global
 		{C075FA70-689A-4417-A6AF-EA754475A353} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
 		{5CD25F13-861E-44BD-AFBA-C92620009B4E} = {C075FA70-689A-4417-A6AF-EA754475A353}
 		{60669A12-C2BF-4CEF-B717-CD8054E67E6A} = {C075FA70-689A-4417-A6AF-EA754475A353}
+		{9B3BD584-6F58-4515-8942-94C4D5C2F5DB} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
+		{30593FCD-87C2-47AD-88E0-EBCADD9778F9} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
+		{4A6CBF0F-90F7-4A76-8C5C-A22D7485A9A1} = {30593FCD-87C2-47AD-88E0-EBCADD9778F9}
+		{95BE3680-0619-425E-BF3A-9997DEBF0BEB} = {9B3BD584-6F58-4515-8942-94C4D5C2F5DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C59D0D76-9F32-4EE9-B771-C8639384E862}

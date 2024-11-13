@@ -10,13 +10,13 @@ mode:
 high_score:
   _overwrite: True
   enter_initials_timeout: 60
-  award_slide_display_time: 11s # 33s for the grand champion
+  award_slide_display_time: 8s # 33s for the grand champion
 #  award_slide_display_time{award=="Grand Vizier"}: 33s
 #  award_slide_display_time{award!="Grand Vizier"}: 11s
   # define your high score categories and the awards
   categories: !!omap
   - score:
-      - Grand Vizier
+      - Goblin King
       - High Score 1
       - High Score 2
       - High Score 3
@@ -46,32 +46,32 @@ high_score:
   # set the defaults
   defaults:
     score:
-      - SIN: 10
-      - BAD: 9
-      - IS : 8
-      - A  : 7
-      - BAD: 6
-      - ASS: 5
-      - LOU: 4
-      - FER: 3
-      - RIG: 2
-      - NO : 1
+      - GOB: 10
+      - GOB: 9
+      - GOB: 8
+      - GOB: 7
+      - GOB: 6
+      - GOB: 5
+      - GOB: 4
+      - GOB: 3
+      - GOB: 2
+      - GOB : 1
     spinner_count_total:
-      - RIP: 0
+      - GOB: 0
     pop_count_total:
-      - POP: 0
+      - GOB: 0
     drop_count_total:
-      - DRP: 0
+      - GOB: 0
     rollover_count_total:
-      - ROL: 0
+      - GOB: 0
     sw_count_total:
-      - SIN: 1
+      - GOB: 1
     all_banks_completed_total:
-      - BAD: 0
+      - GOB: 0
     pf_multiplier_score_total:
-      - TWO: 0
+      - GOB: 0
     scene_bonus_total:
-      - DOG: 0
+      - GOB: 0
 
 # optional: change the slides (you can omit all the following)
 slide_player:
@@ -396,14 +396,14 @@ slides:
         value: 0.25
         duration: 0.25s
         repeat: true
-  - type: video
-    video: congrats
-    end_behavior: stop
-    auto_play: true
-    volume: 0.75
-    height: 1080
-    width: 1920
-    z: 0
-    control_events:
-      - event: slides_clear
-        action: stop
+#  - type: video
+#    video: congrats
+#    end_behavior: stop
+#    auto_play: true
+#    volume: 0.75
+#    height: 1080
+#    width: 1920
+#    z: 0
+#    control_events:
+#      - event: slides_clear
+#        action: stop
