@@ -1,0 +1,240 @@
+#config_version=6
+
+switches:
+# cabinet buttons
+    s_1_left_flipper:
+        number: 1 # don't have hardware yet
+        tags: left_flipper
+    s_2_right_flipper:
+        number: 2
+        tags: right_flipper
+    s_3_start:
+        number: 3 # should be 10, 47 for VPX
+        tags: start
+
+# coin door buttons
+    s_4_left_advance_btn:
+        number: 4
+    s_5_play_test:
+        number: 5
+    s_6_right_advance_btn:
+        number: 6
+    s_7_left_coin:
+        number: 7
+    s_8_right_coin:
+        number: 8
+    s_9_center_coin:
+        number: 9
+    s_10_replay_btn:
+        number: 10 # should be 47
+    s_11:
+        number: 11
+    s_12:
+        number: 12
+    s_13:
+        number: 13
+    s_14:
+        number: 14
+    s_15:
+        number: 15
+    s_16:
+        number: 16
+    s_17:
+        number: 17
+    s_18:
+        number: 18
+    s_19:
+        number: 19
+    s_20:
+        number: 20
+    s_21:
+        number: 21
+    s_22:
+        number: 22
+    s_23:
+        number: 23
+    s_24:
+        number: 24
+    s_25:
+        number: 25
+    s_26:
+        number: 26
+    s_27:
+        number: 27
+    s_28:
+        number: 28
+    s_29:
+        number: 29
+    s_30:
+        number: 30
+    s_31:
+        number: 31
+    s_32:
+        number: 32
+    s_33_upper_drop_1:
+        number: 33
+    s_34_10_point:
+        number: 34 # actually 12 switches, look below
+    s_35_right_flipper_lower:
+        number: 35
+    s_36_loop_rollunder:
+        number: 36
+    s_37_right_outlane_rollover:
+        number: 37
+    s_38_right_spinner:
+        number: 38
+    s_39_right_top_rollover:
+        number: 39
+    # unassigned: 40
+    s_40:
+        number: 40
+    s_41_upper_drop_2:
+        number: 41
+    s_42_lower_drop_1:
+        number: 42
+    s_43_spot_target:
+        number: 43
+    s_44_top_rollover_a:
+        number: 44
+    s_45_right_return_rollover:
+        number: 45
+    s_46_right_side_rollover:
+        number: 46
+    # not used: 47
+    s_47:
+        number: 47
+    s_48_tilt:
+        number: 48
+    s_49_upper_drop_3:
+        number: 49
+    s_50_lower_drop_2:
+        number: 50
+    s_51_lower_drop_4:
+        number: 51
+    s_52_top_rollover_b:
+        number: 52
+    s_53_left_return_rollover:
+        number: 53
+    s_54_left_side_rollover:
+        number: 54
+    #not used: 55
+    s_55:
+        number: 55
+    s_56_outhole:
+        number: 56
+    s_57_upper_drop_4:
+        number: 57
+    s_58_lower_drop_3:
+        number: 58
+    s_59_lower_drop_5:
+        number: 59
+    s_60_top_rollover_c:
+        number: 60
+    s_61_left_outlane_rollover:
+        number: 61
+    s_62_left_spinner:
+        number: 62
+    s_63_left_top_rollover:
+        number: 63
+    #not used: 64
+    s_64:
+        number: 64
+
+# playfield controlled lights
+lights:
+    l_shoot_again:
+        number: 3
+    l_upper_drop_1:
+        number: 5
+    l_upper_drop_2:
+        number: 6
+    l_upper_drop_3:
+        number: 7
+    l_upper_drop_4:
+        number: 8
+    l_level_1:
+        number: 9
+    l_level_2:
+        number: 10
+    l_level_3:
+        number: 11
+    l_lower_drop_1:
+        number: 14
+    l_lower_drop_2:
+        number: 15
+    l_lower_drop_3:
+        number: 16
+    l_lower_drop_4:
+        number: 17
+    l_lower_drop_5:
+        number: 18
+    l_left_side_rollover:
+        number: 19
+    l_left_return_rollover:
+        number: 20
+    l_right_return_rollover:
+        number: 21
+    l_right_side_rollover:
+        number: 22
+    l_top_rollover_a:
+        number: 23
+    l_top_rollover_b:
+        number: 24
+    l_top_rollover_c:
+        number: 25
+    l_rock_r:
+        number: 26
+    l_rock_o:
+        number: 27
+    l_rock_c:
+        number: 28
+    l_rock_k:
+        number: 29
+    l_and:
+        number: 30
+    l_roll_r:
+        number: 31
+    l_roll_o:
+        number: 32
+    l_roll_l1:
+        number: 33
+    l_roll_l2:
+        number: 34
+    l_lives_l:
+        number: 35
+    l_lives_i:
+        number: 36
+    l_lives_v:
+        number: 37
+    l_lives_e:
+        number: 38
+    l_lives_s:
+        number: 39
+    l_lives_excl:
+        number: 40
+    l_double_scoring:
+        number: 41
+    l_2x:
+        number: 42
+    l_3x:
+        number: 43
+    l_4x:
+        number: 44
+    l_5x:
+        number: 45
+    l_spot_target:
+        number: 46
+    l_right_spinner_left_outlane:
+        number: 47
+    l_left_spinner_right_outlane:
+        number: 51
+
+    l_chaser_lights:
+        number: 63 # 99
+
+ball_devices:
+    bd_trough:
+      ball_switches: s_56_outhole
+      eject_coil: c_trough_eject
+      tags: trough, home, drain
+      eject_coil_jam_pulse: 15ms

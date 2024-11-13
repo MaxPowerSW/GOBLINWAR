@@ -1,0 +1,84 @@
+#show_version=6
+
+
+# display loop: something like this.  Frequently show title screen, last game, and high scores.  Show all trailers.  Show instructions inbetween trailers.
+
+# trailer lengths:
+# tiger: 133ss
+# golden: 2:47 = 164s
+# 7th: 1:09 = 69s
+# Ferrigno:
+
+# title screen
+# last game
+# high scores
+# sinbad tiger trailer
+# title screen
+# last game
+# high scores
+# title screen
+# instructions
+# last game
+# high scores
+# sinbad golden trailer
+# title screen
+# last game
+# high scores
+# title screen
+# last game
+# high scores
+# sinbad ferrigno trailer
+# title screen
+# last game
+# high scores
+# title screen
+# instructions
+# last game
+# high scores
+# sinbad 7th trailer
+# title screen
+# last game
+# high scores
+# instructions
+
+
+# - duration: 15s
+#  slides:
+#    awesome_slide:
+#      widgets:
+#      - type: text
+#        text: This should be video
+#        font_size: 128
+#      - type: video
+#        video: wang_chung
+#        end_behavior: loop
+#        volume: 0.0
+#        height: 1080
+#        width: 1920
+#      transition:
+#         type: push
+#         duration: 1s
+#         direction: left
+- duration: 5s
+  slides: last_game_score
+- duration: 5s
+  slides: high_scores
+- duration: 5s
+  slides: title_screen
+- duration: 5s
+  slides: last_game_score
+- duration: 5s
+  slides: high_scores
+- duration: 5s
+  slides: last_game_score
+- duration: 5s
+  slides: high_scores
+- duration: 5s
+  slides: title_screen
+- duration: 5s
+  slides: last_game_score
+- duration: 5s
+  slides: high_scores
+- duration: 9s
+  slides: max_pwr
+

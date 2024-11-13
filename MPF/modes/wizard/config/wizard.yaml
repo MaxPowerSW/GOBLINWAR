@@ -1,0 +1,260 @@
+#config_version=6
+mode:
+    start_events: start_wizard_mode
+    stop_events: timer_timer_wizard_mode_complete
+    priority: 102
+
+timers:
+  timer_wizard_mode:
+    start_running: true
+    start_value: 193
+    end_value: 0
+    direction: down
+    tick_interval: 1s
+    control_events:
+      - action: start
+        event: mode_wizard_started
+      - action: stop
+        event: mode_wizard_ending
+
+variable_player:
+  mode_wizard_started:
+    multiplier:
+      int: 3
+      action: set
+  mode_wizard_ending:
+    multiplier:
+      int: 1
+      action: set
+
+ball_saves:
+  wizard_ball_save:
+    active_time: 60s
+    hurry_up_time: 5s
+    enable_events: mode_wizard_started
+    balls_to_save: 99
+
+show_player:
+  ball_save_wizard_ball_save_timer_start: 
+    ball_save_show
+    triple_scoring_show
+  ball_save_wizard_ball_save_hurry_up: 
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: play
+  ball_save_wizard_ball_save_disabled: 
+    ball_save_ending_show:
+      action: stop
+#ball_save_disabled_show
+
+shows:
+  ball_save_show:
+    - time: 0
+      lights:
+        l_shoot_again: on
+    - time: +500ms
+      lights:
+        l_shoot_again: off
+    - time: +500ms
+  ball_save_ending_show:
+    - time: 0
+      lights:
+        l_shoot_again: on
+    - time: +100ms
+      lights:
+        l_shoot_again: off
+    - time: +100ms
+  ball_save_disabled_show:
+    - time: 0
+      lights:
+        l_shoot_again: off
+    - time: +1
+  triple_scoring_show:
+    - time: 0
+      lights:
+        l_double_scoring: on
+    - time: +166ms
+      lights:
+        l_double_scoring: off
+    - time: +166ms
+
+slide_player:
+  mode_wizard_started:
+    widgets:
+      - type: text
+        text: (score)
+        number_grouping: true
+        min_digits: 2
+        font_size: 300
+        font_name: VCR OSD
+        anchor_y: center
+        anchor_x: center
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right-50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+# debug info
+      - type: text
+        text: "BONUS MULT: (bonus_multiplier)"
+        x: 25
+        y: 1050
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "LETTERS: (letter_count)" # 
+        x: 25
+        y: 1025
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "SWITCH COUNT: (sw_count)"
+        x: 25
+        y: 1000
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "DROP LEVEL: (upper_drop_level)"
+        x: 25
+        y: 975
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "DROP HITS: (drop_count)"
+        x: 25
+        y: 950
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "SPINNER COUNT: (spinner_count)"
+        x: 25
+        y: 925
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "MUSIC TYPE: (music_type)"
+        x: 25
+        y: 900
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "CURRENT MUSIC TYPE: (current_music_type)"
+        x: 25
+        y: 875
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "UPPER BANKS: (upper_bank_count)"
+        x: 25
+        y: 850
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "LOWER BANKS: (lower_bank_count)"
+        x: 25
+        y: 825
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "PF MULTIPLIER: (multiplier)"
+        x: 25
+        y: 800
+        font_size: 25
+        anchor_x: left
+      - type: text
+        text: "SPINNERS: (spinner_one_state) (spinner_two_state)"
+        x: 25
+        y: 775
+        font_size: 25
+        anchor_x: left
+#      - type: text
+#        text: "Player 1: (player1|score)"
+#        x: 1800
+#        y: 1000
+#        font_name: VCR OSD
+#        font_size: 50
+#        anchor_x: right
+#        number_grouping: true
+#        min_digits: 2
+#      - type: text
+#        text: "Player 2: (player2|score)" # 
+#        x: 1800
+#        y: 950
+#        font_name: VCR OSD
+#        font_size: 50
+#        anchor_x: right
+#        number_grouping: true
+#        min_digits: 2
+#      - type: text
+#        text: "Player 3: (player3|score)"
+#        x: 1800
+#        y: 900
+#        font_size: 50
+#        font_name: VCR OSD
+#        anchor_x: right
+#        number_grouping: true
+#        min_digits: 2
+#      - type: text
+#        text: "Player 4: (player4|score)"
+#        x: 1800
+#        y: 850
+#        font_size: 50
+#        font_name: VCR OSD
+#        anchor_x: right
+#        number_grouping: true
+#        min_digits: 2
+      - type: text
+        text: "(player1|score)"
+        x: right - 50
+        y: top - 50
+        font_name: VCR OSD
+        font_size: 50
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player2|score)" # 
+        x: right - 50
+        y: top - 100
+        font_name: VCR OSD
+        font_size: 50
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player3|score)"
+        x: right - 50
+        y: top - 150
+        font_size: 50
+        font_name: VCR OSD
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player4|score)"
+        x: right - 50
+        y: top - 200 
+        font_size: 50
+        font_name: VCR OSD
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: video
+        video: Alf
+        end_behavior: stop
+        volume: 1.0
+        height: 1080
+        width: 1440
+#        target: display_lcd

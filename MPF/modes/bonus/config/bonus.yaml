@@ -1,0 +1,203 @@
+#config_version=6
+
+# mode:
+#    start_events: ball_ending, drop_target_bank_d_all_banks_down
+
+mode_settings:
+   display_delay_ms: 911ms
+   hurry_up_delay_ms: 0
+   bonus_entries:
+    - event: delay_1
+      score: 0
+      skip_if_zero: false
+    - event: delay_2
+      score: 0
+      skip_if_zero: false
+    - event: delay_3
+      score: 0
+      skip_if_zero: false
+    - event: delay_4
+      score: 0
+      skip_if_zero: false
+    - event: bonus_value
+      score: 1
+      player_score_entry: bonus_value
+    - event: bonus_switches
+      score: 10
+      player_score_entry: sw_count
+
+# variable_player:
+#    slide_bonus_value_slide_active:
+#      display_delay_ms: 1s
+
+event_player:
+    slide_bonus_start_slide_active:
+#      - init_bonus_video
+      - start_bonus_video
+#    slide_bonus_start_slide_removed:
+#      - stop_bonus_video
+#    slide_bonus_value_slide_active:
+#      - stop_bonus_video
+
+slide_player:
+   mode_bonus_started: bonus_start_slide
+   bonus_value: bonus_value_slide
+   bonus_switches: bonus_switches_slide
+   bonus_multiplier: bonus_multiplier_slide
+   bonus_total: bonus_total_slide
+
+timers:
+    timer_death_delay:
+      start_value: 0
+      tick_interval: 0.5s
+      end_value: 5
+      direction: up
+      control_events:
+        - action: restart
+          event: mode_bonus_started
+
+
+widgets:
+    widget_you_died_text:
+      - type: text
+        text: YOU DIED
+        font_name: FtySkorzhenNcv-Yo02
+        font_size: 300
+        y: center
+        z: 100
+        color: red
+        opacity: 0
+        animations:
+          add_to_slide:
+            - property: opacity
+              value: 0
+              duration: 0s #1.5s #2.5s
+            - property: opacity
+              value: 1
+              duration: 1s
+              repeat: false
+      - type: text
+        text: YOU DIED
+        font_name: FtySkorzhenNcv-Yo02
+        font_size: 300
+        y: center
+        z: 99
+        color: white
+      - type: text
+        text: YOU DIED
+        font_name: FtySkorzhenNcv-Yo02
+        font_size: 300
+        x: center+5
+        y: center-5
+        z: 98
+        color: black
+
+widget_player:
+    timer_timer_death_delay_complete:
+      widget_you_died_text:
+        action: add
+
+slides:
+  bonus_start_slide:
+    duration: 10s
+    widgets:
+#      - type: text
+#        text: YOU DIED
+#        font_name: FtySkorzhenNcv-Yo02
+#        font_size: 300
+#        y: center
+#        z: 100
+#        color: red
+#        opacity: 0
+#        animations:
+#          show_slide:
+#            - property: opacity
+#              value: 0
+#              duration: 2.5s
+#            - property: opacity
+#              value: 1
+#              duration: 1s
+#              repeat: false
+#      - type: text
+#        text: YOU DIED
+#        font_name: FtySkorzhenNcv-Yo02
+#        font_size: 300
+#        y: center
+#        z: 99
+#        color: white
+#      - type: text
+#        text: YOU DIED
+#        font_name: FtySkorzhenNcv-Yo02
+#        font_size: 300
+#        x: center+5
+#        y: center-5
+#        z: 98
+#        color: black
+     
+      - type: video
+        video: sinbad_dead
+        end_behavior: stop
+        auto_play: true
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: init_bonus_video
+            action: position
+            value: 189
+ #         - event: start_bonus_video
+ #           action: play
+          - event: stop_bonus_video
+            action: stop
+  bonus_value_slide:
+    - type: text
+      text: "BONUS:"
+      font_size: 150
+      font_name: FtySkorzhenNcv-Yo02
+      y: center + 125
+    - type: text
+      text: (score)
+      number_grouping: true
+      font_size: 300
+      font_name: FtySkorzhenNcv-Yo02
+#      color: red
+      y: center - 125
+  bonus_switches_slide:
+    - type: text
+      text: "SWITCH HITS: (player|sw_count)"
+      font_size: 150
+      font_name: FtySkorzhenNcv-Yo02
+      y: center + 125
+    - type: text
+      text: (score)
+      number_grouping: true
+      font_size: 300
+      font_name: FtySkorzhenNcv-Yo02
+#      color: red
+      y: center - 125
+  bonus_multiplier_slide:
+    - type: text
+      text: "MULTIPLIER:"
+      font_size: 150
+      font_name: FtySkorzhenNcv-Yo02
+      y: center + 125
+    - type: text
+      text: "(bonus_multiplier)X"
+      font_size: 300
+      font_name: FtySkorzhenNcv-Yo02
+#      color: red
+      y: center - 125
+  bonus_total_slide:
+    - type: text
+      text: "TOTAL BONUS:"
+      font_name: FtySkorzhenNcv-Yo02
+      font_size: 150
+      y: center + 125
+    - type: text
+      text: (score)
+      number_grouping: true
+      font_size: 300
+      font_name: FtySkorzhenNcv-Yo02
+#      color: red
+      y: center - 125

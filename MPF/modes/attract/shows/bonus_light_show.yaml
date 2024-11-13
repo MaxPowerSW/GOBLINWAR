@@ -1,0 +1,41 @@
+#show_version=6
+- duration: 1
+  lights:
+    l_10000_bonus: 0
+    l_1000_bonus: ff
+- duration: 1
+  lights:
+    l_1000_bonus: 0
+    l_2000_bonus: ff
+- duration: 1
+  lights:
+    l_2000_bonus: 0
+    l_3000_bonus: ff
+- duration: 1
+  lights:
+    l_3000_bonus: 0
+    l_4000_bonus: ff
+- duration: 1
+  lights:
+    l_4000_bonus: 0
+    l_5000_bonus: ff
+- duration: 1
+  lights:
+    l_5000_bonus: 0
+    l_6000_bonus: ff
+- duration: 1
+  lights:
+    l_6000_bonus: 0
+    l_7000_bonus: ff
+- duration: 1
+  lights:
+    l_7000_bonus: 0
+    l_8000_bonus: ff
+- duration: 1
+  lights:
+    l_8000_bonus: 0
+    l_9000_bonus: ff
+- duration: 1
+  lights:
+    l_9000_bonus: 0
+    l_10000_bonus: ff

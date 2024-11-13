@@ -1,0 +1,133 @@
+#config_version=6
+
+mode:
+    start_events: ball_starting
+    priority: 101
+
+variable_player:
+    
+# shot sequence values
+    sq_left_right_shatz_hit:
+        shatz_count: 1
+        combo_count: 1
+        combo_count_total: 1
+        score: 2000 * current_player.multiplier
+    sq_right_left_shatz_hit:
+        shatz_count: 1
+        combo_count: 1
+        combo_count_total: 1
+        score: 2000 * current_player.multiplier
+    sq_left_orbit_combo_hit:
+        combo_count: 1
+        combo_count_total: 1
+        score: 1000 * current_player.multiplier
+    sq_left_drain_combo_hit:
+        combo_count: 1
+        combo_count_total: 1
+        drain_combo_count: 1
+        score: 1000 * current_player.multiplier
+    sq_right_drain_combo_hit:
+        combo_count: 1
+        combo_count_total: 1
+        drain_combo_count: 1
+        score: 1000 * current_player.multiplier
+    s_36_loop_rollunder_active:
+        loop_count: 1
+    drop_target_bank_d_upper_target_bank_down:
+        upper_bank_count: 1
+    drop_target_bank_d_lower_target_bank_down:
+        lower_bank_count: 1
+        ball_lower_bank_count: 1
+    mode_wizard_started:
+        wizard_mode_active:
+          int: 1
+          action: set
+    mode_wizard_ended:
+        wizard_mode_active:
+          int: 0
+          action: set
+
+sequence_shots:
+    sq_left_orbit_combo:
+      switch_sequence: 
+         - s_62_left_spinner
+         - s_63_left_top_rollover
+         - s_39_right_top_rollover
+      sequence_timeout: 2s
+    sq_left_drain_combo:
+      switch_sequence: 
+         - s_53_left_return_rollover
+         - s_61_left_outlane_rollover
+      sequence_timeout: 1s
+    sq_right_drain_combo:
+      switch_sequence: 
+         - s_45_right_return_rollover
+         - s_37_right_outlane_rollover
+      sequence_timeout: 1s
+    sq_left_right_shatz:
+      switch_sequence:
+         - s_53_left_return_rollover
+         - s_45_right_return_rollover
+      sequence_timeout: 2s
+    sq_right_left_shatz:
+      switch_sequence:
+         - s_45_right_return_rollover
+         - s_53_left_return_rollover
+      sequence_timeout: 2s
+    sq_loop_drain:
+      switch_sequence:
+         - s_36_loop_rollunder
+         - s_56_outhole
+      sequence_timeout: 2s
+
+# slide_player:
+#  sq_left_orbit_combo_hit:
+#    widgets:
+#      - type: text
+#        text: COMBO!!!
+#        number_grouping: true
+#        min_digits: 2
+#        font_size: 300
+#        font_name: VCR OSD
+#        anchor_y: top
+#    expire: 2s
+#  sq_left_drain_combo:
+#    widgets:
+#      - type: text
+#        text: COMBO!!!
+#        number_grouping: true
+#        min_digits: 2
+#        font_size: 300
+#        font_name: VCR OSD
+#        anchor_y: top
+#    expire: 2s
+#  sq_right_drain_combo:
+#    widgets:
+#      - type: text
+#        text: COMBO!!!
+#        number_grouping: true
+#        min_digits: 2
+#        font_size: 300
+#        font_name: VCR OSD
+#        anchor_y: top
+#    expire: 2s
+#  sq_left_right_shatz_hit:
+#    widgets:
+#      - type: text
+#        text: shatz!!!
+#        number_grouping: true
+#        min_digits: 2
+#        font_size: 300
+#        font_name: VCR OSD
+#        anchor_y: top
+#    expire: 2s
+#  sq_right_left_shatz_hit:
+#    widgets:
+#      - type: text
+#        text: shatz!!!
+#        number_grouping: true
+#        min_digits: 2
+#        font_size: 300
+#        font_name: VCR OSD
+#        anchor_y: top
+#    expire: 2s

@@ -1,0 +1,21 @@
+#show_version=6
+- duration: 500ms
+  lights:
+    l_advance_5: 0
+    l_advance_1: ff
+- duration: 500ms
+  lights:
+    l_advance_1: 0
+    l_advance_2: ff
+- duration: 500ms
+  lights:
+    l_advance_2: 0
+    l_advance_3: ff
+- duration: 500ms
+  lights:
+    l_advance_3: 0
+    l_advance_4: ff
+- duration: 500ms
+  lights:
+    l_advance_4: 0
+    l_advance_5: ff

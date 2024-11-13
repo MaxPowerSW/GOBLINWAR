@@ -1,0 +1,36 @@
+#config_version=6
+
+hardware:
+# dev
+    platform: virtual_pinball
+
+switches:
+# cabinet buttons
+    s_01_left_flipper:
+        number: 0 # don't have hardware yet
+        tags: left_flipper
+    s_02_right_flipper:
+        number: 1
+        tags: right_flipper
+    s_03_start:
+        number: 2 # should be 10, 47 for VPX
+        tags: start
+#    s_48_tilt:
+#        number: 57
+#        tags: tilt_warning, playfield_active
+# coin door buttons
+#    s_left_advance_btn:
+#        number: 06
+#    s_07_play_test:
+#        number: 07
+#    s_06_right_advance_btn:
+#        number: 16
+#    s_left_coin:
+#        number: 17
+#    s_right_coin:
+#        number: 27
+#    s_center_coin:
+#        number: 37
+# coin door buttons
+#    s_replay_btn:
+#        number: 147 # should be 47, 147 for VPX

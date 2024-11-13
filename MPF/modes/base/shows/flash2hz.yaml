@@ -1,0 +1,9 @@
+#show_version=6
+##! show: flash2hz
+- time: 0
+  lights:
+    (light): on
+- time: +250ms
+  lights:
+    (light): off
+- time: +250ms

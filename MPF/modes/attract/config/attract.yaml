@@ -1,0 +1,481 @@
+#config_version=6
+
+timers:
+    timer_attract_volume_off:
+      start_value: 20
+      end_value: 0
+      direction: down
+      control_events:
+        - action: restart
+          event: mode_attract_started # start the timer at th end of the 4th drop complete event
+
+event_player:
+    timer_timer_attract_volume_off_complete:
+      - volume_off
+
+
+
+#track_player:
+#    volume_off:
+#      video:
+#        action: set_volume
+#        volume: 0.0
+
+show_player:
+  mode_attract_started: 
+    attract_display_loop:
+      speed: 1
+    bonus_light_show:
+      speed: 3
+    bonus_spinner_show:
+      speed: 6
+    top_lane_show:
+      speed: 3
+    bonus_mult_show:
+      speed: 4
+    target_show:
+      speed: 3
+  flipper_cancel:
+    attract_display_loop:
+      speed: 1
+
+slides:
+    title_screen:
+      widgets:
+#      - type: text
+#        text: Sinbad
+#        font_size: 500
+#        font_name: Impact
+#        color: yellow
+#        y: center
+#      - type: text
+#        text: The Eye of the Tiger
+#        font_size: 169
+#        font_name: Sinbad
+#        color: yellow
+#        y: center-225
+      - type: Text
+        text: Press Start
+        font_size: 128
+#        font_name: Sinbad
+        y: center-420
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: Text
+        text: Press Start
+        font_size: 128
+#        font_name: Sinbad
+        color: black
+        x: center+5
+        y: center-425
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: text
+        text: GOBLIN WAR
+        font_size: 300
+        color: green
+        x: center
+        y: center
+        z: 0
+#        animations:
+#          pre_show_slide:
+#          - property: opacity
+#            value: 1
+#            duration: 0.00s
+#          - property: opacity
+#            value: 0
+#            duration: 0.25s
+#            repeat: true
+    last_game_score:
+      widgets:
+      - type: text
+        text: Last Adventure
+        font_size: 125
+#        font_name: Sinbad
+        color: red
+        y: 80%
+      - type: text
+        text: (machine|player1_score)
+        number_grouping: true
+        min_digits: 2
+        font_size: 150
+        font_name: FtySkorzhenNcv-Yo02
+        y: 65%
+      - type: text
+        text: (machine|player2_score)
+        number_grouping: true
+        min_digits: 2
+        font_size: 150
+        font_name: FtySkorzhenNcv-Yo02
+        y: 50%
+      - type: text
+        text: (machine|player3_score)
+        number_grouping: true
+        min_digits: 2
+        font_size: 150
+        font_name: FtySkorzhenNcv-Yo02
+        y: 35%
+      - type: text
+        text: (machine|player4_score)
+        number_grouping: true
+        min_digits: 2
+        font_size: 150
+        font_name: FtySkorzhenNcv-Yo02
+        y: 20%
+    high_scores:
+      widgets:
+      - type: Text
+        text: Legendary Sailors
+        font_size: 120
+#        font_name: Sinbad
+        bold: true
+        anchor_x: center
+        anchor_y: center
+        x: center
+        y: top-100
+        color: ff0000
+      - type: Text
+        text: (machine|score1_label) - (machine|score1_name) - (machine|score1_value)
+        style: attract_mode_gc_display_style
+        y: top-200
+        z: 99
+        color: white
+      - type: Text
+        text: (machine|score1_label) - (machine|score1_name) - (machine|score1_value)
+        style: attract_mode_gc_display_style
+        y: top-200
+        z: 100
+        color: yellow
+        animations:
+          show_slide:
+          - property: opacity
+            value: 1
+            duration: 0.25s
+          - property: opacity
+            value: 0.25
+            duration: 0.25s
+            repeat: true
+      - type: Text
+        text: (machine|score2_label) - (machine|score2_name) - (machine|score2_value)
+        style: attract_mode_high_score_display_style
+        y: top-280
+      - type: Text
+        text: (machine|score3_label) - (machine|score3_name) - (machine|score3_value)
+        style: attract_mode_high_score_display_style
+        y: top-320
+      - type: Text
+        text: (machine|score4_label) - (machine|score4_name) - (machine|score4_value)
+        style: attract_mode_high_score_display_style
+        y: top-360
+      - type: Text
+        text: (machine|score5_label) - (machine|score5_name) - (machine|score5_value)
+        style: attract_mode_high_score_display_style
+        y: top-400
+      - type: Text
+        text: (machine|score6_label) - (machine|score6_name) - (machine|score6_value)
+        style: attract_mode_high_score_display_style
+        y: top-440
+      - type: Text
+        text: (machine|score7_label) - (machine|score7_name) - (machine|score7_value)
+        style: attract_mode_high_score_display_style
+        y: top-480
+      - type: Text
+        text: (machine|score8_label) - (machine|score8_name) - (machine|score8_value)
+        style: attract_mode_high_score_display_style
+        y: top-520
+      - type: Text
+        text: (machine|score9_label) - (machine|score9_name) - (machine|score9_value)
+        style: attract_mode_high_score_display_style
+        y: top-560
+      - type: Text
+        text: (machine|score10_label) - (machine|score10_name) - (machine|score10_value)
+        style: attract_mode_high_score_display_style
+        y: top-600
+      - type: Text
+        text: Incredible Feats
+#        font_name: Sinbad
+        font_size: 100
+        color: red
+#        style: attract_mode_high_score_display_style
+        y: top-700
+      - type: Text
+        text: (machine|spinner_count_total1_label) - (machine|spinner_count_total1_name) - (machine|spinner_count_total1_value)
+        style: attract_mode_high_score_display_style
+        y: top-740
+      - type: Text
+        text: (machine|pop_count_total1_label) - (machine|pop_count_total1_name) - (machine|pop_count_total1_value)
+        style: attract_mode_high_score_display_style
+        y: top-780
+      - type: Text
+        text: (machine|drop_count_total1_label) - (machine|drop_count_total1_name) - (machine|drop_count_total1_value)
+        style: attract_mode_high_score_display_style
+        y: top-820
+      - type: Text
+        text: (machine|rollover_count_total1_label) - (machine|rollover_count_total1_name) - (machine|rollover_count_total1_value)
+        style: attract_mode_high_score_display_style
+        y: top-860
+      - type: Text
+        text: (machine|sw_count_total1_label) - (machine|sw_count_total1_name) - (machine|sw_count_total1_value)
+        style: attract_mode_high_score_display_style
+        y: top-900
+      - type: Text
+        text: (machine|all_banks_completed_total1_label) - (machine|all_banks_completed_total1_name) - (machine|all_banks_completed_total1_value)
+        style: attract_mode_high_score_display_style
+        y: top-940
+      - type: Text
+        text: (machine|pf_multiplier_score_total1_label) - (machine|pf_multiplier_score_total1_name) - (machine|pf_multiplier_score_total1_value)
+        style: attract_mode_high_score_display_style
+        y: top-980
+      - type: Text
+        text: (machine|scene_bonus_total1_label) - (machine|scene_bonus_total1_name) - (machine|scene_bonus_total1_value)
+        style: attract_mode_high_score_display_style
+        y: top-1020
+
+    max_pwr:
+      widgets:
+      - type: video
+        video: MAX-PWR
+        end_behavior: stop
+        auto_play: true
+        volume: 0.75
+        height: 1080
+        width: 1920
+        control_events:
+          - event: slide_title_screen_active
+            action: stop
+        
+    tiger_trailer:
+      widgets:
+#      - type: text
+#        text: Sinbad
+#        font_size: 500
+#        font_name: Impact
+#        color: yellow
+#        y: center
+#      - type: text
+#        text: The Eye of the Tiger
+#        font_size: 169
+#        font_name: Sinbad
+#        color: yellow
+#        y: center-225
+      - type: Text
+        text: Press Start
+        font_size: 128
+        font_name: Sinbad
+        y: center-420
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: Text
+        text: Press Start
+        font_size: 128
+        font_name: Sinbad
+        color: black
+        x: center+5
+        y: center-425
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: video
+        video: sinbad_tiger_trailer
+        end_behavior: stop
+        auto_play: true
+        volume: 0.00 # 0.33
+        height: 1080
+        width: 1920
+        control_events:
+          - event: slide_title_screen_active
+            action: stop
+#          - event: slide_tiger_trailer_active # {settings.attract_mode_audio==0}
+#            action: volume
+#            value: 0
+
+    ferrigno_trailer:
+      widgets:
+#      - type: text
+#        text: Sinbad
+#        font_size: 500
+#        font_name: Impact
+#        color: yellow
+#        y: center
+#      - type: text
+#        text: The Eye of the Tiger
+#        font_size: 169
+#        font_name: Sinbad
+#        color: yellow
+#        y: center-225
+      - type: Text
+        text: Press Start
+        font_size: 128
+        font_name: Sinbad
+        y: center-420
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: Text
+        text: Press Start
+        font_size: 128
+        font_name: Sinbad
+        color: black
+        x: center+5
+        y: center-425
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: video
+        video: sinbad_ferrigno_trailer
+        end_behavior: stop
+        auto_play: true
+        volume: 0.00 # 0.20
+        height: 1080
+        width: 1920
+        control_events:
+          - event: slide_title_screen_active
+            action: stop
+    golden_trailer:
+      widgets:
+#      - type: text
+#        text: Sinbad
+#        font_size: 500
+#        font_name: Impact
+#        color: yellow
+#        y: center
+#      - type: text
+#        text: The Eye of the Tiger
+#        font_size: 169
+#        font_name: Sinbad
+#        color: yellow
+#        y: center-225
+      - type: Text
+        text: Press Start
+        font_size: 128
+        font_name: Sinbad
+        y: center-420
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: Text
+        text: Press Start
+        font_size: 128
+        font_name: Sinbad
+        color: black
+        x: center+5
+        y: center-425
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: video
+        video: sinbad_golden_trailer
+        end_behavior: stop
+        auto_play: true
+        volume: 0.00 # 0.33
+        height: 1080
+        width: 1920
+        control_events:
+          - event: slide_title_screen_active
+            action: stop
+    seventh_trailer:
+      widgets:
+#      - type: text
+#        text: Sinbad
+#        font_size: 500
+#        font_name: Impact
+#        color: yellow
+#        y: center
+#      - type: text
+#        text: The Eye of the Tiger
+#        font_size: 169
+#        font_name: Sinbad
+#        color: yellow
+#        y: center-225
+      - type: Text
+        text: Press Start
+        font_size: 128
+        font_name: Sinbad
+        y: center-420
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: Text
+        text: Press Start
+        font_size: 128
+        font_name: Sinbad
+        color: black
+        x: center+5
+        y: center-425
+        animations:
+          pre_show_slide:
+            - property: opacity
+              value: 0
+              duration: .5s
+            - property: opacity
+              value: 1
+              duration: .5s
+              repeat: true
+      - type: video
+        video: sinbad_7th_trailer
+        end_behavior: stop
+        auto_play: true
+        volume: 0.00 # 0.15
+        height: 1080
+        width: 1440
+        control_events:
+          - event: slide_title_screen_active
+            action: stop
+

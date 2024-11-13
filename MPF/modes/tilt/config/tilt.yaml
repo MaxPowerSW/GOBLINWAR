@@ -1,0 +1,53 @@
+#config_version=6
+
+tilt:
+  multiple_hit_window: 500 #settings.multiple_hit_window
+  settle_time: 5000 #settings.settle_time
+  warnings_to_tilt: 3 #
+  
+slides:
+  _overwrite: true   # this is important to overwrite the existing slides
+  tilt_warning_1:
+    widgets:
+    - type: text
+      text: BEWARE
+      font_size: 200
+      font_name: FtySkorzhenNcv-Yo02
+      y: center
+    expire: 2s
+  tilt_warning_2:
+    widgets:
+    - type: text
+      text: BEWARE
+      font_size: 200
+      font_name: FtySkorzhenNcv-Yo02
+      y: center - 200
+      anchor_y: center
+    - type: text
+      text: BEWARE
+      font_size: 200
+      font_name: FtySkorzhenNcv-Yo02
+      y: center + 200
+      anchor_y: center
+    expire: 2s
+  tilt:
+  - type: text
+    text: TILT
+    font_size: 300
+    font_name: FtySkorzhenNcv-Yo02
+#  - type: video
+#    video: sinbad_dead
+#    end_behavior: loop
+#    auto_play: true
+#    volume: 0
+#    height: 1080
+#    width: 1920
+#    z: 0
+#    control_events:
+#          - event: init_bonus_video
+#            action: position
+#            value: 189
+#         - event: start_bonus_video
+#           action: play
+#          - event: stop_bonus_video
+#            action: stop

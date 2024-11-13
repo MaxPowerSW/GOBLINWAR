@@ -1,0 +1,409 @@
+#config_version=6
+##! mode: my_mode
+##! mode: high_score
+# modes/high_score/config/high_score.yaml
+mode:
+  priority: 500
+  start_events: game_ending, start_high_score
+  use_wait_queue: true
+
+high_score:
+  _overwrite: True
+  enter_initials_timeout: 60
+  award_slide_display_time: 11s # 33s for the grand champion
+#  award_slide_display_time{award=="Grand Vizier"}: 33s
+#  award_slide_display_time{award!="Grand Vizier"}: 11s
+  # define your high score categories and the awards
+  categories: !!omap
+  - score:
+      - Grand Vizier
+      - High Score 1
+      - High Score 2
+      - High Score 3
+      - High Score 4
+      - High Score 5
+      - High Score 6
+      - High Score 7
+      - High Score 8
+      - High Score 9
+  - spinner_count_total:
+      - Most Spinners
+  - pop_count_total:
+      - Most Pops
+  - drop_count_total:
+      - Most Drops
+  - rollover_count_total:
+      - Most Rollovers
+  - sw_count_total:
+      - Most Switches
+  - all_banks_completed_total:
+      - Most Scenes
+  - pf_multiplier_score_total:
+      - Most 2x Scoring
+  - scene_bonus_total:
+      - Most Scene Bonus
+
+  # set the defaults
+  defaults:
+    score:
+      - SIN: 10
+      - BAD: 9
+      - IS : 8
+      - A  : 7
+      - BAD: 6
+      - ASS: 5
+      - LOU: 4
+      - FER: 3
+      - RIG: 2
+      - NO : 1
+    spinner_count_total:
+      - RIP: 0
+    pop_count_total:
+      - POP: 0
+    drop_count_total:
+      - DRP: 0
+    rollover_count_total:
+      - ROL: 0
+    sw_count_total:
+      - SIN: 1
+    all_banks_completed_total:
+      - BAD: 0
+    pf_multiplier_score_total:
+      - TWO: 0
+    scene_bonus_total:
+      - DOG: 0
+
+# optional: change the slides (you can omit all the following)
+slide_player:
+  _overwrite: True
+  high_score_enter_initials: high_score_enter_initials
+  high_score_award_display: high_score_award_display
+#  high_score_award_display{award=="Grand Vizier"}: gc_score_award_display
+#  high_score_award_display{award!="Grand Vizier"}: high_score_award_display
+
+slides:
+  _overwrite: True
+  high_score_enter_initials:
+  - type: text
+#    style: tall_title
+    font_name: FtySkorzhenNcv-Yo02
+    font_size: 100
+    text: PLAYER (player_num)
+    color: ffff00
+    x: center
+    y: center + 500
+
+  - type: text
+#    style: tall_title
+    font_size: 100
+    font_name: FtySkorzhenNcv-Yo02
+    text: (award)
+    color: f0f0f0
+    x: center
+    y: center + 300
+
+  - type: text_input
+    initial_char: A
+    dynamic_x: false
+    key: high_score
+#    style: tall_title
+    font_size: 100
+#    font_name: Sinbad
+    max_chars: 3
+    x: center
+    y: center
+    shift_left_event: s_01_left_flipper_active
+    shift_right_event: s_02_right_flipper_active
+    select_event: s_03_start_active
+    color: ff0000
+
+  - type: text
+#    style: tall_title
+    text: '<       >'
+    font_size: 100
+#    font_name: Sinbad
+    x: center
+    y: center 
+    color: ff0000
+  - type: text
+    text: ''
+    key: high_score
+    font_size: 300
+    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+    x: center
+    y: center - 300
+    color: ff00ff
+    animations:
+      show_slide:
+      - property: opacity
+        value: 1
+        duration: 0.3s
+        easing: in_out_quint
+      - property: opacity
+        value: 0
+        duration: 0.3s
+        repeat: true
+        easing: in_out_quint
+
+  high_score_award_display:
+#  - type: text
+#    text: (player_name)
+#    font_size: 300
+#    font_name: Lazer84
+#    style: tall_title
+#    anchor_y: middle
+#    anchor_x: middle
+#    x: middle
+#    y: middle
+#    color: 00ff00
+#    animations:
+#      show_slide:
+#      - property: opacity
+#        value: 1
+#        duration: 0.05s
+#      - property: opacity
+#        value: 0
+#        duration: 0.05s
+#        repeat: true
+#  - type: text
+#    text: Player (player_num)
+#    font_size: 200
+#    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+#    x: center
+#    y: center + 300
+#    color: white
+  - type: text
+    text: (award)
+    font_size: 200
+    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+    x: center
+    y: center + 300
+    z: 100
+    color: white
+  - type: text
+    text: (award)
+    font_size: 200
+    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+    x: center + 5
+    y: center + 295
+    z: 99
+    color: black
+  - type: text
+    text: (value)
+#    style: tall_title
+    x: center
+    y: center # - 300
+    z: 100
+    color: yellow
+    font_size: 250
+    font_name: Sinbad
+    number_grouping: true
+    min_digits: 1
+    animations:
+      show_slide:
+      - property: opacity
+        value: 1
+        duration: 0.25s
+      - property: opacity
+        value: 0.25
+        duration: 0.25s
+        repeat: true
+  - type: text
+    text: (value)
+#    style: tall_title
+    x: center
+    y: center # - 300
+    z: 99
+    opacity: 0
+    color: black
+    font_size: 250
+    font_name: Sinbad
+    number_grouping: true
+    min_digits: 1
+  - type: text
+    text: (value)
+#    style: tall_title
+    x: center + 5
+    y: center # - 5- 305
+    z: 98
+#    opacity: 0
+    color: black
+    font_size: 250
+    font_name: Sinbad
+    number_grouping: true
+    min_digits: 1
+    animations:
+      show_slide:
+      - property: opacity
+        value: 1
+        duration: 0.25s
+      - property: opacity
+        value: 0.25
+        duration: 0.25s
+        repeat: true
+  - type: text
+    text: (player_name)
+    font_size: 200
+    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+    x: center
+    y: center - 300
+    z: 100
+    color: white
+  - type: text
+    text: (player_name)
+    font_size: 200
+    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+    x: center + 5
+    y: center - 305
+    z: 99
+    color: black
+  - type: video
+    video: congrats2
+    end_behavior: stop
+    auto_play: true
+    volume: 0.75
+    height: 1080
+    width: 1920
+    z: 0
+    control_events:
+      - event: init_bonus_video
+        action: position
+        value: 189
+ #         - event: start_bonus_video
+ #           action: play
+      - event: stop_bonus_video
+        action: stop
+  gc_score_award_display:
+#  - type: text
+#    text: (player_name)
+#    font_size: 300
+#    font_name: Lazer84
+#    style: tall_title
+#    anchor_y: middle
+#    anchor_x: middle
+#    x: middle
+#    y: middle
+#    color: 00ff00
+#    animations:
+#      show_slide:
+#      - property: opacity
+#        value: 1
+#        duration: 0.05s
+#      - property: opacity
+#        value: 0
+#        duration: 0.05s
+#        repeat: true
+#  - type: text
+#    text: Player (player_num)
+#    font_size: 200
+#    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+#    x: center
+#    y: center + 300
+#    color: white
+  - type: text
+    text: (award)
+    font_size: 200
+    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+    x: center
+    y: center + 300
+    z: 100
+    color: yellow
+    animations:
+      show_slide:
+      - property: opacity
+        value: 1
+        duration: 0.25s
+      - property: opacity
+        value: 0.25
+        duration: 0.25s
+        repeat: true
+  - type: text
+    text: (award)
+    font_size: 200
+    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+    x: center
+    y: center + 300
+    z: 99
+    color: white
+  - type: text
+    text: (award)
+    font_size: 200
+    font_name: FtySkorzhenNcv-Yo02
+#    style: tall_title
+    x: center + 5
+    y: center + 295
+    z: 98
+    color: black
+  - type: text
+    text: (value)
+#    style: tall_title
+    x: center
+    y: center # - 300
+    z: 100
+    color: yellow
+    font_size: 250
+    font_name: Sinbad
+    number_grouping: true
+    min_digits: 1
+    animations:
+      show_slide:
+      - property: opacity
+        value: 1
+        duration: 0.25s
+      - property: opacity
+        value: 0.25
+        duration: 0.25s
+        repeat: true
+  - type: text
+    text: (value)
+#    style: tall_title
+    x: center
+    y: center # - 300
+    z: 99
+    opacity: 0
+    color: black
+    font_size: 250
+    font_name: Sinbad
+    number_grouping: true
+    min_digits: 1
+  - type: text
+    text: (value)
+#    style: tall_title
+    x: center + 5
+    y: center # - 5- 305
+    z: 98
+#    opacity: 0
+    color: black
+    font_size: 250
+    font_name: Sinbad
+    number_grouping: true
+    min_digits: 1
+    animations:
+      show_slide:
+      - property: opacity
+        value: 1
+        duration: 0.25s
+      - property: opacity
+        value: 0.25
+        duration: 0.25s
+        repeat: true
+  - type: video
+    video: congrats
+    end_behavior: stop
+    auto_play: true
+    volume: 0.75
+    height: 1080
+    width: 1920
+    z: 0
+    control_events:
+      - event: slides_clear
+        action: stop

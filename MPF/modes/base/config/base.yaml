@@ -1,0 +1,4219 @@
+#config_version=6
+
+#video volume values:
+#Eye of the Tiger: 0.33
+#Seventh Voyage: 0.99
+#Golden Voyage: 0.45
+#Of the Seven Seas: 0.70
+
+
+
+mode:
+    start_events: ball_starting
+    priority: 100
+
+
+ball_saves:
+  default: # don't start this until all the drops have reset, spinner is settled, etc.
+    active_time: 10s
+    hurry_up_time: 2s
+    grace_period: 2s
+    enable_events: sw_playfield_active{current_player.ball_save_enabled==0 and current_player.pf_settled==1 and settings.tournament_mode==0} #, playfield_active  # timer_timer_pf_settled_complete
+#    disable_events: 
+#    timer_start_events: player_sw_count{current_player.ball_save_enabled==0 and current_player.pf_settled==1} #, playfield_active
+    balls_to_save: 1
+  drops_complete:
+    active_time: 10s
+    hurry_up_time: 2s
+    grace_period: 2s
+    enable_events: player_all_banks_completed{current_player.all_banks_completed==1 and settings.tournament_mode==0}
+#    timer_start_events: all_drops_completed
+    balls_to_save: 1
+
+extra_balls:
+    purple_eb:
+        max_per_game: 99
+        award_events: shot_purple_rollover_rollover_profile_lit_hit{current_player.extra_balls==0 and settings.tournament_mode==0}
+
+show_player:
+  ball_save_default_timer_start: 
+    ball_save_show
+  ball_save_default_hurry_up: 
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: play
+  ball_save_default_grace_period: 
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: stop
+  ball_save_default_disabled:
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: stop
+  ball_save_drops_complete_timer_start: 
+    ball_save_show
+  ball_save_drops_complete_hurry_up: 
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: play
+  ball_save_drops_complete_grace_period:
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: stop
+  ball_save_drops_complete_disabled:
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: stop
+  player_multiplier{current_player.multiplier==2}:
+    2x_playfield_show:
+      action: play
+  player_multiplier{current_player.multiplier<2}:
+    2x_playfield_show:
+      action: stop
+  award_bonus_value:
+    collect_bonus_show:
+      action: play
+  timer_timer_drops_complete_bonus_delay_complete:
+    collect_bonus_show:
+      action: stop
+#ball_save_disabled_show
+
+shows:
+  ball_save_show:
+    - time: 0
+      lights:
+        l_shoot_again: on
+    - time: +200ms
+      lights:
+        l_shoot_again: off
+    - time: +200ms
+  ball_save_ending_show:
+    - time: 0
+      lights:
+        l_shoot_again: on
+    - time: +50ms
+      lights:
+        l_shoot_again: off
+    - time: +50ms
+  ball_save_disabled_show:
+    - time: 0
+      lights:
+        l_shoot_again: off
+    - time: +1
+
+  2x_playfield_show:
+    - time: 0
+      lights:
+        l_2x_bonus: on
+    - time: +250ms
+      lights:
+        l_2x_bonus: off
+    - time: +250ms
+  collect_bonus_show:
+    - time: 0
+      lights:
+        l_1000_bonus: on
+        l_2000_bonus: on
+        l_3000_bonus: on
+        l_4000_bonus: on
+        l_5000_bonus: on
+        l_6000_bonus: on
+        l_7000_bonus: on
+        l_8000_bonus: on
+        l_9000_bonus: on
+        l_10000_bonus: on
+    - time: +50ms
+      lights:
+        l_1000_bonus: off
+        l_2000_bonus: off
+        l_3000_bonus: off
+        l_4000_bonus: off
+        l_5000_bonus: off
+        l_6000_bonus: off
+        l_7000_bonus: off
+        l_8000_bonus: off
+        l_9000_bonus: off
+        l_10000_bonus: off
+    - time: +50ms    
+
+#timed_switches:
+#  flipper_cradle:
+#    switch_tags: left_flipper, right_flipper
+##    time: 3s
+#    events_when_active: flipper_cradle
+#    events_when_released: flipper_cradle_release
+
+shot_profiles:
+    rollover_profile:
+      advance_on_hit: false
+      states:
+      - name: unlit
+        show: "off"
+      - name: lit
+        show: "on"
+    rollover_2x_profile:
+      advance_on_hit: false
+      states:
+      - name: unlit
+        show: "off"
+      - name: lit
+        show: "on"
+      - name: 2x_lit
+        show: "flash2hz"
+      
+
+shots:
+    shot_spinner:
+      switch: s_10_spinner
+    shot_red_rollover:
+      switch: s_70_red_rollover
+      profile: rollover_profile
+      advance_events: drop_target_bank_d_red_target_bank_down
+      persist_enable: false
+      reset_events: ball_started, reset_red
+#      start_enabled: false
+      show_tokens:
+        light: l_red_rollover
+    shot_purple_rollover:
+      switch: s_71_purple_rollover
+      profile: rollover_profile
+      advance_events: drop_target_bank_d_purple_target_bank_down
+      persist_enable: false
+      reset_events: ball_started, reset_purple
+#      start_enabled: false
+      show_tokens:
+        light: l_purple_rollover
+    shot_yellow_rollover:
+      switch: s_40_top_left_yellow_rollover
+      profile: rollover_profile
+      advance_events: drop_target_bank_d_yellow_target_bank_down
+      persist_enable: false
+      reset_events: ball_started, reset_yellow
+#      start_enabled: false
+      show_tokens:
+        light: l_top_yellow_rollover
+    shot_white_rollover:
+      switch: s_41_white_rollover_and_target
+      profile: rollover_profile
+      advance_events: drop_target_bank_d_white_target_bank_down
+      persist_enable: false
+      reset_events: ball_started, reset_white
+#      start_enabled: false
+      show_tokens:
+        light: l_top_white_rollover
+    shot_right_yellow_rollover:
+      switch: s_44_right_yellow_rollovers
+      profile: rollover_2x_profile
+      advance_events: drop_target_bank_d_yellow_target_bank_down, drop_target_bank_d_all_banks_down
+      persist_enable: false
+      reset_events: ball_started, reset_yellow
+#      start_enabled: false
+      show_tokens:
+        light: l_right_yellow_rollover
+    shot_bottom_yellow_rollover:
+      switch: s_44_right_yellow_rollovers
+      profile: rollover_profile
+      advance_events: drop_target_bank_d_yellow_target_bank_down
+      persist_enable: false
+      reset_events: ball_started, reset_yellow
+#      start_enabled: false
+      show_tokens:
+        light: l_bottom_yellow_rollover
+    shot_bottom_left_yellow_rollover:
+      switch: s_40_top_left_yellow_rollover
+      profile: rollover_profile
+      advance_events: drop_target_bank_d_yellow_target_bank_down
+      persist_enable: false
+      reset_events: ball_started, reset_yellow
+#      start_enabled: false
+      show_tokens:
+        light: l_bottom_left_yellow_rollover
+    shot_lower_target:
+      switch: s_41_white_rollover_and_target
+      profile: rollover_profile
+      advance_events: drop_target_bank_d_white_target_bank_down
+      persist_enable: false
+      reset_events: ball_started
+#      start_enabled: false
+      show_tokens:
+        light: l_bottom_white_target
+    shot_upper_target:
+      switch: s_41_white_rollover_and_target
+      profile: rollover_profile
+      advance_events: drop_target_bank_d_white_target_bank_down
+      persist_enable: false
+      reset_events: ball_started
+      show_tokens:
+        light: l_white_rollover
+#    shot_rollover_buttons:
+#      switch: s_74_rollover_buttons
+
+shot_groups:
+    drop_awards:
+      shots: shot_lower_target, shot_upper_target, shot_bottom_yellow_rollover, shot_bottom_left_yellow_rollover, shot_right_yellow_rollover, shot_red_rollover, shot_purple_rollover, shot_yellow_rollover, shot_white_rollover
+      reset_events: ball_ended
+      debug: true
+
+
+variable_player:
+    mode_base_started:
+      video_volume:
+        action: set
+        float: 0.5
+# initialize variables
+# reset these every ball
+    timer_timer_pf_settled_complete:
+        pf_settled:
+          int: 1
+          action: set
+        multiplier:
+          int: 1
+          action: set
+    timer_timer_pf_settled_complete{current_player.sw_count > 0}:
+        sw_count_total:
+          int: sw_count_total - sw_count
+          action: set
+        sw_count:
+          int: 0
+          action: set
+        advance_bonus:
+          int: 0
+          action: set
+        bonus_value:
+          int: 0
+          action: set
+
+    ball_started:
+        pf_settled:
+          int: 0
+          action: set
+ 
+        multiplier:
+          int: 0 #prevents any scoring before the playfield is settled.
+          action: set
+        bonus_multiplier:
+          int: 1
+          action: set
+        awarded_bonus_value:
+          int: 0
+          action: set
+        awarded_bonus_multiplier:
+          int: 0
+          action: set
+        awarded_bonus_collect:
+          int: 0
+          action: set
+        all_banks_down:
+          int: 0
+          action: set
+        advance_bonus:
+          int: 0
+          action: set
+        sw_count:     
+          int: 0
+          action: set
+        pop_count:     
+          int: 0
+          action: set
+        spinner_count:
+          int: 0
+          action: set
+        drop_count:
+          int: 0
+          action: set
+        rollover_count:
+          int: 0
+          action: set
+        white_bank_count:
+          int: 0
+          action: set
+        yellow_bank_count:
+          int: 0
+          action: set
+        purple_bank_count:
+          int: 0
+          action: set
+        red_bank_count:
+          int: 0
+          action: set
+        bonus_value:
+          int: 0
+          action: set
+        white_bank_completed:
+          int: 0
+          action: set
+        yellow_bank_completed:
+          int: 0
+          action: set
+        purple_bank_completed:
+          int: 0
+          action: set
+        red_bank_completed:
+          int: 0
+          action: set
+        all_banks_completed:
+          int: 0
+          action: set
+        bank_progress:
+          int: 0
+          action: set
+        video_sequence:
+          int: 0
+          action: set
+        ball_save_enabled:
+          int: 0
+          action: set
+        spinner_value_add:
+          int: 0
+          action: set
+    ball_save_default_timer_start:
+        ball_save_enabled:
+          int: 1
+          action: set
+        
+# reset these at the beginning of the game
+    ball_started{current_player.score==0}:
+        sw_count_total:
+          int: 0
+          action: set
+        spinner_count_total:
+          int: 0
+          action: set
+        drop_count_total:
+          int: 0
+          action: set
+        white_bank_count_total:
+          int: 0
+          action: set
+        yellow_bank_count_total:
+          int: 0
+          action: set
+        purple_bank_count_total:
+          int: 0
+          action: set
+        red_bank_count_total:
+          int: 0
+          action: set
+        rollover_count_total:
+          int: 0
+          action: set
+        all_banks_completed_total:
+          int: 0
+          action: set
+        pop_count_total:
+          int: 0
+          action: set
+        pf_multiplier_score_total:
+          int: 0
+          action: set
+        spinner_value_add_total:
+          int: 0
+          action: set
+        scene_bonus_total:
+          int: 0
+          action: set
+        show_tournament_message:
+          int: 0
+          action: set
+    ball_started{current_player.score==0 and settings.tournament_mode==1}:
+        show_tournament_message:
+          int: 1
+          action: set
+    start_music_select:
+        music_mode:
+          int: 1
+          action: set
+        music_type:
+          int: 1
+          action: set
+        music_selection:
+          int: 1
+          action: set
+    player_music_type:
+        current_music_type:
+          int: current_player.music_type
+          action: set_machine
+    s_02_right_flipper_inactive{current_player.music_selection==1}:
+        music_type: 1
+    s_01_left_flipper_inactive{current_player.music_selection==1}:
+        music_type: -1
+    player_music_type{current_player.music_selection==1 and value>3}:
+        music_type:
+          int: 1
+          action: set
+    player_music_type{current_player.music_selection==1 and value<1}:
+        music_type:
+          int: 3
+          action: set
+    sw_playfield_active{current_player.music_selection==1}:
+        music_selection:
+          int: 0
+          action: set
+    flipper_cancel{current_player.music_selection==1}:
+        music_selection:
+          int: 0
+          action: set
+
+# switch counts, base values
+    shot_spinner_hit:
+        score: (100 + current_player.spinner_value_add) * current_player.multiplier
+        sw_count: 1
+        sw_count_total: 1
+        spinner_count: 1
+        spinner_count_total: 1
+        advance_bonus: 1
+    shot_rollover_buttons_hit:
+        score: 100 * current_player.multiplier
+        sw_count: 1
+        sw_count_total: 1
+        rollover_count: 1
+        rollover_count_total: 1
+        advance_bonus: 1
+        advance_bonus_total: 1
+        spinner_value_add: 10
+        spinner_value_add_total: 10
+    shot_right_yellow_rollover_hit:
+        sw_count: 1
+        sw_count_total: 1
+    shot_right_yellow_rollover_rollover_2x_profile_unlit_hit:
+        score: 500 * current_player.multiplier
+    shot_right_yellow_rollover_rollover_2x_profile_lit_hit:
+        score: 5000 * current_player.multiplier
+    shot_right_yellow_rollover_rollover_2x_profile_2x_lit_hit:
+        score: 5000 * current_player.multiplier
+    shot_right_yellow_rollover_rollover_2x_profile_2x_lit_hit{current_player.bonus_multiplier==5 and current_player.multiplier==1}:
+        score: 5000 * current_player.multiplier
+        pf_multiplier:
+          int: 2
+          action: set
+    shot_purple_rollover_hit:
+        sw_count: 1
+        sw_count_total: 1
+    shot_purple_rollover_rollover_profile_unlit_hit:
+        score: 100 * current_player.multiplier
+    shot_purple_rollover_rollover_profile_lit_hit: #Extra Ball
+        score: 1000 * current_player.multiplier
+    shot_yellow_rollover_hit:
+        sw_count: 1
+        sw_count_total: 1
+    shot_yellow_rollover_rollover_profile_unlit_hit:
+        score: 500 * current_player.multiplier
+    shot_yellow_rollover_rollover_profile_lit_hit:
+        score: 5000 * current_player.multiplier
+    shot_white_rollover_hit:
+        sw_count: 1
+        sw_count_total: 1
+    shot_white_rollover_rollover_profile_unlit_hit:
+        score: 100 * current_player.multiplier
+    shot_white_rollover_rollover_profile_lit_hit:
+        score: 1000 * current_player.multiplier
+    shot_red_rollover_hit:
+        sw_count: 1
+        sw_count_total: 1
+    shot_red_rollover_rollover_profile_unlit_hit:
+        score: 500 * current_player.multiplier
+    shot_red_rollover_rollover_profile_lit_hit: #SPECIAL
+        score: 5000 * current_player.multiplier
+    shot_lower_target_unlit_hit:
+        score: 100 * current_player.multiplier
+    shot_lower_target_lit_hit:
+        score: 1000 * current_player.multiplier
+    shot_upper_target_unlit_hit:
+        score: 100 * current_player.multiplier
+    shot_upper_target_lit_hit:
+        score: 1000 * current_player.multiplier
+
+#drops
+    s_20_white_drop_target_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+    s_21_yellow_drop_target1_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+    s_24_yellow_drop_target2_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+    s_30_purple_drop_target1_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+    s_31_purple_drop_target2_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+    s_34_purple_drop_target3_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+    s_50_red_drop_target1_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+    s_51_red_drop_target2_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+    s_60_red_drop_target3_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+    s_61_red_drop_target4_active:
+        score: 3000 * current_player.multiplier
+        bonus_value: 1000
+        sw_count: 1
+        sw_count_total: 1
+        drop_count: 1
+        drop_count_total: 1
+# bank logic
+    drop_target_bank_d_white_target_bank_down:
+        white_bank_completed:
+          int: 1
+          action: set
+#        bonus_multiplier: #{current_player.all_banks_completed==0}:
+#          int: 10 #1 + current_player.white_bank_completed + (current_player.white_bank_completed * current_player.yellow_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed * current_player.red_bank_completed)
+#          action: set
+#        bonus_multiplier{current_player.all_banks_completed>0}:
+#          int: 5
+#          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.yellow_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_yellow_target_bank_down:
+        yellow_bank_completed:
+          int: 1
+          action: set
+#        bonus_multiplier: #{current_player.all_banks_completed==0}:
+#          int: 1 + current_player.white_bank_completed + (current_player.white_bank_completed * current_player.yellow_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed * current_player.red_bank_completed)
+#          action: set
+#        bonus_multiplier{current_player.all_banks_completed>0}:
+#          int: 5
+#          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.yellow_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_purple_target_bank_down:
+        purple_bank_completed:
+          int: 1
+          action: set
+#        bonus_multiplier: #{current_player.all_banks_completed==0}:
+#          int: 1 + current_player.white_bank_completed + (current_player.white_bank_completed * current_player.yellow_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed * current_player.red_bank_completed)
+#          action: set
+#        bonus_multiplier{current_player.all_banks_completed>0}:
+#          int: 5
+#          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.yellow_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_red_target_bank_down:
+        red_bank_completed:
+          int: 1
+          action: set
+#        bonus_multiplier: #{current_player.all_banks_completed==0}:
+#          int: 1 + current_player.white_bank_completed + (current_player.white_bank_completed * current_player.yellow_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed * current_player.red_bank_completed)
+#          action: set
+#        bonus_multiplier{current_player.all_banks_completed>0}:
+#          int: 5
+#          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.yellow_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_all_banks_down{current_player.all_banks_down==0}: 
+        all_banks_completed:
+          int: 1
+        all_banks_completed_total:
+          int: 1
+        all_banks_down:
+          int: 1
+          action: set
+    reset_bonus_value:
+       bonus_value:
+          int: 0
+          action: set
+       awarded_bonus_collect:
+          int: 0
+          action: set
+    award_bonus_value:
+       awarded_bonus_value:
+          int: current_player.bonus_value
+          action: set
+       awarded_bonus_multiplier:
+          int: current_player.bonus_multiplier
+          action: set
+       awarded_bonus_collect:
+          int: current_player.bonus_value*current_player.bonus_multiplier
+          action: set
+       awarded_bonus_collect_text:
+          int: current_player.bonus_value*current_player.bonus_multiplier
+          action: set
+    player_awarded_bonus_collect{value>0}:
+       score: current_player.awarded_bonus_collect
+       scene_bonus_total: current_player.awarded_bonus_collect
+    drop_target_bank_d_all_banks_up{current_player.all_banks_completed>0}:
+        white_bank_completed:
+          int: 0
+          action: set
+        yellow_bank_completed:
+          int: 0
+          action: set
+        purple_bank_completed:
+          int: 0
+          action: set
+        red_bank_completed:
+          int: 0
+          action: set
+        all_banks_down:
+          int: 0
+          action: set
+    player_bank_progress{current_player.all_banks_completed==0}:
+        bonus_multiplier:
+          int: 1 + current_player.white_bank_completed + (current_player.white_bank_completed * current_player.yellow_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed) + (current_player.white_bank_completed * current_player.yellow_bank_completed * current_player.purple_bank_completed * current_player.red_bank_completed)
+          action: set
+    player_bank_progress{current_player.all_banks_completed>0}:
+        bonus_multiplier:
+          int: 5
+          action: set
+    set_5x_multiplier:
+        bonus_multiplier:
+          int: 5
+          action: set
+
+#handle dirty switches
+    drop_target_bank_d_white_target_bank_up{current_player.white_bank_completed==1 and current_player.all_banks_completed==0}:
+        white_bank_completed:
+          int: 0
+          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.yellow_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_yellow_target_bank_up{current_player.yellow_bank_completed==1 and current_player.all_banks_completed==0}:
+        yellow_bank_completed:
+          int: 0
+          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.yellow_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_yellow_target_bank_mixed{current_player.yellow_bank_completed==1 and current_player.all_banks_completed==0}:
+        yellow_bank_completed:
+          int: 0
+          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.yellow_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_purple_target_bank_up{current_player.purple_bank_completed==1 and current_player.all_banks_completed==0}:
+        purple_bank_completed:
+          int: 0
+          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.purple_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_purple_target_bank_mixed{current_player.purple_bank_completed==1 and current_player.all_banks_completed==0}:
+        purple_bank_completed:
+          int: 0
+          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.purple_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_red_target_bank_up{current_player.red_bank_completed==1 and current_player.all_banks_completed==0}:
+        red_bank_completed:
+          int: 0
+          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.red_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+    drop_target_bank_d_red_target_bank_mixed{current_player.red_bank_completed==1 and current_player.all_banks_completed==0}:
+        red_bank_completed:
+          int: 0
+          action: set
+        bank_progress:
+          int: current_player.white_bank_completed + current_player.red_bank_completed + current_player.purple_bank_completed + current_player.red_bank_completed
+          action: set
+
+#static / no lamp
+    s_14_pop_bumper_active:
+        score: 100 * current_player.multiplier
+        sw_count: 1
+        sw_count_total: 1
+        pop_count: 1
+        pop_count_total: 1
+    s_54_10_pt_switches_active:
+        score: 10 * current_player.multiplier
+        sw_count: 1
+        sw_count_total: 1
+
+    player_advance_bonus{current_player.advance_bonus>=5}:
+        advance_bonus:
+          int: 0
+          action: set
+        bonus_value: 1000
+#    player_bonus_multiplier{current_player.bonus_multiplier>=5}:
+#        bonus_multiplier:
+#          int: 5
+#          action: set
+    player_bonus_value{current_player.bonus_value>19000}:
+        bonus_value:
+          int: 19000
+          action: set
+    start_2x_playfield:
+        multiplier:
+          int: 2
+          action: set
+    player_score{current_player.multiplier>1 and change!=50000}:
+        pf_multiplier_score_total: change
+      
+#    drop_target_bank_d_white_target_bank_down:
+#        bonus_multiplier: 1
+#    drop_target_bank_d_yellow_target_bank_down:
+#        bonus_multiplier: 1
+#    drop_target_bank_d_purple_target_bank_down:
+#        bonus_multiplier: 1
+#    drop_target_bank_d_red_target_bank_down:
+#        bonus_multiplier: 1
+    set_video_a:
+      video_sequence:
+        int: 0
+        action: set
+    set_video_b:
+      video_sequence:
+        int: 1
+        action: set
+    set_video_c:
+      video_sequence:
+        int: 2
+        action: set
+    set_video_d:
+      video_sequence:
+        int: 3
+        action: set
+    set_video_e:
+      video_sequence:
+        int: 4
+        action: set
+    set_video_f:
+      video_sequence:
+        int: 5
+        action: set
+    set_video_g:
+      video_sequence:
+        int: 6
+        action: set
+    set_video_h:
+      video_sequence:
+        int: 7
+        action: set
+    set_video_i:
+      video_sequence:
+        int: 8
+        action: set
+    set_video_j:
+      video_sequence:
+        int: 9
+        action: set
+    set_video_k:
+      video_sequence:
+        int: 10
+        action: set
+    set_video_l:
+      video_sequence:
+        int: 11
+        action: set
+    set_video_m:
+      video_sequence:
+        int: 12
+        action: set
+    set_video_n:
+      video_sequence:
+        int: 13
+        action: set
+    set_video_o:
+      video_sequence:
+        int: 14
+        action: set
+    set_video_p:
+      video_sequence:
+        int: 15
+        action: set
+    set_video_q:
+      video_sequence:
+        int: 16
+        action: set
+    set_video_r:
+      video_sequence:
+        int: 17
+        action: set
+    set_video_s:
+      video_sequence:
+        int: 18
+        action: set
+    set_video_t:
+      video_sequence:
+        int: 19
+        action: set
+    set_video_u:
+      video_sequence:
+        int: 20
+        action: set
+    set_video_v:
+      video_sequence:
+        int: 21
+        action: set
+    set_video_w:
+      video_sequence:
+        int: 22
+        action: set
+    set_video_x:
+      video_sequence:
+        int: 23
+        action: set
+    set_video_y:
+      video_sequence:
+        int: 24
+        action: set
+    set_video_z:
+      video_sequence:
+        int: 25
+        action: set
+
+#score_queue_player:
+#    chime_10:
+#      chimes_score: 10
+#    chime_100:
+#      chimes_score: 100
+#    chime_1000:
+#      chimes_score: 1000
+
+
+event_player:
+    shot_right_yellow_rollover_rollover_2x_profile_2x_lit_hit{current_player.bonus_multiplier==5 and current_player.multiplier==1}:
+      - start_2x_playfield
+    flipper_cradle{current_player.score==0}:
+      - start_music_select
+      - set_volume_0
+    set_video_a:
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed #a
+    set_video_b:
+      - stop_video_a
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed #b
+    set_video_c:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed # _c
+    set_video_d:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed # _d
+    set_video_e:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed # _e
+    set_video_f:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed #_f
+    set_video_g:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_h:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_i:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_j:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_k:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_l:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_m:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_n:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_o:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_p:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_q:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_r:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_s:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_t:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_u:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_v:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_w:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_x:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_y
+      - stop_video_z
+      - start_video_delayed
+    set_video_y:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_z
+      - start_video_delayed
+    set_video_z:
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - start_video_delayed
+    set_video_off:
+#      - stop_video
+      - stop_video_a
+      - stop_video_b
+      - stop_video_c
+      - stop_video_d
+      - stop_video_e
+      - stop_video_f
+      - stop_video_g
+      - stop_video_h
+      - stop_video_i
+      - stop_video_j
+      - stop_video_k
+      - stop_video_l
+      - stop_video_m
+      - stop_video_n
+      - stop_video_o
+      - stop_video_p
+      - stop_video_q
+      - stop_video_r
+      - stop_video_s
+      - stop_video_t
+      - stop_video_u
+      - stop_video_v
+      - stop_video_w
+      - stop_video_x
+      - stop_video_y
+      - stop_video_z
+#    player_video_sequence{current_player.video_sequence==0}:
+#      - set_video_a
+#    player_video_sequence{current_player.video_sequence==1}:
+#      - set_video_b
+#    player_video_sequence{current_player.video_sequence==2}:
+#      - set_video_c
+#    player_bank_progress{current_player.bank_progress==0}:
+#      - set_video_pos_a
+#      - set_volume_100
+    player_bank_progress{current_player.bank_progress==1 and current_player.pf_settled==1}:
+      - set_video_pos_b
+#      - set_volume_100
+    player_bank_progress{current_player.bank_progress==2 and current_player.pf_settled==1}:
+      - set_video_pos_c
+#      - set_volume_100
+    player_bank_progress{current_player.bank_progress==3 and current_player.pf_settled==1}:
+      - set_video_pos_d
+#      - set_volume_100
+    player_bank_progress{current_player.bank_progress==4 and current_player.pf_settled==1}:
+      - set_video_pos_e
+#      - set_volume_100
+    player_all_banks_completed{current_player.all_banks_completed>0}:
+      - all_banks_complete
+    all_banks_complete:
+      set_5x_multiplier:
+        priority: 150
+      award_bonus_value:
+        priority: 100
+      reset_bonus_value:
+        priority: 50
+    ball_will_end:
+      - set_video_off
+#    timer_timer_video_volume_cut_delay_complete:
+#      - set_volume_100
+#      - set_volume_50
+#      - set_volume_0
+    timer_timer_drops_complete_delay_complete:
+      - start_random_video
+#    slide_mode_base_slide_created{current_player.sw_count==0}:
+#      - start_random_video
+    timer_timer_video_start_delay_complete:
+      - start_random_video
+    timer_timer_test_complete:
+      - start_video
+    timer_timer_test_complete{current_player.music_type != 0}:
+      - set_volume_0
+#handle dirty switches
+    drop_target_bank_d_white_target_bank_up{current_player.white_bank_completed==1 and current_player.all_banks_completed==0}:
+      - reset_white
+    drop_target_bank_d_yellow_target_bank_up{current_player.yellow_bank_completed==1 and current_player.all_banks_completed==0}:
+      - reset_yellow
+    drop_target_bank_d_yellow_target_bank_mixed{current_player.yellow_bank_completed==1 and current_player.all_banks_completed==0}:
+      - reset_yellow
+    drop_target_bank_d_purple_target_bank_up{current_player.purple_bank_completed==1 and current_player.all_banks_completed==0}:
+      - reset_purple
+    drop_target_bank_d_purple_target_bank_mixed{current_player.purple_bank_completed==1 and current_player.all_banks_completed==0}:
+      - reset_purple
+    drop_target_bank_d_red_target_bank_up{current_player.red_bank_completed==1 and current_player.all_banks_completed==0}:
+      - reset_red
+    drop_target_bank_d_red_target_bank_mixed{current_player.red_bank_completed==1 and current_player.all_banks_completed==0}:
+      - reset_red
+    s_20_white_drop_target_active:
+      - sfx_drop
+    s_21_yellow_drop_target1_active:
+      - sfx_drop
+    s_24_yellow_drop_target2_active:
+      - sfx_drop
+    s_30_purple_drop_target1_active:
+      - sfx_drop
+    s_31_purple_drop_target2_active:
+      - sfx_drop
+    s_34_purple_drop_target3_active:
+      - sfx_drop
+    s_50_red_drop_target1_active:
+      - sfx_drop
+    s_51_red_drop_target2_active:
+      - sfx_drop
+    s_60_red_drop_target3_active:
+      - sfx_drop
+    s_61_red_drop_target4_active:
+      - sfx_drop
+    shot_lower_target_hit:
+      - sfx_target
+    shot_upper_target_hit:
+      - sfx_target
+    shot_purple_rollover_hit:
+      - sfx_rollover
+    shot_red_rollover_hit:
+      - sfx_rollover
+    shot_yellow_rollover_hit:
+      - sfx_rollover
+    shot_white_rollover_hit:
+      - sfx_rollover
+    s_54_10_pt_switches_active:
+      - sfx_10pt
+    s_14_pop_bumper_active:
+      - sfx_pop
+    shot_spinner_hit:
+      - sfx_spinner
+      - chime_100
+
+
+timers:
+    timer_pf_settled:
+      start_value: 3
+      end_value: 0
+      direction: down
+      control_events:
+        - action: restart
+          event: mode_base_started
+    timer_drops_complete_delay:
+      start_value: 5
+      end_value: 0
+      direction: down
+      control_events: 
+        - action: restart
+          event: all_banks_complete # start the timer at th end of the 4th drop complete event
+    timer_drops_complete_bonus_delay:
+      start_value: 2
+      end_value: 0
+      direction: down
+      control_events: 
+        - action: restart
+          event: all_banks_complete # start the timer at th end of the 4th drop complete event
+# Purpose of this delay is to give MPF time to load the video file before trying to play it. This tries to avoid a black screen / loading failure when switching videos.
+    timer_video_start_delay:
+      start_value: 1
+      end_value: 0
+      direction: down
+      tick_interval: 200ms # 100ms on Ryzen5 PC, 150ms on Celeron.
+      control_events:
+        - action: restart
+          event: slide_mode_base_slide_created # start the timer at th end of the 4th drop complete event
+    timer_test:
+      start_value: 1
+      end_value: 0
+      direction: down
+      tick_interval: 200ms # 100ms on Ryzen5 PC, 150ms on Celeron.
+      control_events:
+        - action: start
+          event: start_video_delayed # start the timer at th end of the 4th drop complete event
+    timer_video_volume_cut_delay:
+      start_value: 5
+      end_value: 0
+      direction: down
+      control_events:
+        - action: restart
+          event: start_video_delayed
+        - action: restart
+          event: set_video_pos_a
+        - action: restart
+          event: set_video_pos_b
+        - action: restart
+          event: set_video_pos_c
+        - action: restart
+          event: set_video_pos_d
+        - action: restart
+          event: set_video_pos_e
+
+random_event_player:
+    start_random_video:
+      events:
+        set_video_a: 5 #tiger fight
+        set_video_b: 5 #skeleton fight
+        set_video_c: 5 #the cage
+        set_video_d: 5 #wasp fight
+        set_video_e: 5 #walrus fight
+        set_video_f: 5 #statue fight
+        set_video_g: 5 #centaur fight
+        set_video_h: 5 #invisible fight
+        set_video_i: 5 #masthead fight
+        set_video_j: 0 #sinbad: brain damaged
+        set_video_k: 5 #bird fight
+        set_video_l: 5 #cyclops fight
+        set_video_m: 5 #dragon fight
+        set_video_n: 5 #ghost_fight
+        set_video_o: 5 #jail_fight
+        set_video_p: 5 #palace ninjas
+        set_video_q: 5 #pirate fight
+        set_video_r: 5 #rock fight
+        set_video_s: 5 #sinbad vs sinbad
+        set_video_t: 5 #sinbad vs skeleton
+        set_video_u: 5 #slime fight
+      force_all: true
+      force_different: true
+#    timer_timer_video_start_delay_complete:
+#      events:
+#        set_video_a: 1
+#        set_video_b: 33
+#        set_video_c: 33
+#      force_all: true
+
+
+light_player:  
+  "{current_player.bonus_multiplier == 2}":
+    l_2x_bonus: on
+  "{current_player.bonus_multiplier == 3}":
+    l_3x_bonus: on
+  "{current_player.bonus_multiplier == 4}":
+    l_4x_bonus: on
+  "{current_player.bonus_multiplier == 5}":
+    l_5x_bonus: on
+  "{current_player.extra_balls > 0}":
+    l_shoot_again: on
+  "{current_player.advance_bonus == 0}":
+    l_advance_1: on
+  "{current_player.advance_bonus == 1}":
+    l_advance_2: on
+  "{current_player.advance_bonus == 2}":
+    l_advance_3: on
+  "{current_player.advance_bonus == 3}":
+    l_advance_4: on
+  "{current_player.advance_bonus == 4}":
+    l_advance_5: on
+  "{current_player.bonus_value == 1000 or current_player.bonus_value == 11000}":
+    l_1000_bonus: on
+  "{current_player.bonus_value == 2000 or current_player.bonus_value == 12000}":
+    l_2000_bonus: on
+  "{current_player.bonus_value == 3000 or current_player.bonus_value == 13000}":
+    l_3000_bonus: on
+  "{current_player.bonus_value == 4000 or current_player.bonus_value == 14000}":
+    l_4000_bonus: on
+  "{current_player.bonus_value == 5000 or current_player.bonus_value == 15000}":
+    l_5000_bonus: on
+  "{current_player.bonus_value == 6000 or current_player.bonus_value == 16000}":
+    l_6000_bonus: on
+  "{current_player.bonus_value == 7000 or current_player.bonus_value == 17000}":
+    l_7000_bonus: on
+  "{current_player.bonus_value == 8000 or current_player.bonus_value == 18000}":
+    l_8000_bonus: on
+  "{current_player.bonus_value == 9000 or current_player.bonus_value == 19000}":
+    l_9000_bonus: on
+  "{current_player.bonus_value >= 10000}":
+    l_10000_bonus: on
+
+#state_machines:
+#  bonus_mult_state:
+#    states:
+#      start:
+#        label: Start state
+#    transitions:
+
+#  bonus_state:
+#    states:
+#      start:
+#        label: Start state
+
+slide_player:
+  mode_base_started: mode_base_slide
+
+slides:
+  mode_base_slide:
+    widgets:
+
+      - type: text
+        text: (score)
+        number_grouping: true
+        min_digits: 2
+        font_size: 212
+        font_name: Sinbad
+        anchor_y: center
+        anchor_x: center
+        z: 100
+      - type: text
+        text: (score)
+        number_grouping: true
+        min_digits: 2
+        font_size: 212
+        font_name: Sinbad
+        anchor_y: center
+        anchor_x: center
+        x: center+5
+        y: center-5
+        color: black
+        z: 99
+      - type: text
+        text: Player (number)
+        y: 50
+        x: 50
+        font_name: Sinbad
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+        z: 100
+      - type: text
+        text: Ball (ball)
+        y: 50
+        x: right-50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: Sinbad
+        z: 100
+      - type: text
+        text: Player (number)
+        y: 45
+        x: 55
+        font_name: Sinbad
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+        color: black
+        z: 99
+      - type: text
+        text: Ball (ball)
+        y: 45
+        x: right-45
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: Sinbad
+        color: black
+        z: 99
+      - type: text
+        text: "(player1|score)"
+        x: right - 50
+        y: top - 50
+        z: 100
+        font_name: Sinbad
+        font_size: 50
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player1|score)"
+        x: right - 48
+        y: top - 52
+        z: 99
+        color: black
+        font_name: Sinbad
+        font_size: 50
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player2|score)" # 
+        x: right - 50
+        y: top - 100
+        z: 100
+        font_name: Sinbad
+        font_size: 50
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player2|score)" # 
+        x: right - 48
+        y: top - 102
+        z: 99
+        color: black
+        font_name: Sinbad
+        font_size: 50
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player3|score)"
+        x: right - 50
+        y: top - 150
+        z: 100
+        font_size: 50
+        font_name: Sinbad
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player3|score)"
+        x: right - 48
+        y: top - 152
+        z: 99
+        color: black
+        font_size: 50
+        font_name: Sinbad
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player4|score)"
+        x: right - 50
+        y: top - 200
+        z: 100
+        font_size: 50
+        font_name: Sinbad
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player4|score)"
+        x: right - 48
+        y: top - 202
+        z: 99
+        color: black
+        font_size: 50
+        font_name: Sinbad
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+#      - type: text
+#        text: "P Music: (music_type) M Music: (machine|current_music_type)"
+#        x: right - 50
+#        y: top - 250
+#        z: 100
+#        font_size: 50
+#        font_name: Sinbad
+#        anchor_x: right
+#        number_grouping: true
+#        min_digits: 2
+#      - widget: video_sequence_a
+#        z: 0
+#      - widget: video_sequence_b
+#        z: 0
+#      - widget: video_sequence_c
+#        z: 0
+#      - widget: video_sequence_d
+#        z: 0
+#      - widget: video_sequence_e
+#        z: 0
+#      - widget: video_sequence_f
+#        z: 0
+
+
+widgets:
+  my_widget:
+    type: text
+    text: TEST    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+  widget_debug_text:
+      - type: text
+        text: "BONUS MULT: (bonus_multiplier)"
+        x: 25
+        y: 1050
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "BONUS_VALUE: (bonus_value)" # 
+        x: 25
+        y: 1025
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "SWITCH COUNT: (sw_count)/(sw_count_total)"
+        x: 25
+        y: 1000
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "ROLLOVER COUNT: (rollover_count)/(rollover_count_total)"
+        x: 25
+        y: 975
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "DROP HITS: (drop_count)/(drop_count_total)"
+        x: 25
+        y: 950
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "SPINNER COUNT: (spinner_count)/(spinner_count_total)"
+        x: 25
+        y: 925
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "ADVANCE BONUS: (advance_bonus)"
+        x: 25
+        y: 900
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "VIDEO_SEQUENCE: (video_sequence)"
+        x: 25
+        y: 875
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "BANK_PROGRESS: (bank_progress)"
+        x: 25
+        y: 850
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "ALL_BANKS_COMPLETED: (all_banks_completed)/(all_banks_completed_total)"
+        x: 25
+        y: 825
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "PF MULTIPLIER: (multiplier)"
+        x: 25
+        y: 800
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "BANK COMPLETION: (white_bank_completed) (yellow_bank_completed) (purple_bank_completed) (red_bank_completed)"
+        x: 25
+        y: 775
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "2X TOTAL: (pf_multiplier_score_total)"
+        x: 25
+        y: 750
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "PF SETTLED: (pf_settled)"
+        x: 25
+        y: 725
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "BALL SAVE ENABLED: (ball_save_enabled)"
+        x: 25
+        y: 700
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "EXTRA BALLS: (extra_balls)"
+        x: 25
+        y: 675
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "SPINNER VALUE ADD: (spinner_value_add)"
+        x: 25
+        y: 650
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "SPINNER VALUE ADD TOTAL: (spinner_value_add_total)"
+        x: 25
+        y: 625
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "LAST SCENE BONUS: (awarded_bonus_collect_text)"
+        x: 25
+        y: 600
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "SCENE BONUS TOTAL: (scene_bonus_total)"
+        x: 25
+        y: 575
+        font_size: 25
+        anchor_x: left
+        z: 100
+      - type: text
+        text: "POP COUNT: (pop_count)/(pop_count_total)"
+        x: 25
+        y: 550
+        font_size: 25
+        anchor_x: left
+        z: 100
+  widget_2x_playfield_text:
+    type: text
+    text: "2x Scoring"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center
+    y: center+300
+  widget_2x_playfield_text2:
+    type: text
+    text: "2x Scoring"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center+5
+    y: center+295
+    color: black
+  widget_ball_saved_text:
+    type: text
+    text: "Ball Saved"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center
+    y: center+300
+  widget_ball_saved_text2:
+    type: text
+    text: "Ball Saved"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center+5
+    y: center+295
+    color: black
+  widget_extra_ball_text:
+    type: text
+    text: "Extra Ball"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center
+    y: center+300
+  widget_extra_ball_text2:
+    type: text
+    text: "Extra Ball"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center+5
+    y: center+295
+    color: black
+  widget_shoot_again_text:
+    type: text
+    text: "Shoot Again"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center
+    y: center+300
+  widget_shoot_again_text2:
+    type: text
+    text: "Shoot Again"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center+5
+    y: center+295
+    color: black
+  widget_shoot_again_multiplayer_text:
+    type: text
+    text: "Player (number) Shoot Again"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center
+    y: center+300
+  widget_shoot_again_multiplayer_text2:
+    type: text
+    text: "Player (number) Shoot Again"    # no expiration here
+    font_size: 100
+    font_name: Sinbad
+    z: 100
+    x: center+5
+    y: center+295
+    color: black
+  widget_drops_complete_text:
+    type: text
+    text: "Scene Completed: (awarded_bonus_collect_text)" # (awarded_bonus_value) (awarded_bonus_multiplier)"    # no expiration here
+    font_size: 100
+    font_name: FtySkorzhenNcv-Yo02
+    z: 100
+    x: center
+    y: center+450
+  widget_drops_complete_text2:
+    type: text
+    text: "Scene Completed: (awarded_bonus_collect_text)" # (awarded_bonus_value) (awarded_bonus_multiplier)"    # no expiration here
+    font_size: 100
+    font_name: FtySkorzhenNcv-Yo02
+    z: 100
+    x: center+5
+    y: center+445
+    color: black
+  widget_music_type_1_text:
+      - type: text
+        text: Sinbad
+        y: 50
+        x: center
+        anchor_x: center
+        anchor_y: bottom
+        font_size: 100
+        font_name: Sinbad
+        z: 100
+      - type: text
+        text: Sinbad
+        y: 45
+        x: center+5
+        font_name: Sinbad
+        font_size: 100
+        anchor_x: center
+        anchor_y: bottom
+        color: black
+        z: 99
+  widget_music_type_2_text:
+      - type: text
+        text: Wu-Tang Clan
+        y: 50
+        x: center
+        anchor_x: center
+        anchor_y: bottom
+        font_size: 100
+        font_name: Sinbad
+        z: 100
+      - type: text
+        text: Wu-Tang Clan
+        y: 45
+        x: center+5
+        font_name: Sinbad
+        font_size: 100
+        anchor_x: center
+        anchor_y: bottom
+        color: black
+        z: 99
+  widget_music_type_3_text:
+      - type: text
+        text: Sahara
+        y: 50
+        x: center
+        anchor_x: center
+        anchor_y: bottom
+        font_size: 100
+        font_name: Sinbad
+        z: 100
+      - type: text
+        text: Sahara
+        y: 45
+        x: center+5
+        font_name: Sinbad
+        font_size: 100
+        anchor_x: center
+        anchor_y: bottom
+        color: black
+        z: 99
+  widget_tournament_mode_enabled_text:
+    - type: text
+      text: "TOURNAMENT MODE"    # no expiration here
+      font_size: 100
+      font_name: FtySkorzhenNcv-Yo02
+      z: 100
+      x: center
+      y: center+450
+    - type: text
+      text: "TOURNAMENT MODE"    # no expiration here
+      font_size: 100
+      font_name: FtySkorzhenNcv-Yo02
+      z: 99
+      x: center+5
+      y: center+445
+      color: black
+    - type: text
+      text: "NO BALL SAVES, NO EXTRA BALLS"    # no expiration here
+      font_size: 50
+      font_name: FtySkorzhenNcv-Yo02
+      z: 100
+      x: center
+      y: center+375
+    - type: text
+      text: "NO BALL SAVES, NO EXTRA BALLS"    # no expiration here
+      font_size: 50
+      font_name: FtySkorzhenNcv-Yo02
+      z: 99
+      x: center+2
+      y: center+373
+      color: black
+  video_sequence_a:
+        type: video
+        video: tiger_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_a
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_a
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+          - event: set_video_pos_b
+            action: position
+            value: 114
+          - event: set_video_pos_c
+            action: position
+            value: 165
+          - event: set_video_pos_d
+            action: position
+            value: 226
+          - event: set_video_pos_e
+            action: position
+            value: 296
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_b:
+        type: video
+        video: skeleton_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_b
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_b
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+          - event: set_video_pos_b
+            action: position
+            value: 58
+          - event: set_video_pos_c
+            action: position
+            value: 125
+          - event: set_video_pos_d
+            action: position
+            value: 163
+          - event: set_video_pos_e
+            action: position
+            value: 189
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_c:
+        type: video
+        video: sinbad_cage
+        end_behavior: loop
+        auto_play: false
+        volume: 0.70
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_c
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_c
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+          - event: set_video_pos_b
+            action: position
+            value: 41 # create cage
+          - event: set_video_pos_c
+            action: position
+            value: 70
+          - event: set_video_pos_d
+            action: position
+            value: 86
+          - event: set_video_pos_e
+            action: position
+            value: 111
+          - event: set_volume_100
+            action: volume
+            value: 0.70
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_d:
+        type: video
+        video: wasp_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_d
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_d
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# Testing:
+          - event: set_video_pos_b
+            action: position
+            value: 58
+          - event: set_video_pos_c
+            action: position
+            value: 88
+          - event: set_video_pos_d
+            action: position
+            value: 129
+          - event: set_video_pos_e
+            action: position
+            value: 154
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_e:
+      - type: video
+        video: walrus_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_e
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_e
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# Testing:
+          - event: set_video_pos_b
+            action: position
+            value: 25
+          - event: set_video_pos_c
+            action: position
+            value: 73
+          - event: set_video_pos_d
+            action: position
+            value: 131
+          - event: set_video_pos_e
+            action: position
+            value: 194
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_f:
+        type: video
+        video: statue_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.45
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_f
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_f
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# Testing:
+          - event: set_video_pos_b
+            action: position
+            value: 70
+          - event: set_video_pos_c
+            action: position
+            value: 100
+          - event: set_video_pos_d
+            action: position
+            value: 139
+          - event: set_video_pos_e
+            action: position
+            value: 219
+          - event: set_volume_100
+            action: volume
+            value: 0.45
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_g:
+        type: video
+        video: centaur_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.45
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_g
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_g
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# Testing
+          - event: set_video_pos_b
+            action: position
+            value: 60
+          - event: set_video_pos_c
+            action: position
+            value: 136 #2:16
+          - event: set_video_pos_d
+            action: position
+            value: 205 #3:25
+          - event: set_video_pos_e
+            action: position
+            value: 315 #5:15
+          - event: set_volume_100
+            action: volume
+            value: 0.45
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_h:
+        type: video
+        video: invisible_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.45
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_h
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_h
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# Testing:
+          - event: set_video_pos_b
+            action: position
+            value: 32
+          - event: set_video_pos_c
+            action: position
+            value: 78
+          - event: set_video_pos_d
+            action: position
+            value: 118
+          - event: set_video_pos_e
+            action: position
+            value: 148
+          - event: set_volume_100
+            action: volume
+            value: 0.45
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_i:
+        type: video
+        video: masthead_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.45
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_i
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_i
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 50
+# Testing:
+          - event: set_video_pos_b
+            action: position
+            value: 109
+          - event: set_video_pos_c
+            action: position
+            value: 162
+          - event: set_video_pos_d
+            action: position
+            value: 195
+          - event: set_video_pos_e
+            action: position
+            value: 264
+          - event: set_volume_100
+            action: volume
+            value: 0.45
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_j:
+        type: video
+        video: sinbad1990
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_j
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_j
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# Testing:
+          - event: set_video_pos_b
+            action: position
+            value: 70
+          - event: set_video_pos_c
+            action: position
+            value: 100
+          - event: set_video_pos_d
+            action: position
+            value: 139
+          - event: set_video_pos_e
+            action: position
+            value: 219
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_k:
+        type: video
+        video: bird_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.99
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_k
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_k
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# Testing:
+          - event: set_video_pos_b
+            action: position
+            value: 29 # guy pecked by bird 
+          - event: set_video_pos_c
+            action: position
+            value: 45 # guy 2 pecked by bird
+          - event: set_video_pos_d
+            action: position
+            value: 86 # guy throws lamp
+          - event: set_video_pos_e
+            action: position
+            value: 102 # bird grabs sinbad
+          - event: set_volume_100
+            action: volume
+            value: 0.99
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_l:
+        type: video
+        video: cyclops_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.99
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_l
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_l
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# Testing:
+          - event: set_video_pos_b
+            action: position
+            value: 12 # throw spear
+          - event: set_video_pos_c
+            action: position
+            value: 80 # stab in eye with fire
+          - event: set_video_pos_d
+            action: position
+            value: 119 # stab in the butt
+          - event: set_video_pos_e
+            action: position
+            value: 151 # falls off cliff
+          - event: set_volume_100
+            action: volume
+            value: 0.99
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_m:
+        type: video
+        video: dragon_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.99
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_m
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_m
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 20 # see cyclops
+          - event: set_video_pos_c
+            action: position
+            value: 88 # exit cave fighting
+          - event: set_video_pos_d
+            action: position
+            value: 139 #kill cyclops
+          - event: set_video_pos_e
+            action: position
+            value: 215 #launch crossbow
+          - event: set_volume_100
+            action: volume
+            value: 0.99
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_n:
+        type: video
+        video: ghost_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.70
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_n
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_n
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 54 #throw sword
+          - event: set_video_pos_c
+            action: position
+            value: 157 # push horse
+          - event: set_video_pos_d
+            action: position
+            value: 223 # rope
+          - event: set_video_pos_e
+            action: position
+            value: 274 # crush last guy
+          - event: set_volume_100
+            action: volume
+            value: 0.70
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_o:
+        type: video
+        video: jail_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.70
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_o
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_o
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 12 # grate
+          - event: set_video_pos_c
+            action: position
+            value: 35 # bend pole
+          - event: set_video_pos_d
+            action: position
+            value: 87 # bust chain
+          - event: set_video_pos_e
+            action: position
+            value: 116 # throw guy
+          - event: set_volume_100
+            action: volume
+            value: 0.70
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_p:
+        type: video
+        video: palace_ninjas
+        end_behavior: loop
+        auto_play: false
+        volume: 0.70
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_p
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_p
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 22 #sinbad group
+          - event: set_video_pos_c
+            action: position
+            value: 43 # group 2
+          - event: set_video_pos_d
+            action: position
+            value: 84 # double fist
+          - event: set_video_pos_e
+            action: position
+            value: 151 # last ninja
+          - event: set_volume_100
+            action: volume
+            value: 0.70
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_q:
+        type: video
+        video: pirate_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.99
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_q
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_q
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# Testing:
+          - event: set_video_pos_b
+            action: position
+            value: 27 # punch in stomach
+          - event: set_video_pos_c
+            action: position
+            value: 60 # kick guy out door
+          - event: set_video_pos_d
+            action: position
+            value: 74 # kick guy off netting
+          - event: set_video_pos_e
+            action: position
+            value: 100 # slide down rope & boot guy
+          - event: set_volume_100
+            action: volume
+            value: 0.99
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_r:
+        type: video
+        video: rock_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.70
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_r
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_r
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 24 # break sword
+          - event: set_video_pos_c
+            action: position
+            value: 49 # dodge punch
+          - event: set_video_pos_d
+            action: position
+            value: 98 # push head off
+          - event: set_video_pos_e
+            action: position
+            value: 121 # throw head
+          - event: set_volume_100
+            action: volume
+            value: 0.70
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_s:
+        type: video
+        video: sinbad_vs_sinbad
+        end_behavior: loop
+        auto_play: false
+        volume: 0.70
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_s
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_s
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 94 # start fighting
+          - event: set_video_pos_c
+            action: position
+            value: 131 # still grapping
+          - event: set_video_pos_d
+            action: position
+            value: 158 # throw sinbad
+          - event: set_video_pos_e
+            action: position
+            value: 190 # throw clone into pit
+          - event: set_volume_100
+            action: volume
+            value: 0.70
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_t:
+        type: video
+        video: sinbad_vs_skeleton
+        end_behavior: loop
+        auto_play: false
+        volume: 0.99
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_t
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_t
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 51 # start fighting
+          - event: set_video_pos_c
+            action: position
+            value: 85 # skeleton throws shield
+          - event: set_video_pos_d
+            action: position
+            value: 111 # sinbad loses shield
+          - event: set_video_pos_e
+            action: position
+            value: 146 # kill skeleton
+          - event: set_volume_100
+            action: volume
+            value: 0.99
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_u:
+        type: video
+        video: slime_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.70
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_u
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_u
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 44 # attack
+          - event: set_video_pos_c
+            action: position
+            value: 70 # zapped
+          - event: set_video_pos_d
+            action: position
+            value: 111 # throw pole
+          - event: set_video_pos_e
+            action: position
+            value: 154 # jewel attack
+          - event: set_volume_100
+            action: volume
+            value: 0.70
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+# Future Use:
+  video_sequence_v:
+        type: video
+        video: statue_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_v
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_v
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 50
+          - event: set_video_pos_c
+            action: position
+            value: 100
+          - event: set_video_pos_d
+            action: position
+            value: 150
+          - event: set_video_pos_e
+            action: position
+            value: 200
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_w:
+        type: video
+        video: statue_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_w
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_w
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 50
+          - event: set_video_pos_c
+            action: position
+            value: 100
+          - event: set_video_pos_d
+            action: position
+            value: 150
+          - event: set_video_pos_e
+            action: position
+            value: 200
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_x:
+        type: video
+        video: statue_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_x
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_x
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 50
+          - event: set_video_pos_c
+            action: position
+            value: 100
+          - event: set_video_pos_d
+            action: position
+            value: 150
+          - event: set_video_pos_e
+            action: position
+            value: 200
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_y:
+        type: video
+        video: statue_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_y
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_y
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 50
+          - event: set_video_pos_c
+            action: position
+            value: 100
+          - event: set_video_pos_d
+            action: position
+            value: 150
+          - event: set_video_pos_e
+            action: position
+            value: 200
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+  video_sequence_z:
+        type: video
+        video: statue_fight
+        end_behavior: loop
+        auto_play: false
+        volume: 0.33
+        height: 1080
+        width: 1920
+        z: 0
+        control_events:
+          - event: slide_title_screen2_active
+            action: stop
+          - event: start_video_z
+            action: play
+          - event: start_video
+            action: play
+          - event: stop_video_z
+            action: stop
+          - event: stop_video
+            action: stop
+          - event: set_video_pos_a
+            action: position
+            value: 0.0
+# TODO:
+          - event: set_video_pos_b
+            action: position
+            value: 50
+          - event: set_video_pos_c
+            action: position
+            value: 100
+          - event: set_video_pos_d
+            action: position
+            value: 150
+          - event: set_video_pos_e
+            action: position
+            value: 200
+          - event: set_volume_100
+            action: volume
+            value: 0.33
+          - event: set_volume_50
+            action: volume
+            value: 0.25
+          - event: set_volume_0
+            action: volume
+            value: 0
+
+widget_player:
+  ball_started{current_player.score==0 and settings.tournament_mode==1}:
+    widget_tournament_mode_enabled_text:
+      action: add
+  ball_started{settings.debug_info==1}:
+    widget_debug_text:
+      action: add
+  sw_playfield_active{current_player.score>0 and current_player.show_tournament_message==1}:
+    widget_tournament_mode_enabled_text:
+      action: remove
+  player_music_selection{value==0}:
+    widget_music_type_1_text:
+      action: remove
+    widget_music_type_2_text:
+      action: remove
+    widget_music_type_3_text:
+      action: remove
+  player_music_type{current_player.music_type==1 and current_player.music_selection==1}:
+    widget_music_type_1_text:
+      action: add
+  player_music_type{prev_value==1}:
+    widget_music_type_1_text:
+      action: remove
+  player_music_type{current_player.music_type==2 and current_player.music_selection==1}:
+    widget_music_type_2_text:
+      action: add
+  player_music_type{prev_value==2}:
+    widget_music_type_2_text:
+      action: remove
+  player_music_type{current_player.music_type==3 and current_player.music_selection==1}:
+    widget_music_type_3_text:
+      action: add
+  player_music_type{prev_value==3}:
+    widget_music_type_3_text:
+      action: remove
+  start_2x_playfield:
+    widget_2x_playfield_text:
+      action: add
+    widget_2x_playfield_text2:
+      action: add
+#  player_bank_progress{current_player.bank_progress<4}:
+#    my_widget:
+#      widget_settings:
+#        expire: 5s
+  award_bonus_value:
+    widget_drops_complete_text:
+      widget_settings:
+        expire: 5s
+    widget_drops_complete_text2:
+      widget_settings:
+        expire: 5s
+  ball_save_default_saving_ball:
+    widget_ball_saved_text:
+      widget_settings:
+        expire: 5s
+    widget_ball_saved_text2:
+      widget_settings:
+        expire: 5s
+  ball_save_drops_complete_saving_ball:
+    widget_ball_saved_text:
+      widget_settings:
+        expire: 5s
+    widget_ball_saved_text2:
+      widget_settings:
+        expire: 5s
+  extra_ball_awarded:
+    widget_extra_ball_text:
+      widget_settings:
+        expire: 5s
+    widget_extra_ball_text2:
+      widget_settings:
+        expire: 5s
+  ball_started{is_extra_ball==True and game.num_players==1}:
+    widget_shoot_again_text:
+      widget_settings:
+        expire: 10s
+    widget_shoot_again_text2:
+      widget_settings:
+        expire: 10s
+  ball_started{is_extra_ball==True and game.num_players>1}:
+    widget_shoot_again_multiplayer_text:
+      widget_settings:
+        expire: 10s
+    widget_shoot_again_multiplayer_text2:
+      widget_settings:
+        expire: 10s
+  set_video_a: 
+    video_sequence_a:
+      widget_settings:
+        z: 0
+  set_video_b:
+    video_sequence_b:
+      widget_settings:
+        z: 0
+  set_video_c:
+    video_sequence_c:
+      widget_settings:
+        z: 0
+  set_video_d:
+    video_sequence_d:
+      widget_settings:
+        z: 0
+  set_video_e:
+    video_sequence_e:
+      widget_settings:
+        z: 0
+  set_video_f:
+    video_sequence_f:
+      widget_settings:
+        z: 0
+  set_video_g: 
+    video_sequence_g:
+      widget_settings:
+        z: 0
+  set_video_h:
+    video_sequence_h:
+      widget_settings:
+        z: 0
+  set_video_i:
+    video_sequence_i:
+      widget_settings:
+        z: 0
+  set_video_j:
+    video_sequence_j:
+      widget_settings:
+        z: 0
+  set_video_k:
+    video_sequence_k:
+      widget_settings:
+        z: 0
+  set_video_l:
+    video_sequence_l:
+      widget_settings:
+        z: 0
+  set_video_m: 
+    video_sequence_m:
+      widget_settings:
+        z: 0
+  set_video_n:
+    video_sequence_n:
+      widget_settings:
+        z: 0
+  set_video_o:
+    video_sequence_o:
+      widget_settings:
+        z: 0
+  set_video_p:
+    video_sequence_p:
+      widget_settings:
+        z: 0
+  set_video_q:
+    video_sequence_q:
+      widget_settings:
+        z: 0
+  set_video_r:
+    video_sequence_r:
+      widget_settings:
+        z: 0
+  set_video_s: 
+    video_sequence_s:
+      widget_settings:
+        z: 0
+  set_video_t:
+    video_sequence_t:
+      widget_settings:
+        z: 0
+  set_video_u:
+    video_sequence_u:
+      widget_settings:
+        z: 0
+  set_video_v:
+    video_sequence_v:
+      widget_settings:
+        z: 0
+  set_video_w:
+    video_sequence_w:
+      widget_settings:
+        z: 0
+  set_video_x:
+    video_sequence_x:
+      widget_settings:
+        z: 0
+  set_video_y:
+    video_sequence_y:
+      widget_settings:
+        z: 0
+  set_video_z:
+    video_sequence_z:
+      widget_settings:
+        z: 0
+  stop_video_a:
+    video_sequence_a:
+      action: remove
+  stop_video_b:
+    video_sequence_b:
+      action: remove
+  stop_video_c:
+    video_sequence_c:
+      action: remove
+  stop_video_d:
+    video_sequence_d:
+      action: remove
+  stop_video_e:
+    video_sequence_e:
+      action: remove
+  stop_video_f:
+    video_sequence_f:
+      action: remove
+  stop_video_g:
+    video_sequence_g:
+      action: remove
+  stop_video_h:
+    video_sequence_h:
+      action: remove
+  stop_video_i:
+    video_sequence_i:
+      action: remove
+  stop_video_j:
+    video_sequence_j:
+      action: remove
+  stop_video_k:
+    video_sequence_k:
+      action: remove
+  stop_video_l:
+    video_sequence_l:
+      action: remove
+  stop_video_m:
+    video_sequence_m:
+      action: remove
+  stop_video_n:
+    video_sequence_n:
+      action: remove
+  stop_video_o:
+    video_sequence_o:
+      action: remove
+  stop_video_p:
+    video_sequence_p:
+      action: remove
+  stop_video_q:
+    video_sequence_q:
+      action: remove
+  stop_video_r:
+    video_sequence_r:
+      action: remove
+  stop_video_s:
+    video_sequence_s:
+      action: remove
+  stop_video_t:
+    video_sequence_t:
+      action: remove
+  stop_video_u:
+    video_sequence_u:
+      action: remove
+  stop_video_v:
+    video_sequence_v:
+      action: remove
+  stop_video_w:
+    video_sequence_w:
+      action: remove
+  stop_video_x:
+    video_sequence_x:
+      action: remove
+  stop_video_y:
+    video_sequence_y:
+      action: remove
+  stop_video_z:
+    video_sequence_z:
+      action: remove
+
+sound_player:
+    tilt_warning_1: call_tilt_warning
+    tilt_warning_2: call_tilt_warning
+    tilt: call_tilt
+    sfx_spinner: sfx_spinner
+    shot_rollover_buttons_hit: sfx_spinner
+#    sfx_drop: sfx_drop
+    sfx_target: sfx_target
+#    sfx_10pt: sfx_10pt
+    sfx_rollover: sfx_rollover
+    sfx_pop: sfx_pop
+#    sfx_drain: "Sound-0x0119 - Drain"
+#    sfx_drop: "Sound-0x0130 - Thud2"
+#    sfx_letter: "Sound-0x012F - Thud"
+#    sfx_top_lane: "Sound-0x00CF - Lazer"
+#    
+#    call_extra_ball: "Sound-0x01EF - Extra Ball"
+#    s_62_left_spinner_active: sfx_spinner
+#    s_38_right_spinner_active: sfx_spinner
+#    s_34_10_point_active: sfx_10_point
+#    s_36_loop_rollunder_active: sfx_rollunder
+#    s_56_outhole_active: call_drain, sfx_drain
+#    letter_count: "Sound-0x005A - Snare"
+#    s_44_top_rollover_a_active: "Sound-0x005A - Snare"
+#    shot_top_rollover_a_top_rollover_profile_lit_hit: "Sound-0x00CF - Lazer"
+#    shot_top_rollover_a_top_rollover_profile_unlit_hit: "Sound-0x005B - Thud"
+#    top_rollovers_lit_hit: sfx_top_rollover_lit
+#    top_rollovers_unlit_hit: sfx_top_rollover_unlit
+#    letter_rollovers_lit_hit: sfx_letter_rollover_lit
+#    letter_rollovers_unlit_hit: sfx_letter_rollover_unlit
+#    shot_letter_reset_rollover_lit_hit: sfx_letter_reset_lit
+#    shot_letter_reset_rollover_unlit_hit: sfx_letter_reset_unlit
+#    sg_spinners_lit_hit: sfx_spinner_lit
+#    sg_spinners_unlit_hit: sfx_spinner_unlit
+#    sg_lower_drops_lit_hit: sfx_lower_drop_lit
+#    sg_lower_drops_unlit_hit: sfx_lower_drop_unlit
+#    sg_upper_drops_unlit_hit: sfx_upper_drop_unlit
+#    sq_left_orbit_combo_hit: call_combo
+#    sq_left_drain_combo_hit: call_combo
+#    sq_right_drain_combo_hit: call_combo
+#    sq_left_right_shatz_hit: call_shatz
+#    sq_right_left_shatz_hit: call_shatz
+#    sq_loop_drain_hit: call_drain
+#    shot_top_rollover_b_top_rollover_profile_unlit_hit: "Sound-0x005B - Thud"
+#    shot_top_rollover_c_top_rollover_profile_lit_hit: "Sound-0x00CF - Lazer"
+#    shot_top_rollover_c_top_rollover_profile_unlit_hit: "Sound-0x005B - Thud"
+#    shot_upper_drop_1_upper_drop_profile_1_flashing_hit: sfx_upper_drop_lit
+#    shot_upper_drop_2_upper_drop_profile_flashing_hit: sfx_upper_drop_lit
+#    shot_upper_drop_3_upper_drop_profile_flashing_hit: sfx_upper_drop_lit
+#    shot_upper_drop_4_upper_drop_profile_flashing_hit: sfx_upper_drop_lit
+#    player_bonus_multiplier{current_player.bonus_multiplier>1}: call_bonus_x
+    player_multiplier{current_player.multiplier>1}: call_2x
+    ball_started{player==1 and is_extra_ball==False and game.num_players>1}: call_player1up
+    ball_started{player==2 and is_extra_ball==False}: call_player2up
+    player_added{num==2}: call_player2
+    ball_started{player==3 and is_extra_ball==False}: call_player3up
+    player_added{num==3}: call_player3
+    ball_started{player==4 and is_extra_ball==False}: call_player4up
+    player_added{num==4}: call_player4
+    ball_started{is_extra_ball==True}: call_shoot_again
+    ball_save_default_saving_ball: call_ball_save
+    ball_save_drops_complete_saving_ball: call_ball_save_drops_complete
+#    player_purple_bank_completed{current_player.purple_bank_completed>0 and current_player.extra_balls==0}: call_extra_ball_lit
+    extra_ball_awarded: call_extra_ball
+#    mode_wizard_started: call_wizard_mode
+
+sound_pools:
+#    sfx_test:
+#      track: sfx
+#      sounds:
+#        - "Sound-0x0297 - Player 1"
+#        - "Sound-0x0299 - Player 2"
+#        - "Sound-0x0218 - Player 3"
+#        - "Sound-0x0216 - Player 4"
+#        - "Sound-0x0165 - Gunshot"
+#        - "Sound-0x0162 - Gong"
+#        - "Sound-0x0159 - Ding"
+#        - "Sound-0x0157 - Honk"
+#        - "Sound-0x0154 - Zwam"
+#        - "Sound-0x0153 - Fading Thing"
+#        - "Sound-0x0143 - Ding"
+#        - "Sound-0x010E - Electric Guitar"
+#        - "Sound-0x00A9 - Electric Guitar 2"
+#    sfx_10_point:
+#      track: sfx
+#      sounds:
+#        - "0x08 - Rock Encore"
+#    sfx_rollunder:
+#      track: sfx
+#      sounds:
+#        - "0x0A - Rock Encore"
+#    sfx_letter:
+#      track: sfx
+#      sounds:
+#        - "Sound-0x0130 - Thud2"
+#    sfx_top_rollover_lit:
+#      track: sfx
+#      sounds:
+#        - "0x12 - Rock Encore"
+#    sfx_top_rollover_unlit:
+#      track: sfx
+#      sounds:
+#        - "0x12 - Rock Encore"
+#    sfx_letter_rollover_lit:
+#      track: sfx
+#      sounds:
+#        - "0x09 - Rock Encore"
+#    sfx_letter_rollover_unlit:
+#      track: sfx
+#      sounds:
+#        - "0x09 - Rock Encore"
+#    sfx_letter_reset_lit:
+#      track: sfx
+#      sounds:
+#        - "0x05 - Rock Encore"
+#    sfx_letter_reset_unlit:
+#      track: sfx
+#      sounds:
+#        - "0x05 - Rock Encore"
+#    sfx_spinner_lit:
+#      track: sfx
+#      simultaneous_limit: 1
+#      sounds:
+#        - "0x18 - Rock Encore"
+#        - "0x19 - Rock Encore"
+#        - "0x1A - Rock Encore"
+#        - "0x1B - Rock Encore"
+#        - "0x1C - Rock Encore"
+#        - "0x1D - Rock Encore"
+    sfx_spinner:
+      track: sfx
+      simultaneous_limit: 16
+      sounds:
+        - "totan_sitar1"
+        - "totan_sitar2"
+        - "totan_sitar3"
+        - "totan_sitar4"
+        - "totan_sitar5"
+        - "totan_sitar6"
+        - "totan_sitar7"
+        - "totan_sitar8"
+        - "totan_sitar9"
+        - "totan_sitar10"
+        - "totan_sitar11"
+        - "totan_sitar12"
+        - "totan_sitar13"
+        - "totan_sitar14"
+        - "totan_sitar15"
+        - "totan_sitar14"
+        - "totan_sitar13"
+        - "totan_sitar12"
+        - "totan_sitar11"
+        - "totan_sitar10"
+        - "totan_sitar9"
+        - "totan_sitar8"
+        - "totan_sitar7"
+        - "totan_sitar6"
+        - "totan_sitar5"
+        - "totan_sitar4"
+        - "totan_sitar3"
+        - "totan_sitar2"
+    sfx_drop:
+      track: sfx
+      type: random
+      sounds:
+        - "totan_swords"
+        - "totan_swords2"
+        - "totan_swords3"
+    sfx_pop:
+      track: sfx
+      type: random
+      sounds:
+        - "totan_swords"
+        - "totan_swords2"
+        - "totan_swords3"
+    sfx_target:
+      track: sfx
+      type: random
+      sounds:
+#        - "totan_gong"
+        - "totan_swords"
+        - "totan_swords2"
+        - "totan_swords3"
+    sfx_10pt:
+      track: sfx
+      type: random
+      sounds:
+        - "totan_swords"
+        - "totan_swords2"
+        - "totan_swords3"
+    sfx_rollover:
+      track: sfx
+      type: random
+      sounds:
+        - "totan_swords"
+        - "totan_swords2"
+        - "totan_swords3"
+#    sfx_upper_drop_lit:
+#      track: sfx
+#      sounds:
+#        - "0x06 - Rock Encore"
+#    sfx_upper_drop_unlit:
+#      track: sfx
+#      sounds:
+#        - "0x06 - Rock Encore"
+#    sfx_lower_drop_lit:
+#      track: sfx
+#      sounds:
+#        - "0x1B - Rock Encore"
+#    sfx_lower_drop_unlit:
+#      track: sfx
+#      sounds:
+#        - "0x06 - Rock Encore"
+#    sfx_drain:
+#      track: sfx
+#      sounds:
+#        - "Sound-0x0119 - Drain"
+#    sfx_upper_rollover:
+#      track: sfx
+#      sounds:
+#        - "0x13 - Rock Encore"
+#    call_player1:
+#      track: voice
+#      sounds:
+#        - "Sound-0x0297 - Player 1"
+#    call_player2:
+#      track: voice
+#      sounds:
+#        - "Sound-0x0299 - Player 2"
+#    call_player3:
+#      track: voice
+#      sounds:
+#        - "Sound-0x0218 - Player 3"
+    call_player1:
+      track: voice
+      sounds:
+        - "totan_player1"
+    call_player2:
+      track: voice
+      sounds:
+        - "totan_player2"
+    call_player3:
+      track: voice
+      sounds:
+        - "totan_player3"
+    call_player4:
+      track: voice
+      sounds:
+        - "totan_player4"
+    call_player1up:
+      track: voice
+      sounds:
+        - "totan_player1_up"
+    call_player2up:
+      track: voice
+      sounds:
+        - "totan_player2_up"
+    call_player3up:
+      track: voice
+      sounds:
+        - "totan_player3_up"
+    call_player4up:
+      track: voice
+      sounds:
+        - "totan_player4_up"
+
+#    call_bonus_x:
+#      track: voice
+#      type: random
+#      sounds:
+#        - "Sound-0x0342 - Bonus X"
+#        - "Sound-0x0341 - Bonus X"
+#        - "Sound-0x033A - Bonus X"
+#        - "Sound-0x033B - Bonus X"
+    call_tilt_warning:
+      track: voice
+      type: random
+      sounds:
+        - "totan_look_out"
+    call_tilt:
+      track: voice
+      type: random
+      sounds:
+        - "totan_oh_my"
+        - "totan_powerful"
+        - "totan_hahaha"
+        - "totan_hahaha2"
+    call_2x: 
+      track: voice
+      type: random
+      sounds:
+        - "totan_oh_my"
+        - "totan_you_did_it"
+    call_scene_completed:
+      track: voice
+      type: random
+      sounds:
+        - "totan_glorius"
+        - "totan_amazing"
+        - "totan_amazing2"
+        - "totan_haha_yes"
+        - "totan_hahaha"
+        - "totan_hahaha2"
+        - "totan_hero"
+        - "totan_marvelous"
+        - "totan_wonderful"
+        - "totan_wonderful2"
+        - "totan_wonderful3"
+        - "totan_wow"
+#    call_drain:
+#      track: voice
+#      type: random
+#      sounds:
+#        - "Sound-0x0179 - Cheap Drain"
+    call_extra_ball_lit:
+      track: voice
+      type: random
+      sounds:
+        - "totan_extra_ball_lit"
+        - "totan_extra_ball_lit2"
+    call_extra_ball:
+      track: voice
+      type: random
+      sounds:
+        - "totan_extra_ball"
+    call_shoot_again:
+      track: voice
+      type: random
+      sounds:
+        - "totan_shoot_again"
+        - "totan_shoot_again2"
+        - "totan_shoot_again3"
+    call_ball_save:
+      track: voice
+      type: random
+      sounds:
+        - "totan_fly"
+        - "totan_i_will_help_you"
+    call_ball_save_drops_complete:
+      track: voice
+      sounds:
+        - "totan_earned_this_one"
+    call_start_1p:
+      track: voice
+      type: random
+      sounds:
+       - "totan_tales_begin"

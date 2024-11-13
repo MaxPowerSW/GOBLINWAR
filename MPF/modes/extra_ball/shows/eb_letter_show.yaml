@@ -1,0 +1,27 @@
+#show_version=6
+##! show: eb_letter_show
+- time: 0
+  lights:
+    l_rock_r: on
+    l_roll_r: on
+    l_rock_k: off
+    l_roll_l2: off
+- time: +125ms
+  lights:
+    l_rock_r: off
+    l_roll_r: off
+    l_rock_o: on
+    l_roll_o: on
+- time: +125ms
+  lights:
+    l_rock_o: off
+    l_roll_o: off
+    l_rock_c: on
+    l_roll_l1: on
+- time: +125ms
+  lights:
+    l_rock_c: off
+    l_roll_l1: off
+    l_rock_k: on
+    l_roll_l2: on
+- time: +125ms

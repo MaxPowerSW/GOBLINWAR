@@ -1,0 +1,20 @@
+#config_version=6
+
+hardware:
+# dev
+#    platform: virtual_pinball
+# machine (APC)
+    platform: lisy
+
+lisy:
+    connection: serial
+    port: com3
+    baud: 115200
+
+window:
+   source_display: display_lcd
+# cabinet monitor
+   fullscreen: true
+   show_cursor: false
+   width: 1920
+   height: 1080

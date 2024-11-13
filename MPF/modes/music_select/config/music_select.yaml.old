@@ -1,0 +1,163 @@
+#config_version=5
+
+mode:
+    start_events: ball_starting{current_player.ball==1} #TODO: lock the player into the music choice after the 1st ball
+    stop_events: player_sw_count{current_player.sw_count>0} # balldevice_playfield_ball_enter
+    priority: 1000
+
+
+variable_player:
+# initialize variables
+    ball_started{current_player.ball==1}:
+        music_type:
+          int: 0
+          action: set
+        music_type_str: TEST
+#        sw_count:
+#          int: 0
+#          action: set
+    s_left_flipper_active:
+        music_type: -1
+    s_right_flipper_active:
+        music_type: 1
+
+#event_player:
+#    upper_drops_reset:
+#      shot_upper_drop_1.advance_state
+
+#    top_rollovers_complete:
+    
+#    bonus_multiplier_hit:
+#    shot_upper_drop_4_flashing_hit:
+#        upper_drop_level: 1
+
+#state_machines:
+#  bonus_mult_state:
+#    states:
+#      start:
+#        label: Start state
+#    transitions:
+
+#  bonus_state:
+#    states:
+#      start:
+#        label: Start state
+#        show_tokens: l_rock_r, l_rock_o, l_rock_c, l_rock_k
+#      step1:
+#        label: ROCK - R
+#        show_when_active:
+#          show: on
+#          show_tokens: l_rock_r
+#        events_when_started: step1_start
+#        events_when_stopped: step1_stop
+#      step2:
+#        label: ROCK - O
+#        show_when_active:
+#          show: on
+#          show_tokens: l_rock_o
+#        events_when_started: step2_start
+#        events_when_stopped: step2_stop
+#      step3:
+#        label: ROCK - C
+#        show_when_active:
+#          show: on
+#          show_tokens: l_rock_c
+#        events_when_started: step3_start
+#        events_when_stopped: step3_stop
+#      step4:
+#        label: ROCK - K
+#        show_when_active:
+#          show: on
+#          show_tokens: l_rock_k
+#        events_when_started: step4_start
+#        events_when_stopped: step4_stop
+#    transitions:
+
+# display related stuff
+
+#widget_player:
+#  mode_base_started:
+#    vid_bg:
+#        type: video
+#        video: wang_chung
+#        end_behavior: loop
+#        volume: 0.0
+#        height: 1080
+#        width: 1920
+#        target: display_lcd
+
+slide_player:
+  mode_music_select_started:
+    widgets:
+      - type: text
+        text: "Select Music Type:"
+        number_grouping: true
+        min_digits: 2
+        font_size: 100
+        anchor_y: top
+        y: 800
+      - type: text
+        text: TESTING
+        number_grouping: true
+        min_digits: 2
+        font_size: 300
+        anchor_y: top
+        y: 400
+      - type: text
+        text: PLAYER (number)
+        y: 10
+        x: 10
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 10
+        x: right-10
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+# debug info
+      - type: text
+        text: "MUSIC TYPE: (music_type)"
+        x: 0
+        y: 1050
+        font_size: 50
+        anchor_x: left
+      - type: text
+        text: "MUSIC TYPE STR: (music_type_str)"
+        x: 0
+        y: 1000
+        font_size: 50
+        anchor_x: left
+      - type: text
+        text: "TEST HITS: (sling_hit_count)"
+        x: 0
+        y: 950
+        font_size: 50
+        anchor_x: left
+      - type: text
+        text: "TEST HITS: (drop_count)"
+        x: 0
+        y: 900
+        font_size: 50
+        anchor_x: left
+      - type: text
+        text: "SPINNER COUNT: (spinner_count)"
+        x: 0
+        y: 850
+        font_size: 50
+        anchor_x: left
+      - type: text
+        text: "SWITCH COUNT: (sw_count)"
+        x: 0
+        y: 800
+        font_size: 50
+        anchor_x: left
+#      - type: video
+#        video: wang_chung
+#        end_behavior: loop
+#        volume: 0.0
+#        height: 1080
+#        width: 1920
+#        target: display_lcd

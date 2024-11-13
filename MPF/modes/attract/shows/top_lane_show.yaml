@@ -1,0 +1,17 @@
+#show_version=6
+- duration: 1
+  lights:
+    l_white_rollover: 0
+    l_red_rollover: ff
+- duration: 1
+  lights:
+    l_red_rollover: 0
+    l_purple_rollover: ff
+- duration: 1
+  lights:
+    l_purple_rollover: 0
+    l_top_yellow_rollover: ff
+- duration: 1
+  lights:
+    l_top_yellow_rollover: 0
+    l_white_rollover: ff
