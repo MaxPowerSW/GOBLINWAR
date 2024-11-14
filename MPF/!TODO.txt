@@ -1,11 +1,29 @@
+Setup:
+-Finish switches
+-Set up trough ball device
+-Modify VPX table to hook up to MPF, trigger the flipper switch inputs
+-Update debug info widget
+
+
 Implement base firepower rules:
+-Page 10 of the manual has the point values for each switch
+-Page 2 has most rules:
+-Things that advance bonus value:
+	-Fire rollovers when not lit
+	-Flashing 1-6 targets
+	-left and right inside rollovers - advance +3 when lit
+	-left and right outside rollovers
+-Bonus Multiplier: Complete FIRE rollovers.  Completing rollovers also lights FIRE insert.  Rollovers have lane change.
+-FIREPOWER: making 3 power targets scores 10k and lites POWER insert, left and right inside rollovers, and turns on kickback.
+-Liting FIRE and POWER inserts scores and advances FIREPOWER bonus (5k or lit values 10k, 30k, 50k)  Collecting 30k or 50k lights outlane special
+-Targets 1-6: All targets lights ball save kicker, flashes one or two eject holes, lights the spinner, and alterntaely lights two jet bumpers.  All targets twice lights all pop bumpers
+-Eject holes: Making eject hole when flashing locks a ball.  Locking all 3 balls initiates multiball.
+	-To minimize multiple player interaction, lit and flashing eject holes are reallocated from ball to ball as required.  Flashing lamp to empty eject hole is possible, lit lamp to occupied eject hole is possible.
+-Extra Ball: Lighting 5X (adjustment) or making FIRE with 5X lit lights center POWER target for extra ball.
 
+-Game state memory:
+-FIRE lanes, FIRE insert, POWER insert, POWER targets, FIREPOWER bonus lamps (adjustable), front target arrows (adjustable), eject hole lamps
 
-
-
-
-
-
-Goblin War rules:
+GOBLIN WAR rules:
 -Select enemy at the beginning of the ball
 -Targets 1-6 and side correspond to enemies on screen
