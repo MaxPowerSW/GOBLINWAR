@@ -77,6 +77,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{E08F8D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9C79A461-B01D-4247-A96C-EC8167437F70}"
 	ProjectSection(SolutionItems) = preProject
+		!TODO.txt = !TODO.txt
 		EyeOfTheTigerMovie.txt = EyeOfTheTigerMovie.txt
 		rock - cab.bat = rock - cab.bat
 		rock - vpx.bat = rock - vpx.bat
@@ -126,6 +127,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{4A6CBF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{95BE3680-0619-425E-BF3A-9997DEBF0BEB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "enemy_select", "enemy_select", "{4AA0060A-48DC-4032-9AB3-6DB76883854C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config", "config", "{751FF38C-A144-4DB8-B622-29246E670113}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -161,6 +166,8 @@ Global
 		{30593FCD-87C2-47AD-88E0-EBCADD9778F9} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
 		{4A6CBF0F-90F7-4A76-8C5C-A22D7485A9A1} = {30593FCD-87C2-47AD-88E0-EBCADD9778F9}
 		{95BE3680-0619-425E-BF3A-9997DEBF0BEB} = {9B3BD584-6F58-4515-8942-94C4D5C2F5DB}
+		{4AA0060A-48DC-4032-9AB3-6DB76883854C} = {455F7104-BEAA-4AA5-BBCB-D5ED74E4F294}
+		{751FF38C-A144-4DB8-B622-29246E670113} = {4AA0060A-48DC-4032-9AB3-6DB76883854C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C59D0D76-9F32-4EE9-B771-C8639384E862}

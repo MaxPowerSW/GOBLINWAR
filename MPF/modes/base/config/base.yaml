@@ -12,13 +12,6 @@ ball_saves:
 #    disable_events: 
 #    timer_start_events: player_sw_count{current_player.ball_save_enabled==0 and current_player.pf_settled==1} #, playfield_active
     balls_to_save: 1
-  drops_complete:
-    active_time: 10s
-    hurry_up_time: 2s
-    grace_period: 2s
-    enable_events: player_all_banks_completed{current_player.all_banks_completed==1 and settings.tournament_mode==0}
-#    timer_start_events: all_drops_completed
-    balls_to_save: 1
 
 extra_balls:
     purple_eb:
@@ -271,6 +264,9 @@ shots:
 #      switch: s_74_rollover_buttons
 
 shot_groups:
+#GOBLIN WAR
+
+#SINBAD
     drop_awards:
       shots: shot_lower_target, shot_upper_target, shot_bottom_yellow_rollover, shot_bottom_left_yellow_rollover, shot_right_yellow_rollover, shot_red_rollover, shot_purple_rollover, shot_yellow_rollover, shot_white_rollover
       reset_events: ball_ended

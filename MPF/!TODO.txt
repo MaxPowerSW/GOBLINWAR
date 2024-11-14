@@ -1,0 +1,11 @@
+Implement base firepower rules:
+
+
+
+
+
+
+
+Goblin War rules:
+-Select enemy at the beginning of the ball
+-Targets 1-6 and side correspond to enemies on screen

@@ -1,0 +1,595 @@
+#config_version=6
+
+# AUTOMATED CODE DO NOT MODIFY!
+
+mode:
+    start_events: ball_starting{current_player.score == 0} #TODO: lock the player into the music choice after the 1st ball
+    stop_events: player_sw_count{current_player.sw_count > 0} # balldevice_playfield_ball_enter
+    priority: 1000
+    code: mpf.modes.carousel.code.carousel.Carousel
+
+mode_settings:
+    next_item_events: s_02_right_flipper_active
+    previous_item_events: s_01_left_flipper_active
+    selectable_items: 80s_Rock, 80s_Pop, 80s_New_Wave, 80s_Hard_Rock, 80s_Funk, 80s_Rap, 80s_Metal, 80s_Weird_Al
+
+slide_player:
+    music_select_Megamix_highlighted: select_Megamix
+    music_select_80s_Alternative_highlighted: select_80s_Alternative
+    music_select_80s_Funk_highlighted: select_80s_Funk
+    music_select_80s_Hard_Rock_highlighted: select_80s_Hard_Rock
+    music_select_80s_Metal_highlighted: select_80s_Metal
+    music_select_80s_New_Wave_highlighted: select_80s_New_Wave
+    music_select_80s_Pop_highlighted: select_80s_Pop
+    music_select_80s_Punk_highlighted: select_80s_Punk
+    music_select_80s_Rap_highlighted: select_80s_Rap
+    music_select_80s_Rock_highlighted: select_80s_Rock
+    music_select_80s_Weird_Al_highlighted: select_80s_Weird_Al
+    music_select_attract_highlighted: select_attract
+    music_select_Retro_highlighted: select_Retro
+
+slides:
+  select_Megamix:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "Megamix"
+        font_name: Lazer84
+        font_size: 250
+        y: center
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_80s_Alternative:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's Alternative"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_80s_Funk:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's Funk"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_80s_Hard_Rock:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's Hard Rock"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_80s_Metal:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's Metal"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_80s_New_Wave:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's New Wave"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_80s_Pop:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's Pop"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_80s_Punk:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's Punk"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_80s_Rap:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's Hip Hop"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_80s_Rock:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's Rock"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+      - type: text
+        text: "(player1|score)"
+        x: right - 50
+        y: top - 50
+        font_name: VCR OSD
+        font_size: 50
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player2|score)" # 
+        x: right - 50
+        y: top - 100
+        font_name: VCR OSD
+        font_size: 50
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player3|score)"
+        x: right - 50
+        y: top - 150
+        font_size: 50
+        font_name: VCR OSD
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+      - type: text
+        text: "(player4|score)"
+        x: right - 50
+        y: top - 200 
+        font_size: 50
+        font_name: VCR OSD
+        anchor_x: right
+        number_grouping: true
+        min_digits: 2
+    transition:
+      type: none
+  select_80s_Weird_Al:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "80's Weird Al"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_attract:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "attract"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_high_score:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "high score"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_Retro:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "Retro"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+  select_silence:
+    widgets:
+      - type: text
+        text: "SELECT MUSIC TYPE:"
+        font_size: 100
+        font_name: VCR OSD
+        y: center + 300
+        anchor_y: top
+      - type: text
+        text: "silence"
+        font_name: Lazer84
+        font_size: 250
+        color: FF0000
+      - type: text
+        text: PLAYER (number)
+        y: 50
+        x: 50
+        font_name: VCR OSD
+        font_size: 100
+        anchor_x: left
+        anchor_y: bottom
+      - type: text
+        text: BALL (ball)
+        y: 50
+        x: right - 50
+        anchor_x: right
+        anchor_y: bottom
+        font_size: 100
+        font_name: VCR OSD
+    transition:
+      type: none
+
+variable_player:
+  music_select_Megamix_highlighted:
+    music_type:
+      int: 0
+      action: set
+  music_select_80s_Alternative_highlighted:
+    music_type:
+      int: 1
+      action: set
+  music_select_80s_Funk_highlighted:
+    music_type:
+      int: 2
+      action: set
+  music_select_80s_Hard_Rock_highlighted:
+    music_type:
+      int: 3
+      action: set
+  music_select_80s_Metal_highlighted:
+    music_type:
+      int: 4
+      action: set
+  music_select_80s_New_Wave_highlighted:
+    music_type:
+      int: 5
+      action: set
+  music_select_80s_Pop_highlighted:
+    music_type:
+      int: 6
+      action: set
+  music_select_80s_Punk_highlighted:
+    music_type:
+      int: 7
+      action: set
+  music_select_80s_Rap_highlighted:
+    music_type:
+      int: 8
+      action: set
+  music_select_80s_Rock_highlighted:
+    music_type:
+      int: 9
+      action: set
+  music_select_80s_Weird_Al_highlighted:
+    music_type:
+      int: 10
+      action: set
+  music_select_attract_highlighted:
+    music_type:
+      int: 11
+      action: set
+  music_select_high_score_highlighted:
+    music_type:
+      int: 12
+      action: set
+  music_select_Retro_highlighted:
+    music_type:
+      int: 13
+      action: set
+  music_select_silence_highlighted:
+    music_type:
+      int: 14
+      action: set

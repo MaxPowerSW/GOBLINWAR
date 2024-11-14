@@ -43,61 +43,133 @@ playfields:
 #        activation_switch: s_02_right_flipper
 
 switches:
-# switch 00 is the test switch but should put the LISY board into test mode
-    s_00_test: #left coin chute
+# switch 00 doesn't exist but MPF crashes if it receives it and it's not defined
+    s_00_unused:
         number: 0
-        tags: service_enter
-#        ignore_window_ms: 100
 # cabinet buttons
-    s_01_left_flipper: #left coin chute
-        number: 1 
-        tags: left_flipper, service_down
+    s_01_cab_tilt:
+        number: 1
+        tags: tilt_warning, playfield_active
         ignore_window_ms: 100
-    s_02_right_flipper: #right coin chute
+    s_02_ball_tilt: #not used
         number: 2
-        tags: right_flipper, service_up
+#        tags: tilt_warning, playfield_active
         ignore_window_ms: 100
     s_03_start:
         number: 3 # should be 10, 47 for VPX
         tags: start, service_esc
         ignore_window_ms: 100
-    s_04_cab_tilt:
+    s_04_right_flipper: #right coin chute
         number: 4
-        tags: tilt_warning, playfield_active
+        tags: right_flipper, service_up
         ignore_window_ms: 100
-    s_56_reset: # located on the LISY board
-        number: 56
-#    s_76_cab_slam:
-#        number: 76
-#        tags: service_esc
-#        ignore_window_ms: 100
+    s_05_center_coin:
+        number: 5
+        tags: service_enter
+        ignore_window_ms: 100
+    s_06_left_flipper: #left coin chute
+        number: 6
+        tags: left_flipper, service_down
+        ignore_window_ms: 100
+    s_07_slam_tilt: #not used
+        number: 7
+#        tags: tilt_warning, playfield_active
+        ignore_window_ms: 100
+    s_08_high_score_reset: #not used?
+        number: 8
+        ignore_window_ms: 100
 # playfield switches
-    s_10_spinner:
+    s_09_outhole:
+        number: 9
+        ignore_window_ms: 500
+    s_10_left_outside_rollover:
         number: 10
         tags: playfield_active
-        ignore_window_ms: 15
-    s_14_pop_bumper: # 2 switches
+        ignore_window_ms: 100
+    s_11_left_inside_rollover:
+        number: 11
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_12_left_sling:
+        number: 12
+        tags: playfield_active
+        ignore_window_ms: 250
+    s_13_left_eject_hole:
+        number: 13
+        tags: playfield_active
+        ignore_window_ms: 250
+    s_14_upper_middle_left_standup:
         number: 14
         tags: playfield_active
+        ignore_window_ms: 100
+    s_15_spinner:
+        number: 15
+        tags: playfield_active
         ignore_window_ms: 15
-    s_20_white_drop_target:
+    s_16_top_left_standup:
+        number: 16
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_17_target_1:
+        number: 17
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_18_target_2:
+        number: 18
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_19_target_3:
+        number: 19
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_20_not_used:
         number: 20
-        ignore_window_ms: 500ms
-    s_21_yellow_drop_target1:
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_21_target_4:
         number: 21
-        ignore_window_ms: 500ms
-    s_24_yellow_drop_target2:
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_22_target_5:
+        number: 22
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_23_target_6:
+        number: 23
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_24_not_used:
         number: 24
-        ignore_window_ms: 500ms
-    s_30_purple_drop_target1:
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_25_bottom_left_pop_bumper:
+        number: 25
+        tags: playfield_active
+        ignore_window_ms: 15
+    s_26_top_left_pop_bumper:
+        number: 26
+        tags: playfield_active
+        ignore_window_ms: 15
+    s_27_top_right_pop_bumper:
+        number: 27
+        tags: playfield_active
+        ignore_window_ms: 15
+    s_28_bottom_right_pop_bumper:
+        number: 28
+        tags: playfield_active
+        ignore_window_ms: 15
+    s_29_top_center_target:
+        number: 29
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_30_right_eject_hole:
         number: 30
-        ignore_window_ms: 500ms
-    s_31_purple_drop_target2:
-        number: 31
-        ignore_window_ms: 500ms
-    s_34_purple_drop_target3:
-        number: 34
-        ignore_window_ms: 500ms
+        tags: playfield_active
+        ignore_window_ms: 250
+    s_31_upper_top_right_standup:
+        number: 14
+        tags: playfield_active
+        ignore_window_ms: 100
     s_40_top_left_yellow_rollover: #2 switches
         number: 40
         tags: playfield_active
@@ -145,9 +217,7 @@ switches:
 #        tags: playfield_active
 #        ignore_window_ms: 100
 #direct switches
-    s_66_outhole:
-        number: 66
-        ignore_window_ms: 500
+
     
 
 timed_switches:
@@ -166,85 +236,53 @@ coils:
 #        allow_enable: yes
 # controlled solenoids
 # playfield solenoids
-    c_01_trough_eject:
+    c_trough_kicker:
         number: 1
         default_pulse_ms: 45
-    c_06_1_2_bank_reset:
+    c_left_eject_hole:
+        number: 4
+        default_pulse_ms: 45
+    c_right_eject_hole:
+        number: 5
+        default_pulse_ms: 45
+    c_top_eject_hole:
         number: 6
-        default_pulse_ms: 60
-    c_07_3_bank_reset:
+        default_pulse_ms: 45
+    c_ball_save:
         number: 7
         default_pulse_ms: 60
-    c_08_4_bank_reset:
+    c_trough_eject:
         number: 8
-        default_pulse_ms: 60
-# cabinet solenoids 
-    c_02_knocker:
-        number: 2 # should be 9, don't have 2nd bank yet
         default_pulse_ms: 45
-    c_03_10_chime:
-        number: 3
-        default_pulse_ms: 60
-    c_04_100_chime:
-        number: 4
-        default_pulse_ms: 60
-    c_05_1000_chime:
-        number: 5
-        default_pulse_ms: 60
-
-#score_queues:
-#  chimes_score:
-#    chimes: c_05_1000_chime, c_04_100_chime, c_03_10_chime,  None
-#  score:
-#    chimes: c_05_1000_chime, c_04_100_chime, c_03_10_chime,  None
+    c_knocker:
+        number: 14
+        default_pulse_ms: 45
+    c_flash_lamps:
+        number: 15
+        default_pulse_ms: 30
+    c_top_left_pop_bumper:
+        number: 17
+        default_pulse_ms: 45
+    c_bottom_left_pop_bumper:
+        number: 18
+        default_pulse_ms: 45
+    c_top_right_pop_bumper:
+        number: 19
+        default_pulse_ms: 45
+    c_bottom_right_pop_bumper:
+        number: 20
+        default_pulse_ms: 45
+    c_right_sling:
+        number: 21
+        default_pulse_ms: 45
+    c_left_sling:
+        number: 22
+        default_pulse_ms: 45
+# is solenoid 23 a relay to enable flippers?
 
 # uncontrolled coils
 #autofire_coils:
 # pop bumpers are EM style so no CPU control
-
-#drop_targets:
-#    d_white_drop_target:
-#        switch: s_20_white_drop_target
-#    d_yellow_drop_target_1:
-#        switch: s_21_yellow_drop_target1
-#    d_yellow_drop_target_2:
-#        switch: s_24_yellow_drop_target2
-#    d_purple_drop_target_1:
-#        switch: s_30_purple_drop_target1
-#    d_purple_drop_target_2:
-#        switch: s_31_purple_drop_target2
-#    d_purple_drop_target_3:
-#        switch: s_34_purple_drop_target3
-#    d_red_drop_target_1:
-#        switch: s_50_red_drop_target1
-#    d_red_drop_target_2:
-#        switch: s_51_red_drop_target2
-#    d_red_drop_target_3:
-#        switch: s_60_red_drop_target3
-#    d_red_drop_target_4:
-#        switch: s_61_red_drop_target4
-
-#drop_target_banks:
-#    d_red_target_bank:
-#        drop_targets: d_red_drop_target_1, d_red_drop_target_2, d_red_drop_target_3, d_red_drop_target_4
-#        reset_coils: c_08_4_bank_reset
-#        reset_on_complete: 500ms
-#    d_purple_target_bank:
-#        drop_targets: d_purple_drop_target_1, d_purple_drop_target_2, d_purple_drop_target_3
-#        reset_coils: c_07_3_bank_reset
-#        reset_on_complete: 500ms
-#    d_yellow_target_bank:
-#        drop_targets: d_yellow_drop_target_1, d_yellow_drop_target_2
-#        reset_coils: c_06_1_2_bank_reset
-#        reset_on_complete: 500ms
-#    d_white_target_bank:
-#        drop_targets: d_white_drop_target
-#        reset_coils: c_06_1_2_bank_reset
-#        reset_on_complete: 500ms
-#    d_all_banks:
-#        drop_targets: d_white_drop_target, d_yellow_drop_target_1, d_yellow_drop_target_2, d_purple_drop_target_1, d_purple_drop_target_2, d_purple_drop_target_3, d_red_drop_target_1, d_red_drop_target_2, d_red_drop_target_3, d_red_drop_target_4
-#        reset_coils: c_06_1_2_bank_reset, c_07_3_bank_reset, c_08_4_bank_reset
-#        reset_on_complete: 500ms
 
 # playfield controlled lights
 # Note: Gottlieb is enumerated 0 based.  These are 1 based.
@@ -329,17 +367,15 @@ ball_devices:
       
 # modes
 modes:
+# core modes
   - service
   - service_dmd
   - base
-#  - extra_ball
-#  - newrules
-#  - music_select
   - bonus
   - tilt
   - high_score
-#  - skill_shot
-#  - wizard
+# feature modes
+  - enemy_select
 
 settings:
 #  warnings_to_tilt:
@@ -386,7 +422,7 @@ settings:
      values:
         0: "Off"
         1: "On"
-     default: 0
+     default: 1 #Set to 0 outside of testing
      key_type: int
      sort: 631
      settingType: game
