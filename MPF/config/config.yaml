@@ -167,58 +167,65 @@ switches:
         tags: playfield_active
         ignore_window_ms: 250
     s_31_upper_top_right_standup:
-        number: 14
+        number: 31
+        tags: playfield_active
+        ignore_window_ms: 100   
+    s_32_f_rollover:
+        number: 32
         tags: playfield_active
         ignore_window_ms: 100
-    s_40_top_left_yellow_rollover: #2 switches
+    s_33_i_rollover:
+        number: 33
+        tags: playfield_active
+        ignore_window_ms: 100   
+    s_34_r_rollover:
+        number: 34
+        tags: playfield_active
+        ignore_window_ms: 100   
+    s_35_e_rollover:
+        number: 35
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_36_top_eject_hole:
+        number: 36
+        tags: playfield_active
+        ignore_window_ms: 250
+    s_37_lower_top_right_standup:
+        number: 37
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_38_middle_right_standup:
+        number: 38
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_39_top_power_target:
+        number: 39
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_40_middle_power_target:
         number: 40
         tags: playfield_active
-        ignore_window_ms: 100
-    s_41_white_rollover_and_target:
+        ignore_window_ms: 100 
+    s_41_bottom_power_target:
         number: 41
         tags: playfield_active
         ignore_window_ms: 100
-    s_44_right_yellow_rollovers: # 2 switches
+    s_42_right_sling:
+        number: 42
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_43_right_inside_rollover:
+        number: 43
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_44_right_outside_rollover:
         number: 44
         tags: playfield_active
         ignore_window_ms: 100
-    s_50_red_drop_target1:
-        number: 50
-        ignore_window_ms: 500ms
-    s_51_red_drop_target2:
-        number: 51
-        ignore_window_ms: 500ms
-    s_54_10_pt_switches: # 8 switches
-        number: 54
+    s_45_right_flipper_lane_change_switch: #Switch on the flipper EOS stack?  Not used.
+        number: 45
         tags: playfield_active
-        ignore_window_ms: 100
-    s_60_red_drop_target3:
-        number: 60
-        ignore_window_ms: 500ms
-    s_61_red_drop_target4:
-        number: 61
-        ignore_window_ms: 500ms
-# is this debounce option needed for the 2 targets?
-#    s_43_spot_target:
-#        number: 43
-#        tags: playfield_active
-#        debounce: quick
-#        ignore_window_ms: 250ms
-    s_70_red_rollover:
-        number: 70
-        tags: playfield_active
-        ignore_window_ms: 100
-    s_71_purple_rollover:
-        number: 71
-        tags: playfield_active
-        ignore_window_ms: 100
-#    s_74_rollover_buttons: # 4 switches
-#        number: 74
-#        tags: playfield_active
-#        ignore_window_ms: 100
-#direct switches
-
-    
+        ignore_window_ms: 100 
 
 timed_switches:
   game_cancel:
@@ -285,78 +292,107 @@ coils:
 # pop bumpers are EM style so no CPU control
 
 # playfield controlled lights
-# Note: Gottlieb is enumerated 0 based.  These are 1 based.
 lights:
-# L0 is Game Over Relay
-# L1 is Tilt Relay
-    l_high_game_to_date:
-        number: 3
     l_shoot_again:
+        number: 1
+    l_ball_save:
+        number: 2
+    l_fire:
+        number: 3
+    l_power:
         number: 4
-    l_red_rollover:
+    l_f:
         number: 5
-    l_purple_rollover:
+    l_i:
         number: 6
-    l_top_yellow_rollover:
+    l_r:
         number: 7
-    l_bottom_left_yellow_rollover:
+    l_e:
         number: 8
-    l_white_rollover:
+    l_top_right_target:
         number: 9
-    l_top_white_rollover:
+    l_center_right_target:
         number: 10
-    l_bottom_white_target:
+    l_bottom_right_target:
         number: 11
-    l_not_used_1:
+    l_right_inside_rollover:
         number: 12
-    l_not_used_2:
+    l_left_inside_rollover:
         number: 13
-    l_advance_1:
-        number: 14
-    l_advance_2:
-        number: 15
-    l_advance_3:
-        number: 16
-    l_advance_4:
-        number: 17
-    l_advance_5:
-        number: 18
-    l_5x_bonus:
-        number: 19
-    l_4x_bonus:
-        number: 21
-    l_3x_bonus:
-        number: 20
-    l_2x_bonus:
-        number: 22
     l_1000_bonus:
-        number: 23
+        number: 14
     l_2000_bonus:
-        number: 24
+        number: 15
     l_3000_bonus:
-        number: 25
+        number: 16
     l_4000_bonus:
-        number: 26
+        number: 17
     l_5000_bonus:
-        number: 27
+        number: 18
     l_6000_bonus:
-        number: 28
+        number: 19
     l_7000_bonus:
-        number: 29
+        number: 21
     l_8000_bonus:
-        number: 30
+        number: 20
     l_9000_bonus:
-        number: 31
+        number: 22
+    l_23_not_used:
+        number: 23
     l_10000_bonus:
+        number: 24
+    l_20000_bonus:
+        number: 25
+    l_target_1:
+        number: 26
+    l_target_2:
+        number: 27
+    l_target_3:
+        number: 28
+    l_target_4:
+        number: 29
+    l_target_5:
+        number: 30
+    l_target_6:
+        number: 31
+    l_spinner:
         number: 32
-    l_right_yellow_rollover:
+    l_left_eject_hole:
         number: 33
-    l_bottom_yellow_rollover:
+    l_right_eject_hole:
         number: 34
-    l_not_used_3:
+    l_top_eject_hole:
         number: 35
-    l_not_used_4:
+    l_2x:
         number: 36
+    l_3x:
+        number: 37
+    l_4x:
+        number: 38
+    l_5x:
+        number: 39
+    l_extra_ball:
+        number: 40
+    l_10000_firepower_bonus:
+        number: 41
+    l_30000_firepower_bonus:
+        number: 42
+    l_50000_firepower_bonus:
+        number: 43
+    l_top_left_pop_bumper:
+        number: 44
+    l_top_right_pop_bumper:
+        number: 45
+    l_bottom_right_pop_bumper:
+        number: 46
+    l_bottom_left_pop_bumper:
+        number: 47
+    l_left_special:
+        number: 48
+    l_right_special:
+        number: 49
+    l_credits:
+        number: 56
 
 ball_devices:
     bd_trough:
@@ -364,6 +400,22 @@ ball_devices:
       eject_coil: c_01_trough_eject
       tags: trough, home, drain
       eject_coil_jam_pulse: 15ms
+    bd_left_eject:
+      ball_switches: s_13_left_eject_hole
+      eject_coil: c_01_trough_eject
+#      tags: trough, home, drain
+      eject_coil_jam_pulse: 15ms
+    bd_right_eject:
+      ball_switches: s_30_right_eject_hole
+      eject_coil: c_01_trough_eject
+#      tags: trough, home, drain
+      eject_coil_jam_pulse: 15ms
+    bd_top_eject:
+      ball_switches: s_36_top_eject_hole
+      eject_coil: c_top_eject_hole
+#      tags: trough, home, drain
+      eject_coil_jam_pulse: 15ms
+
       
 # modes
 modes:
