@@ -63,8 +63,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shows", "shows", "{C4A757BF
 		modes\attract\shows\bonus_light_show.yaml = modes\attract\shows\bonus_light_show.yaml
 		modes\attract\shows\bonus_mult_show.yaml = modes\attract\shows\bonus_mult_show.yaml
 		modes\attract\shows\bottom_lane_show.yaml = modes\attract\shows\bottom_lane_show.yaml
-		modes\attract\shows\front_target_show.yaml = modes\attract\shows\front_target_show.yaml
-		modes\attract\shows\side_target_show.yaml = modes\attract\shows\side_target_show.yaml
 		modes\attract\shows\top_lane_show.yaml = modes\attract\shows\top_lane_show.yaml
 	EndProjectSection
 EndProject

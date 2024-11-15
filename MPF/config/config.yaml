@@ -225,7 +225,60 @@ switches:
     s_45_right_flipper_lane_change_switch: #Switch on the flipper EOS stack?  Not used.
         number: 45
         tags: playfield_active
+        ignore_window_ms: 100
+    s_46_ball_shooter:
+        number: 46
+#        tags: playfield_active
+        ignore_window_ms: 100
+    s_47_playfield_tilt: #Not used.
+        number: 47
+        tags: playfield_active
         ignore_window_ms: 100 
+    s_48_lower_right_standup:
+        number: 48
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_49_center_middle_left_standup:
+        number: 49
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_50_lower_middle_left_standup:
+        number: 50
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_51_left_ball_trough:
+        number: 51
+#        tags: playfield_active
+        ignore_window_ms: 100
+    s_52_not_used:
+        number: 52
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_53_left_eject_rollover:
+        number: 53
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_54_right_eject_rollover:
+        number: 54
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_55_not_used:
+        number: 55
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_56_not_used:
+        number: 56
+        tags: playfield_active
+        ignore_window_ms: 100
+    s_57_right_ball_trough:
+        number: 57
+#        tags: playfield_active
+        ignore_window_ms: 100
+    s_58_center_ball_trough:
+        number: 58
+#        tags: playfield_active
+        ignore_window_ms: 100
+
 
 timed_switches:
   game_cancel:
@@ -395,27 +448,21 @@ lights:
         number: 56
 
 ball_devices:
+    bd_drain:
+      ball_switches: s_09_outhole
+      eject_coil: c_trough_kicker
+      eject_targets: bd_trough
+      tags: drain
     bd_trough:
-      ball_switches: s_66_outhole
-      eject_coil: c_01_trough_eject
-      tags: trough, home, drain
-      eject_coil_jam_pulse: 15ms
-    bd_left_eject:
-      ball_switches: s_13_left_eject_hole
-      eject_coil: c_01_trough_eject
-#      tags: trough, home, drain
-      eject_coil_jam_pulse: 15ms
-    bd_right_eject:
-      ball_switches: s_30_right_eject_hole
-      eject_coil: c_01_trough_eject
-#      tags: trough, home, drain
-      eject_coil_jam_pulse: 15ms
-    bd_top_eject:
-      ball_switches: s_36_top_eject_hole
-      eject_coil: c_top_eject_hole
-#      tags: trough, home, drain
-      eject_coil_jam_pulse: 15ms
-
+      ball_switches: s_51_left_ball_trough, s_58_center_ball_trough, s_57_right_ball_trough
+      eject_coil: c_trough_eject
+      eject_targets: bd_plunger_lane
+      tags: trough, home
+      eject_timeouts: 3s
+    bd_plunger_lane:
+      ball_switches: s_46_ball_shooter
+      mechanical_eject: true
+      eject_timeouts: 5s
       
 # modes
 modes:
@@ -427,7 +474,7 @@ modes:
   - tilt
   - high_score
 # feature modes
-  - enemy_select
+#  - enemy_select
 
 settings:
 #  warnings_to_tilt:

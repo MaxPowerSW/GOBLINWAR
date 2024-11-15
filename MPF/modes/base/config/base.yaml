@@ -53,18 +53,18 @@ show_player:
       action: stop
     ball_save_ending_show:
       action: stop
-  player_multiplier{current_player.multiplier==2}:
-    2x_playfield_show:
-      action: play
-  player_multiplier{current_player.multiplier<2}:
-    2x_playfield_show:
-      action: stop
-  award_bonus_value:
-    collect_bonus_show:
-      action: play
-  timer_timer_drops_complete_bonus_delay_complete:
-    collect_bonus_show:
-      action: stop
+#  player_multiplier{current_player.multiplier==2}:
+#    2x_playfield_show:
+#      action: play
+#  player_multiplier{current_player.multiplier<2}:
+#    2x_playfield_show:
+#      action: stop
+#  award_bonus_value:
+#    collect_bonus_show:
+#      action: play
+#  timer_timer_drops_complete_bonus_delay_complete:
+#    collect_bonus_show:
+#      action: stop
 #ball_save_disabled_show
 
 shows:
@@ -93,61 +93,35 @@ shows:
   2x_playfield_show:
     - time: 0
       lights:
-        l_2x_bonus: on
+        l_2x: on
     - time: +250ms
       lights:
-        l_2x_bonus: off
+        l_2x: off
     - time: +250ms
   3x_playfield_show:
     - time: 0
       lights:
-        l_3x_bonus: on
+        l_3x: on
     - time: +250ms
       lights:
-        l_3x_bonus: off
+        l_3x: off
     - time: +250ms
   4x_playfield_show:
     - time: 0
       lights:
-        l_4x_bonus: on
+        l_4x: on
     - time: +250ms
       lights:
-        l_4x_bonus: off
+        l_4x: off
     - time: +250ms
   5x_playfield_show:
     - time: 0
       lights:
-        l_5x_bonus: on
+        l_5x: on
     - time: +250ms
       lights:
-        l_5x_bonus: off
-    - time: +250ms
-  collect_bonus_show:
-    - time: 0
-      lights:
-        l_1000_bonus: on
-        l_2000_bonus: on
-        l_3000_bonus: on
-        l_4000_bonus: on
-        l_5000_bonus: on
-        l_6000_bonus: on
-        l_7000_bonus: on
-        l_8000_bonus: on
-        l_9000_bonus: on
-        l_10000_bonus: on
-    - time: +50ms
-      lights:
-        l_1000_bonus: off
-        l_2000_bonus: off
-        l_3000_bonus: off
-        l_4000_bonus: off
-        l_5000_bonus: off
-        l_6000_bonus: off
-        l_7000_bonus: off
-        l_8000_bonus: off
-        l_9000_bonus: off
-        l_10000_bonus: off
-    - time: +50ms    
+        l_5x: off
+    - time: +250ms 
 
 #timed_switches:
 #  flipper_cradle:
@@ -158,7 +132,14 @@ shows:
 
 shot_profiles:
     rollover_profile:
-      advance_on_hit: false
+      advance_on_hit: true
+      states:
+      - name: unlit
+        show: "off"
+      - name: lit
+        show: "on"
+    target_profile:
+      advance_on_hit: true
       states:
       - name: unlit
         show: "off"
@@ -178,99 +159,59 @@ shot_profiles:
 shots:
 #GOBLINWAR
     shot_spinner:
-      switch: s_10_spinner
-#SINBAD
-    shot_red_rollover:
-      switch: s_70_red_rollover
+      switch: s_15_spinner
+
+    shot_f_rollover:
+      switch: s_32_f_rollover
       profile: rollover_profile
-      advance_events: drop_target_bank_d_red_target_bank_down
-      persist_enable: false
-      reset_events: ball_started, reset_red
-#      start_enabled: false
-      show_tokens:
-        light: l_red_rollover
-    shot_purple_rollover:
-      switch: s_71_purple_rollover
-      profile: rollover_profile
-      advance_events: drop_target_bank_d_purple_target_bank_down
-      persist_enable: false
-      reset_events: ball_started, reset_purple
-#      start_enabled: false
-      show_tokens:
-        light: l_purple_rollover
-    shot_yellow_rollover:
-      switch: s_40_top_left_yellow_rollover
-      profile: rollover_profile
-      advance_events: drop_target_bank_d_yellow_target_bank_down
-      persist_enable: false
-      reset_events: ball_started, reset_yellow
-#      start_enabled: false
-      show_tokens:
-        light: l_top_yellow_rollover
-    shot_white_rollover:
-      switch: s_41_white_rollover_and_target
-      profile: rollover_profile
-      advance_events: drop_target_bank_d_white_target_bank_down
-      persist_enable: false
-      reset_events: ball_started, reset_white
-#      start_enabled: false
-      show_tokens:
-        light: l_top_white_rollover
-    shot_right_yellow_rollover:
-      switch: s_44_right_yellow_rollovers
-      profile: rollover_2x_profile
-      advance_events: drop_target_bank_d_yellow_target_bank_down, drop_target_bank_d_all_banks_down
-      persist_enable: false
-      reset_events: ball_started, reset_yellow
-#      start_enabled: false
-      show_tokens:
-        light: l_right_yellow_rollover
-    shot_bottom_yellow_rollover:
-      switch: s_44_right_yellow_rollovers
-      profile: rollover_profile
-      advance_events: drop_target_bank_d_yellow_target_bank_down
-      persist_enable: false
-      reset_events: ball_started, reset_yellow
-#      start_enabled: false
-      show_tokens:
-        light: l_bottom_yellow_rollover
-    shot_bottom_left_yellow_rollover:
-      switch: s_40_top_left_yellow_rollover
-      profile: rollover_profile
-      advance_events: drop_target_bank_d_yellow_target_bank_down
-      persist_enable: false
-      reset_events: ball_started, reset_yellow
-#      start_enabled: false
-      show_tokens:
-        light: l_bottom_left_yellow_rollover
-    shot_lower_target:
-      switch: s_41_white_rollover_and_target
-      profile: rollover_profile
-      advance_events: drop_target_bank_d_white_target_bank_down
+#      advance_events: drop_target_bank_d_red_target_bank_down
       persist_enable: false
       reset_events: ball_started
 #      start_enabled: false
       show_tokens:
-        light: l_bottom_white_target
-    shot_upper_target:
-      switch: s_41_white_rollover_and_target
+        light: l_f
+    shot_i_rollover:
+      switch: s_33_i_rollover
       profile: rollover_profile
-      advance_events: drop_target_bank_d_white_target_bank_down
+#      advance_events: drop_target_bank_d_red_target_bank_down
       persist_enable: false
       reset_events: ball_started
+#      start_enabled: false
       show_tokens:
-        light: l_white_rollover
-#    shot_rollover_buttons:
-#      switch: s_74_rollover_buttons
+        light: l_f
+    shot_r_rollover:
+      switch: s_34_r_rollover
+      profile: rollover_profile
+#      advance_events: drop_target_bank_d_red_target_bank_down
+      persist_enable: false
+      reset_events: ball_started
+#      start_enabled: false
+      show_tokens:
+        light: l_f
+    shot_e_rollover:
+      switch: s_35_e_rollover
+      profile: rollover_profile
+#      advance_events: drop_target_bank_d_red_target_bank_down
+      persist_enable: false
+      reset_events: ball_started
+#      start_enabled: false
+      show_tokens:
+        light: l_f
+    shot_target_1:
+      switch: s_17_target_1
+      profile: rollover_profile
+
+      persist_enable: true
+      reset_events: ball_started
+#      start_enabled: false
+      show_tokens:
+        light: l_target_1
 
 shot_groups:
 #GOBLIN WAR
-
-#SINBAD
-    drop_awards:
-      shots: shot_lower_target, shot_upper_target, shot_bottom_yellow_rollover, shot_bottom_left_yellow_rollover, shot_right_yellow_rollover, shot_red_rollover, shot_purple_rollover, shot_yellow_rollover, shot_white_rollover
+    fire_rollovers:
+      shots: shot_f_rollover, shot_i_rollover, shot_r_rollover, shot_e_rollover
       reset_events: ball_ended
-      debug: true
 
 
 variable_player:
@@ -415,13 +356,13 @@ variable_player:
 
 # switch counts, base values
     shot_spinner_unlit_hit:
-        score: (100 + current_player.spinner_value_add) * current_player.multiplier
+        score: 100
         sw_count: 1
         sw_count_total: 1
         spinner_count: 1
         spinner_count_total: 1
     shot_spinner_lit_hit:
-        score: (1000 + current_player.spinner_value_add) * current_player.multiplier
+        score: 1000
         sw_count: 1
         sw_count_total: 1
         spinner_count: 1
@@ -585,25 +526,16 @@ random_event_player:
 #redo this so lights don't interfere with shows?
 light_player:  
   "{current_player.bonus_multiplier == 2}":
-    l_2x_bonus: on
+    l_2x: on
   "{current_player.bonus_multiplier == 3}":
-    l_3x_bonus: on
+    l_3x: on
   "{current_player.bonus_multiplier == 4}":
-    l_4x_bonus: on
+    l_4x: on
   "{current_player.bonus_multiplier == 5}":
-    l_5x_bonus: on
+    l_5x: on
   "{current_player.extra_balls > 0}":
     l_shoot_again: on
-  "{current_player.advance_bonus == 0}":
-    l_advance_1: on
-  "{current_player.advance_bonus == 1}":
-    l_advance_2: on
-  "{current_player.advance_bonus == 2}":
-    l_advance_3: on
-  "{current_player.advance_bonus == 3}":
-    l_advance_4: on
-  "{current_player.advance_bonus == 4}":
-    l_advance_5: on
+
   "{current_player.bonus_value == 1000 or current_player.bonus_value == 11000}":
     l_1000_bonus: on
   "{current_player.bonus_value == 2000 or current_player.bonus_value == 12000}":
@@ -1370,18 +1302,8 @@ widget_player:
   set_video_a: 
     video_sequence_a:
       action: add
-  set_video_b:
-      action: add
-  set_video_c:
-      action: add
   stop_video_a:
     video_sequence_a:
-      action: remove
-  stop_video_b:
-    video_sequence_b:
-      action: remove
-  stop_video_c:
-    video_sequence_c:
       action: remove
 
 #SFX RELATED STUFF
