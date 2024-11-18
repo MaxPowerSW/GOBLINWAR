@@ -18,6 +18,14 @@ extra_balls:
         max_per_game: 99
         award_events: shot_purple_rollover_rollover_profile_lit_hit{current_player.extra_balls==0 and settings.tournament_mode==0}
 
+multiballs:
+    mb_1:
+      ball_count: 3
+      ball_count_type: total
+      start_events: mb1_start
+      stop_events: mb1_stop
+      ball_locks: bd_left_hole, bd_right_hole, bd_top_hole
+
 show_player:
   ball_save_default_timer_start: 
     ball_save_show
@@ -145,6 +153,13 @@ shot_profiles:
         show: "off"
       - name: lit
         show: "on"
+    spinner_profile:
+      advance_on_hit: false
+      states:
+      - name: unlit
+        show: "off"
+      - name: lit
+        show: "on"
     rollover_2x_profile:
       advance_on_hit: false
       states:
@@ -160,7 +175,11 @@ shots:
 #GOBLINWAR
     shot_spinner:
       switch: s_15_spinner
-
+      profile: spinner_profile
+      persist_enable: false
+      reset_events: ball_started
+      show_tokens:
+        light: l_spinner
     shot_f_rollover:
       switch: s_32_f_rollover
       profile: rollover_profile

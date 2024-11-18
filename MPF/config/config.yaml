@@ -463,7 +463,36 @@ ball_devices:
       ball_switches: s_46_ball_shooter
       mechanical_eject: true
       eject_timeouts: 5s
-      
+    bd_left_hole:
+      ball_switches: s_13_left_eject_hole
+      eject_coil: c_left_eject_hole
+      eject_timeouts: 1s
+    bd_right_hole:
+      ball_switches: s_30_right_eject_hole
+      eject_coil: c_right_eject_hole
+      eject_timeouts: 1s
+    bd_top_hole:
+      ball_switches: s_36_top_eject_hole
+      eject_coil: c_top_eject_hole
+      eject_timeouts: 1s
+
+multiball_locks:
+    left_hole:
+      balls_to_lock: 1
+      lock_devices: bd_left_hole
+      disable_events: mode_multiball_started
+      reset_count_for_current_player_events: multiball_my_multiball_started
+    right_hole:
+      balls_to_lock: 1
+      lock_devices: bd_right_hole
+      disable_events: mode_multiball_started
+      reset_count_for_current_player_events: multiball_my_multiball_started
+    top_hole:
+      balls_to_lock: 1
+      lock_devices: bd_top_hole
+      disable_events: mode_multiball_started
+      reset_count_for_current_player_events: multiball_my_multiball_started
+
 # modes
 modes:
 # core modes
