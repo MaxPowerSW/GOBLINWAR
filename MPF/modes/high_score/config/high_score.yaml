@@ -263,22 +263,22 @@ slides:
     y: center - 305
     z: 99
     color: black
-  - type: video
-    video: congrats2
-    end_behavior: stop
-    auto_play: true
-    volume: 0.75
-    height: 1080
-    width: 1920
-    z: 0
-    control_events:
-      - event: init_bonus_video
-        action: position
-        value: 189
+#  - type: video
+#    video: congrats2
+#    end_behavior: stop
+#    auto_play: true
+#    volume: 0.75
+#    height: 1080
+#    width: 1920
+#    z: 0
+#    control_events:
+#      - event: init_bonus_video
+#        action: position
+#        value: 189
  #         - event: start_bonus_video
  #           action: play
-      - event: stop_bonus_video
-        action: stop
+#      - event: stop_bonus_video
+#        action: stop
   gc_score_award_display:
 #  - type: text
 #    text: (player_name)

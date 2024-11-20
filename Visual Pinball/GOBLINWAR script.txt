@@ -957,70 +957,58 @@ debug.print "UpdateLamps" & LampNoPar & ":" & StatePar
 	'add a case for every MPF light number, setting the state of the VPX lamp
 	select Case LampNoPar
 
-		Case "1": L1.state = StatePar	'
-		Case "2": L2.state = StatePar	'
-		Case "3": L3.state = StatePar	'
-		Case "4": L4.state = StatePar '
-		Case "5": L5.state = StatePar '
-		Case "6": L6.state = StatePar '
-		Case "7": L7.state = StatePar '
-		Case "8": L8.state = StatePar '
-		Case "9": L9.state = StatePar '
-		Case "10": L10.state = StatePar '
-		Case "11": L11.state = StatePar '
-		Case "12": L12.state = StatePar '
-		Case "13": L13.state = StatePar '
-		Case "14": L14.state = StatePar '
-		Case "15": L15.state = StatePar '
-		Case "16": L16.state = StatePar '
-		Case "17": L17.state = StatePar '
-		Case "18": L18.state = StatePar '
-		Case "19": L19.state = StatePar '
-		Case "20": L20.state = StatePar '
-		Case "21": L21.state = StatePar '
-		Case "22": L22.state = StatePar '
-		Case "23": L23.state = StatePar '
-		Case "24": L24.state = StatePar '
-		Case "25": L25.state = StatePar '
-		Case "26": L26.state = StatePar '
-		Case "27": L27.state = StatePar '
-		Case "28": L28.state = StatePar '
-		Case "29": L29.state = StatePar '
-		Case "30": L30.state = StatePar '
-		Case "31": L31.state = StatePar '
-		Case "32": L32.state = StatePar '
-		Case "33": L33.state = StatePar '
-		Case "34": L34.state = StatePar '
-		Case "35": L35.state = StatePar	'
-		Case "36": L36.state = StatePar	'
-		Case "37": L37.state = StatePar	'
-		Case "38": L38.state = StatePar	'
-		Case "39": L39.state = StatePar	'
-		Case "40": L40.state = StatePar	'
-		Case "41": L41.state = StatePar
-		Case "42": L42.state = StatePar '
-		Case "43": L43.state = StatePar '
-		Case "44": L44.state = StatePar '
-		Case "45": L45.state = StatePar '
-		Case "46": L46.state = StatePar
-		Case "47": L47.state = StatePar
-		Case "48": L48.state = StatePar
-		Case "49": L49.state = StatePar
-		Case "50": L50.state = StatePar
-		Case "51": L51.state = StatePar
-		Case "52": L52.state = StatePar
-		Case "53": L53.state = StatePar
-		Case "54": L54.state = StatePar
-		Case "55": L55.state = StatePar
-		Case "56": L56.state = StatePar
-		Case "57": L57.state = StatePar
-		Case "58": L58.state = StatePar
-		Case "59": L59.state = StatePar
-		Case "60": L60.state = StatePar
-		Case "61": L61.state = StatePar
-		Case "62": L62.state = StatePar
-		Case "63": L63.state = StatePar
-
+		Case "1": LShootAgain.state = StatePar	'shoot again
+		Case "2": LShieldOn.state = StatePar	'ball save
+		Case "3": LFire1.state = StatePar	'fire
+				  LFire2.state = StatePar	'fire
+		Case "4": LPower1.state = StatePar 'power
+				  LPower2.state = StatePar
+		Case "5": LF.state = StatePar 'f
+		Case "6": LI.state = StatePar 'i
+		Case "7": LR.state = StatePar 'r
+		Case "8": LE.state = StatePar 'e
+		Case "9": LBlueTop.state = StatePar 'top right target
+		Case "10": LBlueMiddle.state = StatePar 'center right target
+		Case "11": LBlueBottom.state = StatePar 'bottom right target
+		Case "12": LRightBlue1000.state = StatePar 'right inside rollover
+		Case "13": LLeftBlue1000.state = StatePar 'left inside rollover
+		Case "14": L1.state = StatePar '1000 bonus
+		Case "15": L2.state = StatePar '2
+		Case "16": L3.state = StatePar '3
+		Case "17": L4.state = StatePar '4
+		Case "18": L5.state = StatePar '5
+		Case "19": L6.state = StatePar '6
+		Case "20": L7.state = StatePar '7
+		Case "21": L8.state = StatePar '8
+		Case "22": L9.state = StatePar '9
+		'Case "23": L23.state = StatePar 'not used
+		Case "24": L10.state = StatePar '10k bonus
+		Case "25": L20.state = StatePar '20k bonus
+		Case "26": LT1.state = StatePar 'target 1
+		Case "27": LT2.state = StatePar 'target 2
+		Case "28": LT3.state = StatePar 'target 3
+		Case "29": LT4.state = StatePar 'target 4
+		Case "30": LT5.state = StatePar 'target 5
+		Case "31": LT6.state = StatePar 'target 6
+		Case "32": LSpinner.state = StatePar 'spinner
+		Case "33": LLeftHole.state = StatePar 'left eject hole
+		Case "34": LRightHole.state = StatePar 'right eject hole
+		Case "35": LBackHole.state = StatePar	'top eject hole
+		Case "36": L2X.state = StatePar	'2x
+		Case "37": L3X.state = StatePar	'3x
+		Case "38": L4X.state = StatePar	'4x
+		Case "39": L5X.state = StatePar	'5x
+		Case "40": LExtraBall.state = StatePar	'extra ball
+		Case "41": L10k.state = StatePar	'10000 firepower bonus
+		Case "42": L30k.state = StatePar '30000 firepower bonus
+		Case "43": L50k.state = StatePar '50000 firepower bonus
+		Case "44": LBumperTopLeft.state = StatePar 'top left pop bumper
+		Case "45": LBumperTopRight.state = StatePar 'top right pop bumper
+		Case "46": LBumperBottomRight.state = StatePar	'bottom right pop bumper
+		Case "47": LBumperBottomLeft.state = StatePar	'bottom left pop bumper
+		Case "48": LLeftSpecial.state = StatePar	'left special
+		Case "49": LRightSpecial.state = StatePar	'right special
+		'Case "50": LC.state = StatePar	'credits
 	End Select
 End Sub
 
@@ -1110,7 +1098,9 @@ End Sub
 Sub Sol1(StatePar)
 
 If StatePar Then
-bsTrough.EntrySol_On
+trTrough.EntrySol_On
+
+
 End If
 
 End Sub
@@ -1129,7 +1119,7 @@ End Sub
 
 Sub Sol4(StatePar)
 If StatePar Then
-KLeftEjectHole.ExitSol_On
+LeftEjectHole(True)
 End If
 
 End Sub
@@ -1137,7 +1127,7 @@ End Sub
 Sub Sol5(StatePar)
 
 If StatePar Then
-KRightEjectHole.ExitSol_On
+RightEjectHole(True)
 End If
 
 End Sub
@@ -1145,7 +1135,7 @@ End Sub
 Sub Sol6(StatePar)
 
 If StatePar Then
-KUpperEjectHole.ExitSol_On
+UpperEjectHole(True)
 End If
 
 End Sub
@@ -1162,7 +1152,7 @@ End Sub
 Sub Sol8(StatePar)
 
 If StatePar Then
-bsTrough.ExitSol_On
+trTrough.ExitSol_On
 End If
 
 End Sub
@@ -1327,14 +1317,18 @@ Sub RightEjectRollover_hit:vpmtimer.pulsesw cRightEjectRolloverSW:End Sub
 Sub RightEjectRollover_unhit:Controller.Switch(cRightEjectRolloverSW)=0:End Sub
 
 Sub Table1_KeyDown(ByVal keycode)
+
+    If keycode = LeftFlipperKey then Controller.switch(6) = true: SolLFlipper(True):
+    If keycode = RightFlipperKey then Controller.switch(4) = true: SolRFlipper(True):
+
 	If keycode = PlungerKey Then
 		Plunger.PullBack
 		PlaySound "plungerpull",0,1,0.25,0.25
 	End If
 
-	If keycode = 4 or keycode = 5 or keycode = 6 Then
-		Playsound "CoinIn3",0,1,0.25,0.25 
-	End if
+	'If keycode = 4 or keycode = 5 or keycode = 6 Then
+	'	Playsound "CoinIn3",0,1,0.25,0.25 
+	'End if
 
     If keycode = 2 Then            
         stopsound "_SpaceWaltz"
@@ -1366,6 +1360,9 @@ end if
 
     Sub Table1_KeyUp(ByVal keycode)
       	 vpmKeyUp(keycode)
+    If keycode = LeftFlipperKey then Controller.switch(6) = false: SolLFlipper(False):
+    If keycode = RightFlipperKey then Controller.switch(4) = false: SolRFlipper(False):
+
 	  If keycode = PlungerKey Then        
 	 	 Plunger.Fire
 		 PlaySound "plunger",0,1,0.25,0.25

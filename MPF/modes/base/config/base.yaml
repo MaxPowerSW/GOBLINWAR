@@ -39,7 +39,7 @@ multiballs:
     mb_1:
       ball_count: 3
       ball_count_type: total
-      start_events: mb1_start
+      start_events: start_multiball
       stop_events: mb1_stop
       ball_locks: bd_left_hole, bd_right_hole, bd_top_hole
 
@@ -253,6 +253,19 @@ variable_player:
           action: set
         bonus_value:
           int: 0
+          action: set
+     #multiball lock handlers
+    multiball_lock_top_hole_locked_ball:
+        lock_state_top:
+          int: 1
+          action: set
+    multiball_lock_left_hole_locked_ball:
+        lock_state_left:
+          int: 1
+          action: set
+    multiball_lock_right_hole_locked_ball:
+        lock_state_right:
+          int: 1
           action: set
 
     ball_started:
@@ -501,7 +514,13 @@ event_player:
 #    flipper_cradle{current_player.score==0}:
 #      - start_music_select
 #      - set_volume_0
-
+#    lock_state_top_changed
+    player_lock_state_top{current_player.lock_state_top==1 and current_player.lock_state_left==1 and current_player.lock_state_right==1}:
+      - start_multiball
+    player_lock_state_left{current_player.lock_state_top==1 and current_player.lock_state_left==1 and current_player.lock_state_right==1}:
+      - start_multiball
+    player_lock_state_right{current_player.lock_state_top==1 and current_player.lock_state_left==1 and current_player.lock_state_right==1}:
+      - start_multiball
 #SFX TRIGGERS
     shot_spinner_hit:
       - sfx_spinner
