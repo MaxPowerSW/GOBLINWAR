@@ -16,7 +16,24 @@ ball_saves:
 extra_balls:
     purple_eb:
         max_per_game: 99
-        award_events: shot_purple_rollover_rollover_profile_lit_hit{current_player.extra_balls==0 and settings.tournament_mode==0}
+        award_events: award_extra_ball #shot_purple_rollover_rollover_profile_lit_hit{current_player.extra_balls==0 and settings.tournament_mode==0}
+
+multiball_locks:
+    left_hole:
+      balls_to_lock: 1
+      lock_devices: bd_left_hole
+      disable_events: mode_multiball_started
+      reset_count_for_current_player_events: multiball_my_multiball_started
+    right_hole:
+      balls_to_lock: 1
+      lock_devices: bd_right_hole
+      disable_events: mode_multiball_started
+      reset_count_for_current_player_events: multiball_my_multiball_started
+    top_hole:
+      balls_to_lock: 1
+      lock_devices: bd_top_hole
+      disable_events: mode_multiball_started
+      reset_count_for_current_player_events: multiball_my_multiball_started
 
 multiballs:
     mb_1:
@@ -44,23 +61,7 @@ show_player:
       action: stop
     ball_save_ending_show:
       action: stop
-  ball_save_drops_complete_timer_start: 
-    ball_save_show
-  ball_save_drops_complete_hurry_up: 
-    ball_save_show:
-      action: stop
-    ball_save_ending_show:
-      action: play
-  ball_save_drops_complete_grace_period:
-    ball_save_show:
-      action: stop
-    ball_save_ending_show:
-      action: stop
-  ball_save_drops_complete_disabled:
-    ball_save_show:
-      action: stop
-    ball_save_ending_show:
-      action: stop
+
 #  player_multiplier{current_player.multiplier==2}:
 #    2x_playfield_show:
 #      action: play

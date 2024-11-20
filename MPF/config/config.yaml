@@ -96,7 +96,7 @@ switches:
         ignore_window_ms: 250
     s_13_left_eject_hole:
         number: 13
-        tags: playfield_active
+#        tags: playfield_active
         ignore_window_ms: 250
     s_14_upper_middle_left_standup:
         number: 14
@@ -164,7 +164,7 @@ switches:
         ignore_window_ms: 100
     s_30_right_eject_hole:
         number: 30
-        tags: playfield_active
+#        tags: playfield_active
         ignore_window_ms: 250
     s_31_upper_top_right_standup:
         number: 31
@@ -188,7 +188,7 @@ switches:
         ignore_window_ms: 100
     s_36_top_eject_hole:
         number: 36
-        tags: playfield_active
+#        tags: playfield_active
         ignore_window_ms: 250
     s_37_lower_top_right_standup:
         number: 37
@@ -476,22 +476,7 @@ ball_devices:
       eject_coil: c_top_eject_hole
       eject_timeouts: 1s
 
-multiball_locks:
-    left_hole:
-      balls_to_lock: 1
-      lock_devices: bd_left_hole
-      disable_events: mode_multiball_started
-      reset_count_for_current_player_events: multiball_my_multiball_started
-    right_hole:
-      balls_to_lock: 1
-      lock_devices: bd_right_hole
-      disable_events: mode_multiball_started
-      reset_count_for_current_player_events: multiball_my_multiball_started
-    top_hole:
-      balls_to_lock: 1
-      lock_devices: bd_top_hole
-      disable_events: mode_multiball_started
-      reset_count_for_current_player_events: multiball_my_multiball_started
+
 
 # modes
 modes:
