@@ -1,0 +1,296 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7A5A5D06-E6ED-4B50-ACFF-7CC34202EB48}|config{7A5A5D06-E6ED-4B50-ACFF-7CC34202EB48}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\base\\config\\base.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{7A5A5D06-E6ED-4B50-ACFF-7CC34202EB48}|config{7A5A5D06-E6ED-4B50-ACFF-7CC34202EB48}|solutionrelative:modes\\base\\config\\base.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|config{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\config.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|config{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|solutionrelative:config\\config.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AA16005B-1CBF-4965-B01C-09EA15786323}|config{AA16005B-1CBF-4965-B01C-09EA15786323}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\high_score\\config\\high_score.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{AA16005B-1CBF-4965-B01C-09EA15786323}|config{AA16005B-1CBF-4965-B01C-09EA15786323}|solutionrelative:modes\\high_score\\config\\high_score.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|config{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\vpx.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|config{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|solutionrelative:config\\vpx.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F848F6D9-CD29-4722-BC55-CC06CAB58CB5}|config{F848F6D9-CD29-4722-BC55-CC06CAB58CB5}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\config\\attract.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{F848F6D9-CD29-4722-BC55-CC06CAB58CB5}|config{F848F6D9-CD29-4722-BC55-CC06CAB58CB5}|solutionrelative:modes\\attract\\config\\attract.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\attract_display_loop.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|solutionrelative:modes\\attract\\shows\\attract_display_loop.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\top_lane_show.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|solutionrelative:modes\\attract\\shows\\top_lane_show.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bottom_lane_show.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|solutionrelative:modes\\attract\\shows\\bottom_lane_show.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bonus_mult_show.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|solutionrelative:modes\\attract\\shows\\bonus_mult_show.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bonus_light_show.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C4A757BF-C907-48A2-A135-DDF185EB3E86}|shows{C4A757BF-C907-48A2-A135-DDF185EB3E86}|solutionrelative:modes\\attract\\shows\\bonus_light_show.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C79A461-B01D-4247-A96C-EC8167437F70}|Solution Items{9C79A461-B01D-4247-A96C-EC8167437F70}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\!TODO.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{9C79A461-B01D-4247-A96C-EC8167437F70}|Solution Items{9C79A461-B01D-4247-A96C-EC8167437F70}|solutionrelative:!TODO.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2B77CFD9-3917-4719-88D8-4687850031AA}|config{2B77CFD9-3917-4719-88D8-4687850031AA}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\tilt\\config\\tilt.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{2B77CFD9-3917-4719-88D8-4687850031AA}|config{2B77CFD9-3917-4719-88D8-4687850031AA}|solutionrelative:modes\\tilt\\config\\tilt.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F94B63E0-17DE-438C-BEAF-62C47A106576}|config{F94B63E0-17DE-438C-BEAF-62C47A106576}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\skill_shot\\config\\skill_shot.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{F94B63E0-17DE-438C-BEAF-62C47A106576}|config{F94B63E0-17DE-438C-BEAF-62C47A106576}|solutionrelative:modes\\skill_shot\\config\\skill_shot.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C481F40F-1EC8-4F15-9783-593066E47E18}|config{C481F40F-1EC8-4F15-9783-593066E47E18}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\bonus\\config\\bonus.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C481F40F-1EC8-4F15-9783-593066E47E18}|config{C481F40F-1EC8-4F15-9783-593066E47E18}|solutionrelative:modes\\bonus\\config\\bonus.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|config{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\switchtest.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|config{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|solutionrelative:config\\switchtest.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|config{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\cab.yaml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|config{EE404750-3C65-4CFB-9048-0BC8BA6D051E}|solutionrelative:config\\cab.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Pinball\\SkateOrDie\\MPF\\modes\\attract\\shows\\attract_display_loop.yaml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "top_lane_show.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\top_lane_show.yaml",
+              "RelativeDocumentMoniker": "modes\\attract\\shows\\top_lane_show.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\top_lane_show.yaml",
+              "RelativeToolTip": "modes\\attract\\shows\\top_lane_show.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "base.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\base\\config\\base.yaml",
+              "RelativeDocumentMoniker": "modes\\base\\config\\base.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\base\\config\\base.yaml",
+              "RelativeToolTip": "modes\\base\\config\\base.yaml",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAAABABAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "config.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\config.yaml",
+              "RelativeDocumentMoniker": "config\\config.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\config.yaml",
+              "RelativeToolTip": "config\\config.yaml",
+              "ViewState": "AgIAACkAAAAAAAAAAAAAAEUAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "bonus_mult_show.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bonus_mult_show.yaml",
+              "RelativeDocumentMoniker": "modes\\attract\\shows\\bonus_mult_show.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bonus_mult_show.yaml",
+              "RelativeToolTip": "modes\\attract\\shows\\bonus_mult_show.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.287Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "attract_display_loop.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\attract_display_loop.yaml",
+              "RelativeDocumentMoniker": "modes\\attract\\shows\\attract_display_loop.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\attract_display_loop.yaml",
+              "RelativeToolTip": "modes\\attract\\shows\\attract_display_loop.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "bottom_lane_show.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bottom_lane_show.yaml",
+              "RelativeDocumentMoniker": "modes\\attract\\shows\\bottom_lane_show.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bottom_lane_show.yaml",
+              "RelativeToolTip": "modes\\attract\\shows\\bottom_lane_show.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.3Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "tilt.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\tilt\\config\\tilt.yaml",
+              "RelativeDocumentMoniker": "modes\\tilt\\config\\tilt.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\tilt\\config\\tilt.yaml",
+              "RelativeToolTip": "modes\\tilt\\config\\tilt.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.305Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "!TODO.txt",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\!TODO.txt",
+              "RelativeDocumentMoniker": "!TODO.txt",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\!TODO.txt",
+              "RelativeToolTip": "!TODO.txt",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-01-21T19:11:02.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "attract.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\config\\attract.yaml",
+              "RelativeDocumentMoniker": "modes\\attract\\config\\attract.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\config\\attract.yaml",
+              "RelativeToolTip": "modes\\attract\\config\\attract.yaml",
+              "ViewState": "AQIAAAkAAAAAAAAAAIBJwA0AAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.313Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "high_score.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\high_score\\config\\high_score.yaml",
+              "RelativeDocumentMoniker": "modes\\high_score\\config\\high_score.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\high_score\\config\\high_score.yaml",
+              "RelativeToolTip": "modes\\high_score\\config\\high_score.yaml",
+              "ViewState": "AgIAAAIBAAAAAAAAAAAAAAMBAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "bonus_light_show.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bonus_light_show.yaml",
+              "RelativeDocumentMoniker": "modes\\attract\\shows\\bonus_light_show.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bonus_light_show.yaml",
+              "RelativeToolTip": "modes\\attract\\shows\\bonus_light_show.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.324Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "vpx.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\vpx.yaml",
+              "RelativeDocumentMoniker": "config\\vpx.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\vpx.yaml",
+              "RelativeToolTip": "config\\vpx.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAIBJwAcAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.327Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "bonus.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\bonus\\config\\bonus.yaml",
+              "RelativeDocumentMoniker": "modes\\bonus\\config\\bonus.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\bonus\\config\\bonus.yaml",
+              "RelativeToolTip": "modes\\bonus\\config\\bonus.yaml",
+              "ViewState": "AQIAAKAAAAAAAAAAAAAwwKQAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.332Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "skill_shot.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\skill_shot\\config\\skill_shot.yaml",
+              "RelativeDocumentMoniker": "modes\\skill_shot\\config\\skill_shot.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\skill_shot\\config\\skill_shot.yaml",
+              "RelativeToolTip": "modes\\skill_shot\\config\\skill_shot.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.337Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "switchtest.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\switchtest.yaml",
+              "RelativeDocumentMoniker": "config\\switchtest.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\switchtest.yaml",
+              "RelativeToolTip": "config\\switchtest.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "cab.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\cab.yaml",
+              "RelativeDocumentMoniker": "config\\cab.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\cab.yaml",
+              "RelativeToolTip": "config\\cab.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "attract_display_loop.yaml",
+              "DocumentMoniker": "C:\\Pinball\\SkateOrDie\\MPF\\modes\\attract\\shows\\attract_display_loop.yaml",
+              "ToolTip": "C:\\Pinball\\SkateOrDie\\MPF\\modes\\attract\\shows\\attract_display_loop.yaml",
+              "ViewState": "AQIAAIYAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2024-10-26T15:04:44.697Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -299,6 +299,12 @@ coils:
     c_trough_kicker:
         number: 1
         default_pulse_ms: 45
+    c_left_drop_reset:
+        number: 2
+        default_pulse_ms: 45
+    c_right_drop_reset:
+        number: 3
+        default_pulse_ms: 45
     c_left_eject_hole:
         number: 4
         default_pulse_ms: 45
@@ -314,6 +320,7 @@ coils:
     c_trough_eject:
         number: 8
         default_pulse_ms: 45
+# solenoids 9 through 13 are used for sound control
     c_knocker:
         number: 14
         default_pulse_ms: 45

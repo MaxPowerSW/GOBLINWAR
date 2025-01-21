@@ -140,8 +140,15 @@ shows:
 #    events_when_released: flipper_cradle_release
 
 shot_profiles:
-    rollover_profile:
+    fire_profile:
       advance_on_hit: true
+      states:
+      - name: unlit
+        show: "off"
+      - name: lit
+        show: "on"
+    rollover_profile:
+      advance_on_hit: false
       states:
       - name: unlit
         show: "off"
@@ -161,15 +168,15 @@ shot_profiles:
         show: "off"
       - name: lit
         show: "on"
-    rollover_2x_profile:
-      advance_on_hit: false
-      states:
-      - name: unlit
-        show: "off"
-      - name: lit
-        show: "on"
-      - name: 2x_lit
-        show: "flash2hz"
+#    rollover_2x_profile:
+#      advance_on_hit: false
+#      states:
+#      - name: unlit
+#        show: "off"
+#      - name: lit
+#        show: "on"
+#      - name: 2x_lit
+#        show: "flash2hz"
       
 
 shots:
@@ -179,58 +186,104 @@ shots:
       profile: spinner_profile
       persist_enable: false
       reset_events: ball_started
+      advance_events: shot_group_front_targets_completed
       show_tokens:
         light: l_spinner
+#FIRE rollovers
     shot_f_rollover:
       switch: s_32_f_rollover
-      profile: rollover_profile
-#      advance_events: drop_target_bank_d_red_target_bank_down
+      profile: fire_profile
       persist_enable: false
       reset_events: ball_started
-#      start_enabled: false
       show_tokens:
         light: l_f
     shot_i_rollover:
       switch: s_33_i_rollover
-      profile: rollover_profile
-#      advance_events: drop_target_bank_d_red_target_bank_down
+      profile: fire_profile
       persist_enable: false
       reset_events: ball_started
-#      start_enabled: false
       show_tokens:
-        light: l_f
+        light: l_i
     shot_r_rollover:
       switch: s_34_r_rollover
-      profile: rollover_profile
-#      advance_events: drop_target_bank_d_red_target_bank_down
+      profile: fire_profile
       persist_enable: false
       reset_events: ball_started
-#      start_enabled: false
       show_tokens:
-        light: l_f
+        light: l_r
     shot_e_rollover:
       switch: s_35_e_rollover
-      profile: rollover_profile
-#      advance_events: drop_target_bank_d_red_target_bank_down
+      profile: fire_profile
       persist_enable: false
       reset_events: ball_started
-#      start_enabled: false
       show_tokens:
-        light: l_f
+        light: l_e
+#Front targets/drops
     shot_target_1:
       switch: s_17_target_1
-      profile: rollover_profile
-
+      profile: target_profile
       persist_enable: true
       reset_events: ball_started
-#      start_enabled: false
       show_tokens:
         light: l_target_1
+    shot_target_2:
+      switch: s_18_target_2
+      profile: target_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_target_2
+    shot_target_3:
+      switch: s_19_target_3
+      profile: target_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_target_3
+    shot_target_4:
+      switch: s_21_target_4
+      profile: target_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_target_4
+    shot_target_5:
+      switch: s_22_target_5
+      profile: target_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_target_5
+    shot_target_6:
+      switch: s_23_target_6
+      profile: target_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_target_6
+
+#Side targets
+#Eject Holes
+#Eject Rollovers
+#Inlanes
+#Outlanes
+#Kickers
+#Standups
+#Pop Bumpers
+#Top Target
 
 shot_groups:
 #GOBLIN WAR
     fire_rollovers:
       shots: shot_f_rollover, shot_i_rollover, shot_r_rollover, shot_e_rollover
+      rotate_left_events: s_06_left_flipper
+      rotate_right_events: s_04_right_flipper
+      reset_events: ball_ended
+    front_targets:
+      shots: shot_top_target, shot_middle_target, shot_bottom_target
+      reset_events: ball_ended
+    side_targets:
+      shots: shot_top_target, shot_middle_target, shot_bottom_target
       reset_events: ball_ended
 
 
@@ -272,7 +325,9 @@ variable_player:
         pf_settled:
           int: 0
           action: set
- 
+        show_running:
+          int: 0
+          action: set 
         multiplier:
           int: 0 #prevents any scoring before the playfield is settled.
           action: set
@@ -388,20 +443,53 @@ variable_player:
 # GOBLIN WAR scoring
 
 # switch counts, base values
+# Spinner 100/1000
+    shot_spinner_hit:
+        sw_count: 1
+        sw_count_total: 1
+        spinner_count: 1
+        spinner_count_total: 1
     shot_spinner_unlit_hit:
-        score: 100
-        sw_count: 1
-        sw_count_total: 1
-        spinner_count: 1
-        spinner_count_total: 1
+        score: 100 * current_player.multiplier
     shot_spinner_lit_hit:
-        score: 1000
-        sw_count: 1
-        sw_count_total: 1
-        spinner_count: 1
-        spinner_count_total: 1
+        score: 1000 * current_player.multiplier
         spinner_lit_count: 1
         spinner_lit_count_total: 1
+# FIRE rollovers 1000 (All the time?) - Add bonus if unlit
+    shot_f_rollover_hit:
+        score: 1000 * current_player.multiplier
+        sw_count: 1
+        sw_count_total: 1
+    shot_f_rollover_fire_profile_unlit_hit:
+        bonus: 1000
+    shot_i_rollover_hit:
+        score: 1000 * current_player.multiplier
+        sw_count: 1
+        sw_count_total: 1
+    shot_i_rollover_fire_profile_unlit_hit:
+        bonus: 1000
+    shot_r_rollover_hit:
+        score: 1000 * current_player.multiplier
+        sw_count: 1
+        sw_count_total: 1
+    shot_r_rollover_fire_profile_unlit_hit:
+        bonus: 1000
+    shot_e_rollover_hit:
+        score: 1000 * current_player.multiplier
+        sw_count: 1
+        sw_count_total: 1
+    shot_e_rollover_fire_profile_unlit_hit:
+        bonus: 1000
+
+# Inlanes 1000/3000 (1000/3000 bonus)
+# Outlanes 1000 (1000 bonus)
+# Front Targets/Drops 1000 - Add 1000 bonus when flashing?
+# Side Targets 1000
+# Eject rollovers 1000
+# Eject Holes 1000/10000
+# Pop Bumpers 100/1000
+# Standups 50
+# Top Target
 
 #OLD SINBAD RULES
     shot_rollover_buttons_hit:
@@ -428,13 +516,6 @@ variable_player:
         pf_multiplier:
           int: 2
           action: set
-    shot_purple_rollover_hit:
-        sw_count: 1
-        sw_count_total: 1
-    shot_purple_rollover_rollover_profile_unlit_hit:
-        score: 100 * current_player.multiplier
-    shot_purple_rollover_rollover_profile_lit_hit: #Extra Ball
-        score: 1000 * current_player.multiplier
     shot_yellow_rollover_hit:
         sw_count: 1
         sw_count_total: 1
@@ -564,15 +645,15 @@ random_event_player:
 
 #redo this so lights don't interfere with shows?
 light_player:  
-  "{current_player.bonus_multiplier == 2}":
+  "{current_player.show_running == 0 and current_player.bonus_multiplier == 2}":
     l_2x: on
-  "{current_player.bonus_multiplier == 3}":
+  "{current_player.show_running == 0 and current_player.bonus_multiplier == 3}":
     l_3x: on
-  "{current_player.bonus_multiplier == 4}":
+  "{current_player.show_running == 0 and current_player.bonus_multiplier == 4}":
     l_4x: on
-  "{current_player.bonus_multiplier == 5}":
+  "{current_player.show_running == 0 and current_player.bonus_multiplier == 5}":
     l_5x: on
-  "{current_player.extra_balls > 0}":
+  "{current_player.show_running == 0 and current_player.extra_balls > 0}":
     l_shoot_again: on
 
   "{current_player.bonus_value == 1000 or current_player.bonus_value == 11000}":
