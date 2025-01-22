@@ -261,8 +261,28 @@ shots:
       reset_events: ball_started
       show_tokens:
         light: l_target_6
-
 #Side targets
+    shot_top_power_target:
+      switch: s_39_top_power_target
+      profile: target_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_top_right_target
+    shot_middle_power_target:
+      switch: s_40_middle_power_target
+      profile: target_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_center_right_target
+    shot_bottom_power_target:
+      switch: s_41_bottom_power_target
+      profile: target_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_bottom_right_target
 #Eject Holes
 #Eject Rollovers
 #Inlanes
@@ -280,11 +300,11 @@ shot_groups:
       rotate_right_events: s_04_right_flipper
       reset_events: ball_ended
     front_targets:
-      shots: shot_top_target, shot_middle_target, shot_bottom_target
+      shots: shot_top_power_target, shot_middle_power_target, shot_bottom_power_target
       reset_events: ball_ended
-    side_targets:
-      shots: shot_top_target, shot_middle_target, shot_bottom_target
-      reset_events: ball_ended
+#    side_targets:
+#      shots: shot_top_power_target, shot_middle_power_target, shot_bottom_power_target
+#      reset_events: ball_ended
 
 
 variable_player:
