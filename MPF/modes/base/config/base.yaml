@@ -296,8 +296,8 @@ shot_groups:
 #GOBLIN WAR
     fire_rollovers:
       shots: shot_f_rollover, shot_i_rollover, shot_r_rollover, shot_e_rollover
-      rotate_left_events: s_06_left_flipper
-      rotate_right_events: s_04_right_flipper
+      rotate_left_events: s_06_left_flipper_active
+      rotate_right_events: s_04_right_flipper_active
       reset_events: ball_ended
     front_targets:
       shots: shot_top_power_target, shot_middle_power_target, shot_bottom_power_target
