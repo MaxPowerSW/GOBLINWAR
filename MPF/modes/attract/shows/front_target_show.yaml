@@ -1,25 +1,25 @@
 #show_version=6
 - duration: 1
   lights:
-    l_bottom_left_yellow_rollover: 0
-    l_bottom_white_target: ff
+    l_target_6: 0
+    l_target_1: ff
 - duration: 1
   lights:
-    l_bottom_white_target: 0
-    l_top_white_rollover: ff
+    l_target_1: 0
+    l_target_2: ff
 - duration: 1
   lights:
-    l_top_white_rollover: 0
-    l_right_yellow_rollover: ff
+    l_target_2: 0
+    l_target_3: ff
 - duration: 1
   lights:
-    l_right_yellow_rollover: 0
-    l_bottom_yellow_rollover: ff
+    l_target_3: 0
+    l_target_4: ff
 - duration: 1
   lights:
-    l_bottom_yellow_rollover: 00
-    l_shoot_again: ff
+    l_target_4: 00
+    l_target_5: ff
 - duration: 1
   lights:
-    l_shoot_again: 0
-    l_bottom_left_yellow_rollover: ff
+    l_target_5: 0
+    l_target_6: ff
