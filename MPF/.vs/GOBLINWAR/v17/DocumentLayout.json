@@ -99,22 +99,9 @@
               "RelativeDocumentMoniker": "modes\\base\\config\\base.yaml",
               "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\base\\config\\base.yaml",
               "RelativeToolTip": "modes\\base\\config\\base.yaml",
-              "ViewState": "AgIAAPgAAAAAAAAAAAAAABABAAALAAAAAAAAAA==",
+              "ViewState": "AgIAABsBAAAAAAAAAAAowCQBAABNAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
               "WhenOpened": "2025-01-21T19:11:02.272Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "config.yaml",
-              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\config.yaml",
-              "RelativeDocumentMoniker": "config\\config.yaml",
-              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\config.yaml",
-              "RelativeToolTip": "config\\config.yaml",
-              "ViewState": "AgIAACkAAAAAAAAAAAAAAEUAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-01-21T19:11:02.282Z",
               "EditorCaption": ""
             },
             {
@@ -199,8 +186,7 @@
               "RelativeToolTip": "modes\\high_score\\config\\high_score.yaml",
               "ViewState": "AgIAAAIBAAAAAAAAAAAAAAMBAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-01-21T19:11:02.319Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-21T19:11:02.319Z"
             },
             {
               "$type": "Document",
@@ -287,6 +273,25 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "config.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\config.yaml",
+              "RelativeDocumentMoniker": "config\\config.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\config.yaml",
+              "RelativeToolTip": "config\\config.yaml",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAAAAQBAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.282Z",
+              "EditorCaption": ""
             }
           ]
         }

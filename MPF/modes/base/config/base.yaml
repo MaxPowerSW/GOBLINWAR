@@ -284,13 +284,139 @@ shots:
       show_tokens:
         light: l_bottom_right_target
 #Eject Holes
+    shot_left_eject:
+      switch: s_13_left_eject_hole
+      profile: eject_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_left_eject_hole # is this lamp at the eject or the rollover?
+    shot_right_eject:
+      switch: s_30_right_eject_hole
+      profile: eject_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_right_eject_hole
+    shot_top_eject:
+      switch: s_36_top_eject_hole
+      profile: eject_profile
+      persist_enable: true
+      reset_events: ball_started
+      show_tokens:
+        light: l_top_eject_hole
 #Eject Rollovers
+    shot_left_eject_rollover:
+      switch: s_53_left_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_left_eject_hole
+    shot_right_eject_rollover:
+      switch: s_54_right_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_right_eject_hole
 #Inlanes
+    shot_left_inlane:
+      switch: s_53_left_eject_rollover
+      profile: inlane_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_left_eject_hole
+    shot_right_inlane:
+      switch: s_54_right_eject_rollover
+      profile: inlane_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_right_eject_hole
 #Outlanes
+    shot_left_outlane:
+      switch: s_53_left_eject_rollover
+      profile: outlane_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_left_eject_hole
+    shot_right_outlane:
+      switch: s_54_right_eject_rollover
+      profile: outlane_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_right_eject_hole
 #Kickers
+    shot_left_slingshot:
+      switch: s_53_left_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_left_eject_hole
+    shot_right_slingshot:
+      switch: s_54_right_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_right_eject_hole
 #Standups
+    shot_left_standup:
+      switch: s_53_left_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_left_eject_hole
+    shot_right_standup:
+      switch: s_54_right_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_right_eject_hole
 #Pop Bumpers
+    shot_top_left_pop:
+      switch: s_53_left_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_left_eject_hole
+    shot_top_right_pop:
+      switch: s_54_right_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_right_eject_hole
+    shot_bottom_left_pop:
+      switch: s_53_left_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_left_eject_hole
+    shot_bottom_right_pop:
+      switch: s_54_right_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_right_eject_hole
 #Top Target
+    shot_top_target:
+      switch: s_53_left_eject_rollover
+      profile: rollover_profile
+      persist_enable: true
+      reset_events: ball_started
+#      show_tokens:
+#        light: l_left_eject_hole
 
 shot_groups:
 #GOBLIN WAR
