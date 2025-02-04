@@ -476,7 +476,10 @@ variable_player:
           action: set
         show_running:
           int: 0
-          action: set 
+          action: set
+        tilt_as_weapon:
+          int: 0
+          action: set
         multiplier:
           int: 0 #prevents any scoring before the playfield is settled.
           action: set
@@ -740,17 +743,18 @@ variable_player:
 
 
 event_player:
-#GOBLINWAR
-#    flipper_cradle{current_player.score==0}:
-#      - start_music_select
-#      - set_volume_0
-#    lock_state_top_changed
+# MULTIBALL
     player_lock_state_top{current_player.lock_state_top==1 and current_player.lock_state_left==1 and current_player.lock_state_right==1}:
       - start_multiball
     player_lock_state_left{current_player.lock_state_top==1 and current_player.lock_state_left==1 and current_player.lock_state_right==1}:
       - start_multiball
     player_lock_state_right{current_player.lock_state_top==1 and current_player.lock_state_left==1 and current_player.lock_state_right==1}:
       - start_multiball
+# TILT_OVERRIDE
+    s_01_cab_tilt_active{current_player.tilt_as_weapon==0}:
+      - player_tilt_warning
+    s_01_cab_tilt_active{current_player.tilt_as_weapon==1}:
+      - player_tilt_weapon
 #SFX TRIGGERS
     shot_spinner_hit:
       - sfx_spinner
@@ -758,10 +762,6 @@ event_player:
       - sfx_target
     shot_purple_rollover_hit:
       - sfx_rollover
-    s_54_10_pt_switches_active:
-      - sfx_10pt
-    s_14_pop_bumper_active:
-      - sfx_pop
 
 
 

@@ -49,7 +49,7 @@ switches:
 # cabinet buttons
     s_01_cab_tilt:
         number: 1
-        tags: tilt_warning, playfield_active
+        tags: playfield_active #, tilt_warning
         ignore_window_ms: 100
     s_02_ball_tilt: #not used
         number: 2

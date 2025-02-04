@@ -3,7 +3,8 @@
 tilt:
   multiple_hit_window: 500 #settings.multiple_hit_window
   settle_time: 5000 #settings.settle_time
-  warnings_to_tilt: 3 #
+  warnings_to_tilt: 3
+  tilt_warning_events: player_tilt_warning
   
 slides:
   _overwrite: true   # this is important to overwrite the existing slides
