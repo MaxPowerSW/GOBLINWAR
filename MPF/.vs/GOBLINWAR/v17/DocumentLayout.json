@@ -77,20 +77,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "top_lane_show.yaml",
-              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\top_lane_show.yaml",
-              "RelativeDocumentMoniker": "modes\\attract\\shows\\top_lane_show.yaml",
-              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\top_lane_show.yaml",
-              "RelativeToolTip": "modes\\attract\\shows\\top_lane_show.yaml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAALAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-01-21T19:11:02.231Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -99,7 +87,7 @@
               "RelativeDocumentMoniker": "modes\\base\\config\\base.yaml",
               "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\base\\config\\base.yaml",
               "RelativeToolTip": "modes\\base\\config\\base.yaml",
-              "ViewState": "AgIAAMQCAAAAAAAAAAAIwOkCAAALAAAAAAAAAA==",
+              "ViewState": "AgIAAOsCAAAAAAAAAAAAAAwDAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
               "WhenOpened": "2025-01-21T19:11:02.272Z",
               "EditorCaption": ""
@@ -130,6 +118,31 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "tilt.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\tilt\\config\\tilt.yaml",
+              "RelativeDocumentMoniker": "modes\\tilt\\config\\tilt.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\tilt\\config\\tilt.yaml",
+              "RelativeToolTip": "modes\\tilt\\config\\tilt.yaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.305Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "top_lane_show.yaml",
+              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\top_lane_show.yaml",
+              "RelativeDocumentMoniker": "modes\\attract\\shows\\top_lane_show.yaml",
+              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\top_lane_show.yaml",
+              "RelativeToolTip": "modes\\attract\\shows\\top_lane_show.yaml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAALAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-01-21T19:11:02.231Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
               "Title": "bottom_lane_show.yaml",
               "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\attract\\shows\\bottom_lane_show.yaml",
@@ -139,19 +152,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
               "WhenOpened": "2025-01-21T19:11:02.3Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "tilt.yaml",
-              "DocumentMoniker": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\tilt\\config\\tilt.yaml",
-              "RelativeDocumentMoniker": "modes\\tilt\\config\\tilt.yaml",
-              "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\modes\\tilt\\config\\tilt.yaml",
-              "RelativeToolTip": "modes\\tilt\\config\\tilt.yaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
-              "WhenOpened": "2025-01-21T19:11:02.305Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -289,7 +289,7 @@
               "RelativeDocumentMoniker": "config\\config.yaml",
               "ToolTip": "Z:\\Dev\\GOBLIN WAR\\GOBLINWAR\\MPF\\config\\config.yaml",
               "RelativeToolTip": "config\\config.yaml",
-              "ViewState": "AgIAAOcAAAAAAAAAAAAAAFAAAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAF8BAAAAAAAAAAAAAGUBAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
               "WhenOpened": "2025-01-21T19:11:02.282Z",
               "EditorCaption": ""

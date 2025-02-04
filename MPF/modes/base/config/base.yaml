@@ -12,6 +12,14 @@ ball_saves:
 #    disable_events: 
 #    timer_start_events: player_sw_count{current_player.ball_save_enabled==0 and current_player.pf_settled==1} #, playfield_active
     balls_to_save: 1
+  kickback_ball_save: # don't start this until all the drops have reset, spinner is settled, etc.
+    active_time: 5s
+    hurry_up_time: 2s
+    grace_period: 1s
+    enable_events: kickback_outlane_kickback_fired
+#    disable_events: 
+#    timer_start_events: player_sw_count{current_player.ball_save_enabled==0 and current_player.pf_settled==1} #, playfield_active
+    balls_to_save: 1
 
 extra_balls:
     purple_eb:
@@ -480,6 +488,9 @@ variable_player:
         tilt_as_weapon:
           int: 0
           action: set
+        kickback_enabled:
+          int: 1
+          action: set
         multiplier:
           int: 0 #prevents any scoring before the playfield is settled.
           action: set
@@ -525,6 +536,10 @@ variable_player:
     ball_save_default_timer_start:
         ball_save_enabled:
           int: 1
+          action: set
+    kickback_outlane_kickback_fired:
+        kickback_enabled:
+          int: 0
           action: set
         
 # reset these at the beginning of the game
@@ -825,6 +840,8 @@ light_player:
     l_9000_bonus: on
   "{current_player.bonus_value >= 10000}":
     l_10000_bonus: on
+  "{current_player.kickback_enabled == 1}":
+    l_ball_save: on
 
 
 #DISPLAY RELATED STUFF

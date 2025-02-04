@@ -483,6 +483,12 @@ ball_devices:
       eject_coil: c_top_eject_hole
       eject_timeouts: 1s
 
+kickbacks:
+    outlane_kickback:
+      coil: c_ball_save
+      switch: s_10_left_outside_rollover
+      enable_events: player_kickback_enabled
+      disable_events: player_kickback_disabled
 
 
 # modes
