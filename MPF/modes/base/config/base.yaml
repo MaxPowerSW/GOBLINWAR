@@ -22,16 +22,19 @@ multiball_locks:
     left_hole:
       balls_to_lock: 1
       lock_devices: bd_left_hole
+      locked_ball_counting_strategy: physical_only
       disable_events: mode_multiball_started
       reset_count_for_current_player_events: multiball_my_multiball_started
     right_hole:
       balls_to_lock: 1
       lock_devices: bd_right_hole
+      locked_ball_counting_strategy: physical_only
       disable_events: mode_multiball_started
       reset_count_for_current_player_events: multiball_my_multiball_started
     top_hole:
       balls_to_lock: 1
       lock_devices: bd_top_hole
+      locked_ball_counting_strategy: physical_only
       disable_events: mode_multiball_started
       reset_count_for_current_player_events: multiball_my_multiball_started
 
