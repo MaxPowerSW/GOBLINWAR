@@ -12,7 +12,7 @@ ball_saves:
 #    disable_events: 
 #    timer_start_events: player_sw_count{current_player.ball_save_enabled==0 and current_player.pf_settled==1} #, playfield_active
     balls_to_save: 1
-  kickback_ball_save: # don't start this until all the drops have reset, spinner is settled, etc.
+  kickback: # don't start this until all the drops have reset, spinner is settled, etc.
     active_time: 5s
     hurry_up_time: 2s
     grace_period: 1s
@@ -68,6 +68,23 @@ show_player:
     ball_save_ending_show:
       action: stop
   ball_save_default_disabled:
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: stop
+  ball_save_kickback_timer_start: 
+    ball_save_show
+  ball_save_kickback_hurry_up: 
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: play
+  ball_save_kickback_grace_period: 
+    ball_save_show:
+      action: stop
+    ball_save_ending_show:
+      action: stop
+  ball_save_kickback_disabled:
     ball_save_show:
       action: stop
     ball_save_ending_show:
@@ -477,7 +494,10 @@ variable_player:
         lock_state_right:
           int: 1
           action: set
-
+    shot_group_front_targets_complete:
+        kickback_enabled:
+          int: 1
+          action: set
     ball_started:
         pf_settled:
           int: 0
@@ -1069,21 +1089,21 @@ widgets:
         anchor_x: left
         z: 100
       - type: text
-        text: "ADVANCE BONUS: (advance_bonus)"
+        text: "TILT AS WEAPON: (tilt_as_weapon)"
         x: 25
         y: 900
         font_size: 25
         anchor_x: left
         z: 100
       - type: text
-        text: "VIDEO_SEQUENCE: (video_sequence)"
+        text: "KICKBACK ENABLED: (kickback_enabled)"
         x: 25
         y: 875
         font_size: 25
         anchor_x: left
         z: 100
       - type: text
-        text: "BANK_PROGRESS: (bank_progress)"
+        text: "VIDEO_SEQUENCE: (video_sequence)"
         x: 25
         y: 850
         font_size: 25
@@ -1177,7 +1197,7 @@ widgets:
     type: text
     text: "2x Scoring"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center
     y: center+300
@@ -1185,7 +1205,7 @@ widgets:
     type: text
     text: "2x Scoring"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center+5
     y: center+295
@@ -1194,7 +1214,7 @@ widgets:
     type: text
     text: "Ball Saved"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center
     y: center+300
@@ -1202,7 +1222,7 @@ widgets:
     type: text
     text: "Ball Saved"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center+5
     y: center+295
@@ -1211,7 +1231,7 @@ widgets:
     type: text
     text: "Extra Ball"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center
     y: center+300
@@ -1219,7 +1239,7 @@ widgets:
     type: text
     text: "Extra Ball"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center+5
     y: center+295
@@ -1228,7 +1248,7 @@ widgets:
     type: text
     text: "Shoot Again"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center
     y: center+300
@@ -1236,7 +1256,7 @@ widgets:
     type: text
     text: "Shoot Again"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center+5
     y: center+295
@@ -1245,7 +1265,7 @@ widgets:
     type: text
     text: "Player (number) Shoot Again"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center
     y: center+300
@@ -1253,7 +1273,7 @@ widgets:
     type: text
     text: "Player (number) Shoot Again"    # no expiration here
     font_size: 100
-    font_name: Sinbad
+#    font_name: Sinbad
     z: 100
     x: center+5
     y: center+295
@@ -1262,7 +1282,7 @@ widgets:
     type: text
     text: "Scene Completed: (awarded_bonus_collect_text)" # (awarded_bonus_value) (awarded_bonus_multiplier)"    # no expiration here
     font_size: 100
-    font_name: FtySkorzhenNcv-Yo02
+#    font_name: FtySkorzhenNcv-Yo02
     z: 100
     x: center
     y: center+450
@@ -1270,7 +1290,7 @@ widgets:
     type: text
     text: "Scene Completed: (awarded_bonus_collect_text)" # (awarded_bonus_value) (awarded_bonus_multiplier)"    # no expiration here
     font_size: 100
-    font_name: FtySkorzhenNcv-Yo02
+#    font_name: FtySkorzhenNcv-Yo02
     z: 100
     x: center+5
     y: center+445
