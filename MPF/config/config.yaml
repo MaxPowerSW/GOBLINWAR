@@ -84,7 +84,7 @@ switches:
         ignore_window_ms: 500
     s_10_left_outside_rollover:
         number: 10
-        tags: playfield_active
+#        tags: playfield_active
         ignore_window_ms: 100
     s_11_left_inside_rollover:
         number: 11
@@ -230,7 +230,7 @@ switches:
         number: 46
 #        tags: playfield_active
         ignore_window_ms: 100
-    s_47_playfield_tilt: #Not used.
+    s_47_playfield_tilt: #Not used.  This is used by VPX though
         number: 47
         tags: playfield_active
         ignore_window_ms: 100 
@@ -579,7 +579,18 @@ machine_vars:
     value_type: int
     initial_value: 0
     persist: true
-
+  lock_state_top:
+    value_type: int
+    initial_value: 0
+    persist: false
+  lock_state_left:
+    value_type: int
+    initial_value: 0
+    persist: false
+  lock_state_right:
+    value_type: int
+    initial_value: 0
+    persist: false
 #  master_volume:
 #    initial_value: 0.0   # Set this to any value you want
 #    value_type: float

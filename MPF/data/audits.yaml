@@ -1,96 +1,134 @@
 events:
-  game_ended: 0
-  game_started: 7
+  game_ended: 4
+  game_started: 25
 missing_switches:
-  s_00_unused: 7
-  s_01_cab_tilt: 7
-  s_02_ball_tilt: 7
-  s_05_center_coin: 7
-  s_07_slam_tilt: 7
-  s_08_high_score_reset: 7
-  s_14_upper_middle_left_standup: 7
-  s_16_top_left_standup: 7
-  s_20_not_used: 7
-  s_24_not_used: 7
-  s_31_upper_top_right_standup: 7
-  s_37_lower_top_right_standup: 7
-  s_38_middle_right_standup: 7
-  s_45_right_flipper_lane_change_switch: 7
-  s_47_playfield_tilt: 3
-  s_49_center_middle_left_standup: 7
-  s_50_lower_middle_left_standup: 7
-  s_52_not_used: 7
-  s_55_not_used: 7
-  s_56_not_used: 7
+  s_00_unused: 25
+  s_01_cab_tilt: 25
+  s_02_ball_tilt: 25
+  s_03_start: 1
+  s_05_center_coin: 25
+  s_07_slam_tilt: 25
+  s_08_high_score_reset: 25
+  s_11_left_inside_rollover: 2
+  s_14_upper_middle_left_standup: 25
+  s_15_spinner: 5
+  s_16_top_left_standup: 25
+  s_20_not_used: 25
+  s_24_not_used: 25
+  s_31_upper_top_right_standup: 25
+  s_37_lower_top_right_standup: 25
+  s_38_middle_right_standup: 25
+  s_39_top_power_target: 4
+  s_40_middle_power_target: 4
+  s_41_bottom_power_target: 3
+  s_43_right_inside_rollover: 2
+  s_44_right_outside_rollover: 1
+  s_45_right_flipper_lane_change_switch: 25
+  s_47_playfield_tilt: 21
+  s_49_center_middle_left_standup: 25
+  s_50_lower_middle_left_standup: 25
+  s_52_not_used: 25
+  s_55_not_used: 25
+  s_56_not_used: 25
 player:
   score:
-    average: 0
-    top: []
-    total: 0
+    average: 14982
+    top:
+    - 35620
+    - 9160
+    - 9090
+    - 6060
+    total: 4
 shots:
-  shot_e_rollover: 18
-  shot_f_rollover: 8
-  shot_i_rollover: 12
-  shot_r_rollover: 11
-  shot_spinner: 90
-  shot_target_1: 11
+  shot_bottom_left_pop: 61
+  shot_bottom_power_target: 16
+  shot_bottom_right_pop: 49
+  shot_e_rollover: 82
+  shot_f_rollover: 50
+  shot_i_rollover: 49
+  shot_left_eject: 28
+  shot_left_eject_rollover: 61
+  shot_left_inlane: 61
+  shot_left_outlane: 61
+  shot_left_slingshot: 61
+  shot_left_standup: 61
+  shot_middle_power_target: 25
+  shot_r_rollover: 52
+  shot_right_eject: 27
+  shot_right_eject_rollover: 49
+  shot_right_inlane: 49
+  shot_right_outlane: 49
+  shot_right_slingshot: 49
+  shot_right_standup: 49
+  shot_spinner: 362
+  shot_target_1: 37
+  shot_target_2: 18
+  shot_target_3: 26
+  shot_target_4: 33
+  shot_target_5: 35
+  shot_target_6: 71
+  shot_top_eject: 28
+  shot_top_left_pop: 61
+  shot_top_power_target: 13
+  shot_top_right_pop: 49
+  shot_top_target: 61
 switches:
   s_00_unused: 0
   s_01_cab_tilt: 0
   s_02_ball_tilt: 0
-  s_03_start: 5
-  s_04_right_flipper: 169
+  s_03_start: 27
+  s_04_right_flipper: 612
   s_05_center_coin: 0
-  s_06_left_flipper: 132
+  s_06_left_flipper: 451
   s_07_slam_tilt: 0
   s_08_high_score_reset: 0
-  s_09_outhole: 14
-  s_10_left_outside_rollover: 5
-  s_11_left_inside_rollover: 7
-  s_12_left_sling: 21
-  s_13_left_eject_hole: 8
+  s_09_outhole: 99
+  s_10_left_outside_rollover: 21
+  s_11_left_inside_rollover: 40
+  s_12_left_sling: 83
+  s_13_left_eject_hole: 36
   s_14_upper_middle_left_standup: 0
-  s_15_spinner: 90
+  s_15_spinner: 362
   s_16_top_left_standup: 0
-  s_17_target_1: 14
-  s_18_target_2: 12
-  s_19_target_3: 13
+  s_17_target_1: 48
+  s_18_target_2: 40
+  s_19_target_3: 40
   s_20_not_used: 0
-  s_21_target_4: 9
-  s_22_target_5: 11
-  s_23_target_6: 17
+  s_21_target_4: 48
+  s_22_target_5: 51
+  s_23_target_6: 111
   s_24_not_used: 0
-  s_25_bottom_left_pop_bumper: 35
-  s_26_top_left_pop_bumper: 91
-  s_27_top_right_pop_bumper: 97
-  s_28_bottom_right_pop_bumper: 36
-  s_29_top_center_target: 20
-  s_30_right_eject_hole: 6
+  s_25_bottom_left_pop_bumper: 128
+  s_26_top_left_pop_bumper: 460
+  s_27_top_right_pop_bumper: 408
+  s_28_bottom_right_pop_bumper: 148
+  s_29_top_center_target: 53
+  s_30_right_eject_hole: 33
   s_31_upper_top_right_standup: 0
-  s_32_f_rollover: 8
-  s_33_i_rollover: 12
-  s_34_r_rollover: 11
-  s_35_e_rollover: 19
-  s_36_top_eject_hole: 5
+  s_32_f_rollover: 53
+  s_33_i_rollover: 50
+  s_34_r_rollover: 52
+  s_35_e_rollover: 84
+  s_36_top_eject_hole: 33
   s_37_lower_top_right_standup: 0
   s_38_middle_right_standup: 0
-  s_39_top_power_target: 9
-  s_40_middle_power_target: 6
-  s_41_bottom_power_target: 5
-  s_42_right_sling: 22
-  s_43_right_inside_rollover: 14
-  s_44_right_outside_rollover: 5
+  s_39_top_power_target: 25
+  s_40_middle_power_target: 34
+  s_41_bottom_power_target: 25
+  s_42_right_sling: 101
+  s_43_right_inside_rollover: 45
+  s_44_right_outside_rollover: 23
   s_45_right_flipper_lane_change_switch: 0
-  s_46_ball_shooter: 31
+  s_46_ball_shooter: 172
   s_47_playfield_tilt: 25
-  s_48_lower_right_standup: 109
+  s_48_lower_right_standup: 548
   s_49_center_middle_left_standup: 0
   s_50_lower_middle_left_standup: 0
-  s_51_left_ball_trough: 16
+  s_51_left_ball_trough: 106
   s_52_not_used: 0
-  s_53_left_eject_rollover: 17
-  s_54_right_eject_rollover: 10
+  s_53_left_eject_rollover: 78
+  s_54_right_eject_rollover: 59
   s_55_not_used: 0
   s_56_not_used: 0
-  s_57_right_ball_trough: 27
-  s_58_center_ball_trough: 23
+  s_57_right_ball_trough: 145
+  s_58_center_ball_trough: 129

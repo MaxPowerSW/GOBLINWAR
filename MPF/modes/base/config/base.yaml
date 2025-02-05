@@ -31,28 +31,29 @@ multiball_locks:
       balls_to_lock: 1
       lock_devices: bd_left_hole
       locked_ball_counting_strategy: physical_only
-      disable_events: mode_multiball_started
-      reset_count_for_current_player_events: multiball_my_multiball_started
+      disable_events: multiball_mb_1_started
+      enable_events: ball_started, multiball_mb_1_ended
     right_hole:
       balls_to_lock: 1
       lock_devices: bd_right_hole
       locked_ball_counting_strategy: physical_only
-      disable_events: mode_multiball_started
-      reset_count_for_current_player_events: multiball_my_multiball_started
+      disable_events: multiball_mb_1_started
+      enable_events: ball_started, multiball_mb_1_ended
     top_hole:
       balls_to_lock: 1
       lock_devices: bd_top_hole
       locked_ball_counting_strategy: physical_only
-      disable_events: mode_multiball_started
-      reset_count_for_current_player_events: multiball_my_multiball_started
+      disable_events: multiball_mb_1_started
+      enable_events: ball_started, multiball_mb_1_ended
 
 multiballs:
     mb_1:
       ball_count: 3
-      ball_count_type: total
+      ball_count_type: add
+#      replace_balls_in_play: true
       start_events: start_multiball
       stop_events: mb1_stop
-      ball_locks: bd_left_hole, bd_right_hole, bd_top_hole
+      ball_locks: bd_top_hole, bd_left_hole, bd_right_hole
 
 show_player:
   ball_save_default_timer_start: 
@@ -190,6 +191,27 @@ shot_profiles:
       - name: lit
         show: "on"
     spinner_profile:
+      advance_on_hit: false
+      states:
+      - name: unlit
+        show: "off"
+      - name: lit
+        show: "on"
+    eject_profile:
+      advance_on_hit: false
+      states:
+      - name: unlit
+        show: "off"
+      - name: lit
+        show: "on"
+    inlane_profile:
+      advance_on_hit: false
+      states:
+      - name: unlit
+        show: "off"
+      - name: lit
+        show: "on"
+    outlane_profile:
       advance_on_hit: false
       states:
       - name: unlit
@@ -485,15 +507,28 @@ variable_player:
     multiball_lock_top_hole_locked_ball:
         lock_state_top:
           int: 1
-          action: set
+          action: set_machine
     multiball_lock_left_hole_locked_ball:
         lock_state_left:
           int: 1
-          action: set
+          action: set_machine
     multiball_lock_right_hole_locked_ball:
         lock_state_right:
           int: 1
-          action: set
+          action: set_machine
+    balldevice_bd_top_hole_ball_eject_success:
+        lock_state_top:
+          int: 0
+          action: set_machine
+    balldevice_bd_left_hole_ball_eject_success:
+        lock_state_left:
+          int: 0
+          action: set_machine
+    balldevice_bd_right_hole_ball_eject_success:
+        lock_state_right:
+          int: 0
+          action: set_machine
+
     shot_group_front_targets_complete:
         kickback_enabled:
           int: 1
@@ -511,6 +546,7 @@ variable_player:
         kickback_enabled:
           int: 1
           action: set
+
         multiplier:
           int: 0 #prevents any scoring before the playfield is settled.
           action: set
@@ -733,35 +769,11 @@ variable_player:
     shot_upper_target_lit_hit:
         score: 1000 * current_player.multiplier
 
-
-
-
-#static / no lamp
-    s_14_pop_bumper_active:
-        score: 100 * current_player.multiplier
-        sw_count: 1
-        sw_count_total: 1
-        pop_count: 1
-        pop_count_total: 1
-    s_54_10_pt_switches_active:
-        score: 10 * current_player.multiplier
-        sw_count: 1
-        sw_count_total: 1
-
-    player_advance_bonus{current_player.advance_bonus>=5}:
-        advance_bonus:
-          int: 0
-          action: set
-        bonus_value: 1000
-#    player_bonus_multiplier{current_player.bonus_multiplier>=5}:
-#        bonus_multiplier:
-#          int: 5
-#          action: set
-    player_bonus_value{current_player.bonus_value>19000}:
-        bonus_value:
-          int: 19000
-          action: set
     start_2x_playfield:
+        multiplier:
+          int: 2
+          action: set
+    start_3x_playfield:
         multiplier:
           int: 2
           action: set
@@ -779,11 +791,11 @@ variable_player:
 
 event_player:
 # MULTIBALL
-    player_lock_state_top{current_player.lock_state_top==1 and current_player.lock_state_left==1 and current_player.lock_state_right==1}:
+    machine_var_lock_state_top{machine.lock_state_top==1 and machine.lock_state_left==1 and machine.lock_state_right==1}:
       - start_multiball
-    player_lock_state_left{current_player.lock_state_top==1 and current_player.lock_state_left==1 and current_player.lock_state_right==1}:
+    machine_var_lock_state_left{machine.lock_state_top==1 and machine.lock_state_left==1 and machine.lock_state_right==1}:
       - start_multiball
-    player_lock_state_right{current_player.lock_state_top==1 and current_player.lock_state_left==1 and current_player.lock_state_right==1}:
+    machine_var_lock_state_right{machine.lock_state_top==1 and machine.lock_state_left==1 and machine.lock_state_right==1}:
       - start_multiball
 # TILT_OVERRIDE
     s_01_cab_tilt_active{current_player.tilt_as_weapon==0}:
@@ -1061,28 +1073,28 @@ widgets:
         anchor_x: left
         z: 100
       - type: text
-        text: "SWITCH COUNT: (sw_count)/(sw_count_total)"
+        text: "LOCK STATE: TOP: (machine|lock_state_top) LEFT: (machine|lock_state_left) RIGHT: (machine|lock_state_right)"
         x: 25
         y: 1000
         font_size: 25
         anchor_x: left
         z: 100
       - type: text
-        text: "ROLLOVER COUNT: (rollover_count)/(rollover_count_total)"
+        text: ""
         x: 25
         y: 975
         font_size: 25
         anchor_x: left
         z: 100
       - type: text
-        text: "DROP HITS: (drop_count)/(drop_count_total)"
+        text: ""
         x: 25
         y: 950
         font_size: 25
         anchor_x: left
         z: 100
       - type: text
-        text: "SPINNER COUNT: (spinner_count)/(spinner_count_total)"
+        text: ""
         x: 25
         y: 925
         font_size: 25
@@ -1110,7 +1122,7 @@ widgets:
         anchor_x: left
         z: 100
       - type: text
-        text: "ALL_BANKS_COMPLETED: (all_banks_completed)/(all_banks_completed_total)"
+        text: ""
         x: 25
         y: 825
         font_size: 25
@@ -1124,7 +1136,7 @@ widgets:
         anchor_x: left
         z: 100
       - type: text
-        text: "BANK COMPLETION: (white_bank_completed) (yellow_bank_completed) (purple_bank_completed) (red_bank_completed)"
+        text: ""
         x: 25
         y: 775
         font_size: 25
@@ -1159,28 +1171,28 @@ widgets:
         anchor_x: left
         z: 100
       - type: text
-        text: "SPINNER VALUE ADD: (spinner_value_add)"
+        text: "SWITCH COUNT: (sw_count)/(sw_count_total)"
         x: 25
         y: 650
         font_size: 25
         anchor_x: left
         z: 100
       - type: text
-        text: "SPINNER VALUE ADD TOTAL: (spinner_value_add_total)"
+        text: "ROLLOVER COUNT: (rollover_count)/(rollover_count_total)"
         x: 25
         y: 625
         font_size: 25
         anchor_x: left
         z: 100
       - type: text
-        text: "LAST SCENE BONUS: (awarded_bonus_collect_text)"
+        text: "TARGET COUNT: (target_count)/(target_count_total)"
         x: 25
         y: 600
         font_size: 25
         anchor_x: left
         z: 100
       - type: text
-        text: "SCENE BONUS TOTAL: (scene_bonus_total)"
+        text: "SPINNER COUNT: (spinner_count)/(spinner_count_total)"
         x: 25
         y: 575
         font_size: 25
